@@ -1,0 +1,858 @@
+footer [aria-label="Social media links"],
+footer .footer-social {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap;
+  gap: 0.5rem !important;
+}
+
+footer .social-icon,
+footer .footer-social a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 38px !important;
+  height: 38px !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+}
+
+footer .social-icon i,
+footer .footer-social a i,
+footer .footer-logo i,
+footer h5 i.bi-tree-fill {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1 !important;
+  vertical-align: -0.1em;
+}
+
+footer .footer-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .navbar-leaftable .navbar-brand-logo {
+    font-size: 1.3rem !important;
+  }
+
+  .navbar-leaftable .navbar-nav.mx-auto {
+    gap: 0.15rem !important;
+  }
+
+  .navbar-leaftable .nav-link-custom {
+    font-size: 0.8rem !important;
+    padding: 0.35rem 0.45rem !important;
+  }
+
+  .navbar-leaftable .navbar-collapse > .d-flex {
+    gap: 0.35rem !important;
+  }
+
+  .hero2-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  img,
+  video,
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  iframe {
+    max-width: 100%;
+  }
+
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .navbar-leaftable {
+    padding-top: 0.45rem !important;
+    padding-bottom: 0.45rem !important;
+  }
+
+  .navbar-leaftable .navbar-brand-logo {
+    font-size: 1.25rem !important;
+  }
+
+  .navbar-leaftable .nav-link-custom {
+    font-size: 0.82rem !important;
+    padding: 0.35rem 0.5rem !important;
+  }
+
+  .navbar-leaftable .navbar-nav.mx-auto {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .navbar-leaftable .navbar-collapse > .d-flex {
+    margin-top: 0.5rem !important;
+    gap: 0.35rem !important;
+    justify-content: flex-start !important;
+  }
+
+  .btn-toggle-icon {
+    padding: 0.35rem 0.5rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .hero2-stats {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+  }
+
+  .stat-item {
+    min-width: 0 !important;
+    text-align: center !important;
+  }
+
+  .stat-number {
+    font-size: 1.8rem !important;
+  }
+
+  .gf-dish-card {
+    flex-direction: column !important;
+  }
+
+  .gf-dish-img {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    height: 180px !important;
+  }
+
+  .gf-dish-info {
+    width: 100% !important;
+  }
+
+  .gf-badge,
+  .pkg-badge {
+    white-space: normal !important;
+  }
+
+  .package-card.featured {
+    transform: none !important;
+  }
+
+  .pkg-badge {
+    position: static !important;
+    display: inline-flex !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .pillar-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .about-hero,
+  .hero-service,
+  .article-hero {
+    padding-top: 6.5rem !important;
+  }
+
+  .timeline-section {
+    padding: 72px 0 !important;
+  }
+
+  .timeline-wrapper::before {
+    left: 28px !important;
+    right: auto !important;
+    transform: none !important;
+  }
+
+  .timeline-item,
+  .timeline-item.right {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    padding-left: 64px !important;
+    padding-right: 0 !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  .timeline-badge {
+    left: 28px !important;
+    right: auto !important;
+    top: 14px !important;
+    transform: translateX(-50%) !important;
+    font-size: 0.72rem !important;
+    padding: 0.25rem 0.55rem !important;
+    border-width: 2px !important;
+  }
+
+  .timeline-card {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 1.1rem !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .timeline-card img {
+    height: 140px !important;
+  }
+
+  .timeline-card h4 {
+    font-size: 1.05rem !important;
+  }
+
+  .timeline-card p {
+    font-size: 0.85rem !important;
+    line-height: 1.55 !important;
+  }
+
+  [dir="rtl"] .timeline-wrapper::before {
+    left: 28px !important;
+    right: auto !important;
+  }
+
+  [dir="rtl"] .timeline-item,
+  [dir="rtl"] .timeline-item.right {
+    padding-left: 64px !important;
+    padding-right: 0 !important;
+  }
+
+  [dir="rtl"] .timeline-badge {
+    left: 28px !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .team-section {
+    padding: 72px 0 !important;
+  }
+
+  .flip-card {
+    height: 320px !important;
+  }
+
+  .flip-card-front {
+    padding: 1.35rem 1rem !important;
+  }
+
+  .flip-card-back {
+    padding: 1.25rem 1rem !important;
+  }
+
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .team-photo-front {
+    width: 100px !important;
+    height: 100px !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .team-photo-back {
+    width: 60px !important;
+    height: 60px !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .team-name {
+    font-size: 1rem !important;
+  }
+
+  .team-name-back {
+    font-size: 0.95rem !important;
+  }
+
+  .team-tagline {
+    font-size: 0.78rem !important;
+  }
+
+  .team-bio-back {
+    font-size: 0.78rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .steps-container {
+    flex-direction: column !important;
+  }
+
+  .steps-connector {
+    display: none !important;
+  }
+
+  .steps-container > * {
+    width: 100% !important;
+  }
+
+  .booking-sidebar {
+    position: static !important;
+    margin-top: 1.5rem !important;
+  }
+
+  .course-item {
+    flex-direction: column !important;
+  }
+
+  .hero-h1,
+  .article-hero h1 {
+    font-size: 2rem !important;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 10% !important;
+  }
+
+  .category-filter-strip .d-flex {
+    gap: 0.35rem !important;
+    flex-wrap: wrap !important;
+  }
+
+  .category-filter-strip a,
+  .category-filter-strip .badge,
+  .category-filter-strip .btn {
+    white-space: normal !important;
+  }
+
+  .article-section {
+    padding: 48px 0 !important;
+  }
+
+  .share-buttons,
+  .author-social {
+    flex-wrap: wrap !important;
+  }
+
+  .tag-pill {
+    white-space: normal !important;
+  }
+
+  .auth-wrapper {
+    min-height: auto !important;
+  }
+
+  .auth-left {
+    padding: 3rem 1.25rem !important;
+  }
+
+  .auth-right {
+    padding: 2rem 1rem !important;
+  }
+
+  .auth-form-container {
+    max-width: 100% !important;
+  }
+
+  .page-bg {
+    background-attachment: scroll !important;
+  }
+
+  form[aria-label="Table reservation form"] > div {
+    max-width: none !important;
+    flex: 1 1 100% !important;
+  }
+
+  form[aria-label="Table reservation form"] .btn-reserve {
+    width: 100% !important;
+  }
+
+  .hero-content .d-flex.flex-wrap > .btn {
+    width: 100% !important;
+    max-width: 280px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 0.9rem !important;
+    padding-right: 0.9rem !important;
+  }
+
+  .navbar-leaftable .navbar-brand-logo {
+    font-size: 1.15rem !important;
+  }
+
+  .navbar-leaftable .nav-link-custom {
+    font-size: 0.8rem !important;
+    padding: 0.35rem 0.4rem !important;
+  }
+
+  .pillar-grid,
+  .service-grid,
+  .exp-details {
+    grid-template-columns: 1fr !important;
+  }
+
+  .featured-card .row > [class*="col-"] {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+
+  .featured-img {
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: cover !important;
+  }
+
+  .flip-card {
+    height: 360px !important;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    padding: 1.1rem 0.9rem !important;
+  }
+
+  .team-photo-front {
+    width: 92px !important;
+    height: 92px !important;
+  }
+
+  .team-photo-back {
+    width: 56px !important;
+    height: 56px !important;
+  }
+
+  .team-bio-back {
+    font-size: 0.76rem !important;
+  }
+
+  .newsletter-widget,
+  .contact-card {
+    padding: 1rem !important;
+  }
+
+  .newsletter-widget h6 {
+    font-size: 1.05rem !important;
+  }
+
+  .newsletter-widget form,
+  footer form.d-flex,
+  footer form[aria-label="Newsletter subscription form"] {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+
+  .newsletter-widget .btn,
+  footer form.d-flex .btn,
+  footer form[aria-label="Newsletter subscription form"] .newsletter-btn {
+    width: 100% !important;
+    white-space: normal !important;
+  }
+
+  footer form.d-flex .form-control,
+  footer form[aria-label="Newsletter subscription form"] .newsletter-input {
+    width: 100% !important;
+  }
+
+  .comment-item {
+    flex-direction: column !important;
+  }
+
+  .drop-cap::first-letter {
+    font-size: 3em !important;
+  }
+
+  .copy-tooltip {
+    max-width: 12rem !important;
+    white-space: normal !important;
+  }
+
+  section[aria-label="Contact information"] {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  section[aria-label="Contact information"] .section-heading {
+    font-size: 1.6rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .contact-card .d-flex {
+    flex-wrap: wrap !important;
+  }
+
+  [class*="map"] iframe {
+    height: 250px !important;
+  }
+
+  .hero-404 {
+    padding: 100px 1rem 60px !important;
+  }
+
+  .btn-terra,
+  .btn-sage-outline {
+    width: 100% !important;
+    max-width: 280px !important;
+    justify-content: center !important;
+  }
+
+  .countdown-wrap {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+  }
+
+  .countdown-box {
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 1rem 0.75rem !important;
+  }
+
+  .countdown-number {
+    font-size: 2.4rem !important;
+  }
+
+  .countdown-sep {
+    display: none !important;
+  }
+
+  .social-icons-row {
+    flex-wrap: wrap !important;
+  }
+
+  .auth-card {
+    padding: 1.25rem !important;
+    margin: 0 !important;
+    border-radius: 12px !important;
+  }
+
+  .auth-tabs .nav-link {
+    padding: 0.5rem 0.6rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  .social-login-row {
+    flex-direction: column !important;
+  }
+
+  .social-login-row .btn {
+    width: 100% !important;
+  }
+
+  .newsletter-form {
+    flex-direction: column !important;
+  }
+
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .navbar-leaftable .navbar-brand-logo {
+    font-size: 1.05rem !important;
+  }
+
+  .navbar-minimal {
+    padding: 0.7rem 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .nav-home-link {
+    padding: 0.35rem 0.5rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .navbar-controls {
+    gap: 0.35rem !important;
+  }
+
+  .navbar-controls > * {
+    min-width: 34px !important;
+    min-height: 34px !important;
+  }
+
+  .hero-h1,
+  .article-hero h1 {
+    font-size: 1.75rem !important;
+  }
+
+  .stat-number {
+    font-size: 1.5rem !important;
+  }
+
+  .btn,
+  .btn-reserve,
+  .newsletter-btn {
+    font-size: 0.82rem !important;
+  }
+
+  .card,
+  .post-card,
+  .service-card,
+  .package-card {
+    padding-left: 0.9rem !important;
+    padding-right: 0.9rem !important;
+  }
+
+  .footer-heading,
+  .footer-logo {
+    font-size: 1rem !important;
+  }
+
+  .footer-tagline {
+    font-size: 0.8rem !important;
+  }
+
+  .modal-dialog,
+  .offcanvas {
+    margin: 0.5rem !important;
+  }
+
+  .form-control,
+  .form-select {
+    font-size: 0.85rem !important;
+  }
+
+  table {
+    font-size: 0.78rem !important;
+  }
+
+  .timeline-wrapper::before,
+  [dir="rtl"] .timeline-wrapper::before {
+    left: 24px !important;
+  }
+
+  .timeline-item,
+  .timeline-item.right,
+  [dir="rtl"] .timeline-item,
+  [dir="rtl"] .timeline-item.right {
+    padding-left: 56px !important;
+  }
+
+  .timeline-badge,
+  [dir="rtl"] .timeline-badge {
+    left: 24px !important;
+    font-size: 0.68rem !important;
+    padding: 0.22rem 0.45rem !important;
+  }
+
+  .timeline-card {
+    padding: 0.9rem !important;
+  }
+
+  .timeline-card img {
+    height: 120px !important;
+  }
+
+  #team-heading {
+    font-size: 1.55rem !important;
+  }
+
+  .team-section > .container > .text-center p {
+    font-size: 0.85rem !important;
+  }
+
+  .flip-card {
+    height: 390px !important;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    padding: 1rem 0.75rem !important;
+  }
+
+  .team-photo-front {
+    width: 84px !important;
+    height: 84px !important;
+  }
+
+  .team-photo-back {
+    width: 52px !important;
+    height: 52px !important;
+  }
+
+  .team-name {
+    font-size: 0.95rem !important;
+  }
+
+  .team-name-back {
+    font-size: 0.9rem !important;
+  }
+
+  .team-role {
+    font-size: 0.75rem !important;
+  }
+
+  .team-role-back {
+    font-size: 0.72rem !important;
+  }
+
+  .team-tagline {
+    font-size: 0.72rem !important;
+  }
+
+  .team-bio-back {
+    font-size: 0.72rem !important;
+    line-height: 1.45 !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding-left: 0.6rem !important;
+    padding-right: 0.6rem !important;
+  }
+
+  .navbar-leaftable .navbar-brand-logo {
+    font-size: 1rem !important;
+  }
+
+  .navbar-leaftable .toggle-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .rtl-text {
+    font-size: 0.55rem !important;
+  }
+
+  .hero-h1,
+  .article-hero h1 {
+    font-size: 1.6rem !important;
+  }
+
+  .stat-number {
+    font-size: 1.35rem !important;
+  }
+
+  .section-title-green,
+  .section-headline {
+    font-size: 1.5rem !important;
+  }
+
+  .btn {
+    padding: 0.45rem 0.7rem !important;
+    font-size: 0.78rem !important;
+  }
+
+  .newsletter-input,
+  .newsletter-btn,
+  .form-control,
+  .form-select {
+    font-size: 0.8rem !important;
+  }
+
+  .card-body,
+  .post-card-body,
+  .featured-card-body {
+    padding: 0.9rem !important;
+  }
+
+  .footer-bottom {
+    font-size: 0.72rem !important;
+    text-align: center !important;
+  }
+
+  .footer-bottom .d-flex {
+    flex-direction: column !important;
+    gap: 0.35rem !important;
+  }
+
+  .rating,
+  .stars {
+    font-size: 0.9rem !important;
+  }
+
+  .badge {
+    font-size: 0.72rem !important;
+  }
+
+  .timeline-wrapper::before,
+  [dir="rtl"] .timeline-wrapper::before {
+    left: 20px !important;
+  }
+
+  .timeline-item,
+  .timeline-item.right,
+  [dir="rtl"] .timeline-item,
+  [dir="rtl"] .timeline-item.right {
+    padding-left: 50px !important;
+  }
+
+  .timeline-badge,
+  [dir="rtl"] .timeline-badge {
+    left: 20px !important;
+    font-size: 0.64rem !important;
+    padding: 0.2rem 0.4rem !important;
+  }
+
+  .timeline-card {
+    padding: 0.8rem !important;
+  }
+
+  .timeline-card img {
+    height: 110px !important;
+  }
+
+  .timeline-card h4 {
+    font-size: 0.98rem !important;
+  }
+
+  #team-heading {
+    font-size: 1.45rem !important;
+  }
+
+  .flip-card {
+    height: 410px !important;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    padding: 0.85rem 0.65rem !important;
+  }
+
+  .team-photo-front {
+    width: 76px !important;
+    height: 76px !important;
+  }
+
+  .team-photo-back {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .team-name {
+    font-size: 0.9rem !important;
+  }
+
+  .team-name-back {
+    font-size: 0.85rem !important;
+  }
+
+  .team-tagline {
+    font-size: 0.68rem !important;
+  }
+
+  .team-bio-back {
+    font-size: 0.7rem !important;
+    line-height: 1.4 !important;
+  }
+}

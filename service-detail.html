@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light">
+<head>
+<script>
+(function () {
+  var pairs = [['lt-theme', 'leaftable-theme'], ['lt-direction', 'leaftable-dir'], ['lt-dir', 'leaftable-dir']];
+  pairs.forEach(function (pair) {
+    var oldValue = localStorage.getItem(pair[0]);
+    if (oldValue !== null && localStorage.getItem(pair[1]) === null) {
+      localStorage.setItem(pair[1], oldValue);
+    }
+    localStorage.removeItem(pair[0]);
+  });
+})();
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LeafTable Chef's Table — an intimate 7-course vegan tasting experience with Head Chef Marco Viani. Limited to 12 guests, Thursday to Saturday evenings." />
+  <title>Chef's Table Experience | LeafTable</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css" />
+
+  <style>
+    :root {
+      --forest-green: #2D5016;
+      --sage: #7A9E5A;
+      --cream: #FBF7F0;
+      --terracotta: #C4612A;
+      --warm-beige: #E8D5B0;
+      --dark-bg: #1A1A1A;
+      --text-dark: #2C2C2C;
+      --text-light: #6B7280;
+    }
+    [data-bs-theme="dark"] {
+      --bs-body-bg: #1A1A1A;
+      --bs-body-color: #E8D5B0;
+    }
+
+    /* ── Global ── */
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text-dark); }
+    h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
+
+    /* ── Navbar ── */
+    .navbar-custom {
+      background: rgba(251, 247, 240, 0.85) !important;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(122, 158, 90, 0.18);
+      transition: background 0.3s;
+    }
+    [data-bs-theme="dark"] .navbar-custom {
+      background: rgba(26, 26, 26, 0.88) !important;
+    }
+    .navbar-brand-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--forest-green) !important;
+      letter-spacing: -0.5px;
+    }
+    [data-bs-theme="dark"] .navbar-brand-text { color: var(--warm-beige) !important; }
+    .navbar-brand-dot { color: var(--terracotta); }
+    .nav-link-custom {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.88rem;
+      letter-spacing: 0.03em;
+      color: var(--text-dark) !important;
+      padding: 0.4rem 0.75rem !important;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-link-custom:hover, .nav-link-custom.active {
+      color: var(--forest-green) !important;
+      background: rgba(45, 80, 22, 0.08);
+    }
+    [data-bs-theme="dark"] .nav-link-custom { color: var(--warm-beige) !important; }
+    [data-bs-theme="dark"] .nav-link-custom:hover { color: var(--sage) !important; background: rgba(122,158,90,0.12); }
+    .btn-toggle-theme, .btn-toggle-rtl {
+      border: 1.5px solid var(--sage);
+      color: var(--forest-green);
+      background: transparent;
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .btn-toggle-theme:hover, .btn-toggle-rtl:hover {
+      background: var(--sage); color: #fff;
+    }
+    [data-bs-theme="dark"] .btn-toggle-theme, [data-bs-theme="dark"] .btn-toggle-rtl {
+      border-color: var(--warm-beige); color: var(--warm-beige);
+    }
+
+    /* ── Hero ── */
+    .hero-service {
+      min-height: 55vh;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                  url('https://images.pexels.com/photos/10633476/pexels-photo-10633476.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding-bottom: 70px;
+      position: relative;
+    }
+    .hero-service::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.70) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .breadcrumb-custom { position: absolute; top: 100px; left: 0; right: 0; }
+    .breadcrumb-item a { color: rgba(255,255,255,0.75); font-size: 0.82rem; text-decoration: none; }
+    .breadcrumb-item a:hover { color: #fff; }
+    .breadcrumb-item.active { color: rgba(255,255,255,0.55); font-size: 0.82rem; }
+    .breadcrumb-item + .breadcrumb-item::before { color: rgba(255,255,255,0.4); }
+    .badge-chip {
+      background: var(--sage);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.2rem;
+      border-radius: 100px;
+      display: inline-block;
+    }
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 4.25rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.08;
+      margin: 0.5rem 0 0.4rem;
+    }
+    .hero-h2 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      color: var(--cream);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .hero-stars { color: #FFD700; font-size: 1.1rem; }
+    .hero-rating-text { color: var(--cream); font-size: 0.85rem; opacity: 0.9; margin-left: 0.5rem; }
+
+    /* ── Experience Overview ── */
+    .overview-section { background: var(--cream); padding: 100px 0; }
+    [data-bs-theme="dark"] .overview-section { background: #242424; }
+    .overview-h2 { color: var(--forest-green); font-size: clamp(1.9rem, 3.5vw, 2.6rem); margin-bottom: 1.5rem; }
+    [data-bs-theme="dark"] .overview-h2 { color: var(--sage); }
+    .overview-p { color: var(--text-dark); line-height: 1.85; margin-bottom: 1.2rem; font-size: 1.03rem; }
+    [data-bs-theme="dark"] .overview-p { color: #ccc; }
+    .feature-list { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+    .feature-list li {
+      display: flex; align-items: flex-start; gap: 0.65rem;
+      padding: 0.55rem 0; font-size: 0.98rem; color: var(--text-dark);
+      border-bottom: 1px solid rgba(122,158,90,0.15);
+    }
+    [data-bs-theme="dark"] .feature-list li { color: #ccc; border-color: rgba(122,158,90,0.2); }
+    .feature-list li:last-child { border-bottom: none; }
+    .feature-list .bi { color: var(--sage); font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+
+    /* Booking Sidebar */
+    .booking-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+    .booking-card {
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+    [data-bs-theme="dark"] .booking-card { background: #2a2a2a; }
+    .price-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      line-height: 1;
+    }
+    .price-unit { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--text-light); font-weight: 500; }
+    .price-pairing { font-size: 0.88rem; color: var(--text-light); }
+    .detail-list { list-style: none; padding: 0; margin: 0; }
+    .detail-list li {
+      display: flex; gap: 0.6rem; align-items: flex-start;
+      padding: 0.55rem 0; font-size: 0.93rem; color: var(--text-dark);
+      border-bottom: 1px solid #f0ebe2;
+    }
+    [data-bs-theme="dark"] .detail-list li { color: #ccc; border-color: #333; }
+    .detail-list li:last-child { border-bottom: none; }
+    .btn-book {
+      background: var(--terracotta); border: none; color: #fff;
+      border-radius: 100px; padding: 0.9rem 1rem; font-weight: 600;
+      font-size: 1.05rem; width: 100%; margin-top: 1.2rem;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-book:hover { background: #a94e22; color: #fff; transform: translateY(-2px); }
+    .btn-dl-menu {
+      display: block; text-align: center; margin-top: 0.65rem;
+      border: 2px solid var(--terracotta); color: var(--terracotta);
+      border-radius: 100px; padding: 0.7rem 1rem; font-weight: 600;
+      font-size: 0.95rem; text-decoration: none;
+      transition: all 0.25s;
+    }
+    .btn-dl-menu:hover { background: var(--terracotta); color: #fff; }
+    .cancel-note { font-size: 0.78rem; color: var(--text-light); text-align: center; margin-top: 0.9rem; line-height: 1.5; }
+
+    /* ── Menu Section ── */
+    .menu-section { background: #fff; padding: 100px 0; }
+    [data-bs-theme="dark"] .menu-section { background: #1e1e1e; }
+    .menu-h2 { color: var(--forest-green); font-size: clamp(2rem, 4vw, 2.8rem); }
+    [data-bs-theme="dark"] .menu-h2 { color: var(--warm-beige); }
+    .menu-subtext { color: var(--text-light); font-style: italic; font-size: 1.05rem; }
+    [data-bs-theme="dark"] .menu-subtext { color: #999; }
+    .course-item {
+      display: flex; align-items: flex-start; gap: 1.25rem;
+      padding: 1.5rem 0;
+    }
+    .course-num {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--terracotta); color: #fff;
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: 1.05rem; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 3px;
+    }
+    .course-body { flex: 1; }
+    .course-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--forest-green); margin-bottom: 0.3rem;
+    }
+    [data-bs-theme="dark"] .course-name { color: var(--warm-beige); }
+    .course-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 0.5rem; }
+    [data-bs-theme="dark"] .course-label { color: #888; }
+    .course-desc { font-size: 0.95rem; color: var(--text-dark); line-height: 1.75; margin-bottom: 0.5rem; }
+    [data-bs-theme="dark"] .course-desc { color: #bbb; }
+    .ingredient-pill {
+      display: inline-block;
+      background: rgba(122,158,90,0.15); color: var(--forest-green);
+      font-size: 0.75rem; font-weight: 600;
+      padding: 0.2rem 0.75rem; border-radius: 100px;
+      border: 1px solid rgba(122,158,90,0.4);
+    }
+    [data-bs-theme="dark"] .ingredient-pill { background: rgba(122,158,90,0.2); color: var(--sage); border-color: var(--sage); }
+    .course-divider {
+      display: flex; align-items: center; gap: 0.75rem;
+      color: rgba(122,158,90,0.4); font-size: 1rem;
+    }
+    .course-divider hr { flex: 1; border-color: rgba(122,158,90,0.3); opacity: 1; margin: 0; }
+    .btn-sample-menu {
+      display: inline-block;
+      background: var(--forest-green); color: #fff;
+      border: none; border-radius: 100px;
+      padding: 0.85rem 2.5rem; font-weight: 600; font-size: 1rem;
+      text-decoration: none; transition: background 0.25s, transform 0.2s;
+    }
+    .btn-sample-menu:hover { background: #3d6b1f; color: #fff; transform: translateY(-2px); }
+
+    /* ── Inclusions ── */
+    .inclusions-section { background: var(--warm-beige); padding: 80px 0; }
+    [data-bs-theme="dark"] .inclusions-section { background: #2d2416; }
+    .incl-h2 { color: var(--forest-green); font-size: clamp(1.8rem, 3.5vw, 2.5rem); }
+    [data-bs-theme="dark"] .incl-h2 { color: var(--warm-beige); }
+    .incl-list { list-style: none; padding: 0; margin: 1.25rem 0 0; }
+    .incl-list li {
+      display: flex; gap: 0.65rem; align-items: flex-start;
+      padding: 0.6rem 0; font-size: 0.98rem; color: var(--text-dark);
+      border-bottom: 1px solid rgba(45,80,22,0.1);
+    }
+    [data-bs-theme="dark"] .incl-list li { color: #ccc; border-color: rgba(255,255,255,0.08); }
+    .incl-list li:last-child { border-bottom: none; }
+    .incl-list .bi { color: var(--forest-green); font-size: 1.05rem; flex-shrink: 0; margin-top: 2px; }
+    [data-bs-theme="dark"] .incl-list .bi { color: var(--sage); }
+    .dietary-h3 { font-family: 'Playfair Display', serif; color: var(--forest-green); font-size: 1.5rem; margin-bottom: 1rem; }
+    [data-bs-theme="dark"] .dietary-h3 { color: var(--sage); }
+    .dietary-p { font-size: 0.97rem; color: var(--text-dark); line-height: 1.8; margin-bottom: 0.9rem; }
+    [data-bs-theme="dark"] .dietary-p { color: #ccc; }
+    .allergen-box {
+      background: rgba(196,97,42,0.1); border-left: 4px solid var(--terracotta);
+      padding: 0.85rem 1rem; border-radius: 0 8px 8px 0;
+      font-size: 0.88rem; color: var(--text-dark); margin-top: 0.75rem;
+    }
+    [data-bs-theme="dark"] .allergen-box { background: rgba(196,97,42,0.18); color: #ccc; }
+    .meta-note { font-size: 0.86rem; color: var(--text-light); display: flex; gap: 0.4rem; align-items: center; margin-top: 0.6rem; }
+    [data-bs-theme="dark"] .meta-note { color: #999; }
+
+    /* ── Reviews ── */
+    .reviews-section { background: var(--forest-green); padding: 100px 0; }
+    .reviews-h2 { color: var(--cream); font-size: clamp(2rem, 4vw, 2.8rem); }
+    .reviews-sub { color: rgba(251,247,240,0.7); font-size: 1rem; }
+    .review-card {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1.25rem;
+      padding: 2.5rem;
+      max-width: 800px; margin: 0 auto;
+    }
+    .review-avatar {
+      width: 60px; height: 60px; border-radius: 50%;
+      object-fit: cover; object-position: 50% 20%; border: 3px solid var(--sage);
+    }
+    .reviewer-name { color: #fff; font-weight: 600; font-size: 1rem; }
+    .reviewer-occasion { color: var(--sage); font-size: 0.82rem; }
+    .review-stars { color: #FFD700; font-size: 1rem; }
+    .review-text { color: rgba(251,247,240,0.88); font-size: 0.98rem; line-height: 1.85; margin-top: 1.1rem; font-style: italic; }
+    .carousel-indicators [data-bs-target] {
+      background-color: var(--sage); width: 8px; height: 8px; border-radius: 50%;
+      border: none; opacity: 0.45;
+    }
+    .carousel-indicators .active { opacity: 1; }
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+      filter: none;
+    }
+    .carousel-control-prev, .carousel-control-next {
+      width: 44px; height: 44px; top: 50%; transform: translateY(-50%);
+      background: rgba(122,158,90,0.35); border-radius: 50%;
+      align-items: center; justify-content: center;
+    }
+
+    /* ── Related & FAQ ── */
+    .related-faq-section { background: var(--cream); padding: 100px 0; }
+    [data-bs-theme="dark"] .related-faq-section { background: #242424; }
+    .related-h3 { font-family: 'Playfair Display', serif; color: var(--forest-green); font-size: 1.9rem; margin-bottom: 1.5rem; }
+    [data-bs-theme="dark"] .related-h3 { color: var(--sage); }
+    .faq-h3 { font-family: 'Playfair Display', serif; color: var(--forest-green); font-size: 1.9rem; margin-bottom: 1.5rem; }
+    [data-bs-theme="dark"] .faq-h3 { color: var(--sage); }
+    .service-card-rel {
+      border-radius: 1rem; overflow: hidden; border: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-bottom: 1.2rem;
+    }
+    [data-bs-theme="dark"] .service-card-rel { background: #2a2a2a; }
+    .service-card-rel:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.15); }
+    .service-card-rel img { height: 180px; object-fit: cover; width: 100%; }
+    .service-card-rel .card-body { padding: 1.2rem 1.3rem; }
+    .service-card-rel h5 { font-family: 'Playfair Display', serif; color: var(--forest-green); font-size: 1.2rem; }
+    [data-bs-theme="dark"] .service-card-rel h5 { color: var(--warm-beige); }
+    .service-card-rel p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.75rem; }
+    .btn-discover {
+      color: var(--terracotta); font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem;
+      transition: gap 0.2s;
+    }
+    .btn-discover:hover { gap: 0.6rem; color: var(--terracotta); }
+    .accordion-button {
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.98rem;
+    }
+    .accordion-button:not(.collapsed) {
+      color: var(--forest-green); background: rgba(122,158,90,0.1);
+      box-shadow: none;
+    }
+    .accordion-button:focus { box-shadow: none; }
+    [data-bs-theme="dark"] .accordion-item { background: #2a2a2a; border-color: #3a3a3a; }
+    [data-bs-theme="dark"] .accordion-button { background: #2a2a2a; color: #ccc; }
+    [data-bs-theme="dark"] .accordion-button:not(.collapsed) { background: rgba(122,158,90,0.15); color: var(--sage); }
+    [data-bs-theme="dark"] .accordion-body { background: #2a2a2a; color: #bbb; }
+
+    /* ── Footer ── */
+    .footer-custom { background: var(--dark-bg); color: #ccc; padding: 70px 0 0; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; color: #fff; }
+    .footer-tagline { color: var(--sage); font-size: 0.9rem; margin-top: 0.3rem; }
+    .footer-h { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-beige); margin-bottom: 1.1rem; }
+    .footer-links { list-style: none; padding: 0; margin: 0; }
+    .footer-links li { margin-bottom: 0.5rem; }
+    .footer-links a { color: #9ca3af; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--sage); }
+    .social-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      color: #9ca3af; font-size: 1rem; text-decoration: none;
+      transition: all 0.25s;
+    }
+    .social-icon:hover { background: var(--sage); border-color: var(--sage); color: #fff; }
+    .footer-bottom { margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 0; }
+    .footer-copy { color: #6b7280; font-size: 0.83rem; }
+
+    /* Responsive tweaks */
+    @media (max-width: 991.98px) {
+      .booking-sidebar { position: static; }
+      .hero-service { min-height: 55vh; padding-bottom: 50px; }
+    }
+    @media (max-width: 575.98px) {
+      .review-card { padding: 1.5rem; }
+      .course-num { width: 38px; height: 38px; font-size: 0.9rem; }
+      .course-name { font-size: 1.08rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+</head>
+
+<body>
+  <!-- ═══════════════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════════════ -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-leaftable fixed-top" aria-label="Main navigation">
+  <div class="container">
+    <a class="navbar-brand navbar-brand-logo" href="index.html">
+      <i class="bi bi-tree-fill me-1" style="color:#7A9E5A;"></i>LeafTable
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-list fs-4" style="color:#2D5016;"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="index2.html">Home 2</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom active" aria-current="page" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+        <button class="toggle-btn theme-toggle-btn" id="themeToggle" aria-label="Toggle dark/light mode">
+          <i class="bi bi-sun-fill" id="themeIcon"></i>
+        </button>
+        <button class="toggle-btn rtl-toggle-btn" id="rtlToggle" aria-label="Toggle RTL/LTR direction"><span class="rtl-text">RTL</span></button>
+      </div>
+    </div>
+  </div>
+</nav>
+  </header>
+
+  <main>
+    <!-- ═══════════════════════════════════════════
+         SECTION 1 — PAGE HERO
+    ═══════════════════════════════════════════ -->
+    <section class="hero-service" aria-label="Chef's Table hero banner">
+
+
+      <!-- Centered Content -->
+      <div class="container text-center position-relative" style="z-index:2;">
+        <span class="badge-chip mb-3 d-inline-block">Limited to 12 Guests &nbsp;•&nbsp; Thu–Sat Evenings</span>
+        <h1 class="hero-h1">The Chef's Table</h1>
+        <h2 class="hero-h2">A 7-Course Vegan Journey</h2>
+        <div class="d-flex align-items-center justify-content-center gap-1">
+          <span class="hero-stars" aria-label="5 out of 5 stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+          <span class="hero-rating-text">4.9 from 847 reviews</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 2 — EXPERIENCE OVERVIEW
+    ═══════════════════════════════════════════ -->
+    <section class="overview-section" aria-label="Experience overview">
+      <div class="container">
+        <div class="row">
+
+          <!-- Left — Description -->
+          <div class="col-lg-7" data-aos="fade-right" data-aos-duration="700">
+            <h2 class="overview-h2">What to Expect</h2>
+
+            <p class="overview-p">Step into something genuinely rare: an intimate, theatrical, and deeply immersive dining experience unlike anything you've encountered before. The Chef's Table is a 12-seat private dining room positioned at the heart of our open kitchen, where the sights, sounds and aromas of the kitchen become as much a part of the evening as the food itself. Every seat offers an unobstructed view of the pass, the flames, and the hands that craft each dish with quiet precision.</p>
+
+            <p class="overview-p">The evening unfolds as live cooking theatre. Head Chef Marco Viani moves through the kitchen with the ease of a seasoned performer, introducing each course as it takes shape before you — sharing the provenance of every ingredient, the farm or forager behind it, and the technique that transforms it. It's education, entertainment and artistry rolled into one seamless, unhurried experience.</p>
+
+            <p class="overview-p">Complementing each course is a carefully curated pairing experience from our resident sommelier: either a natural, low-intervention wine flight sourced from biodynamic producers across Europe, or our house-crafted botanical juice pairing — both entirely zero-sulphite. The juice pairings are as complex and considered as the wines, and many guests prefer them. Both are optional add-ons at +$35 per person.</p>
+
+            <p class="overview-p">The Chef's Table is not a rushed meal — it is an entire evening's entertainment. The experience runs approximately three hours, with unhurried pacing between courses designed to give you time to absorb, discuss, and savour every element. By the time the petit fours and herbal teas arrive to close the evening, you'll have shared a conversation with your chef, a story with your ingredients, and a memory with your table.</p>
+
+            <!-- Feature list -->
+            <ul class="feature-list" aria-label="Experience features">
+              <li>
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <span>Full interaction with Head Chef Marco Viani throughout the evening</span>
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <span>7 handcrafted plant-based courses, each with its own story</span>
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <span>Optional natural wine or botanical juice pairing (+$35 per person)</span>
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <span>Printed recipe card of the full evening's menu to take home</span>
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <span>Petit fours &amp; welcome amuse-bouche not counted in the 7 courses</span>
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <span>Dietary accommodations available with 48–72 hours advance notice</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right — Sticky Booking Sidebar -->
+          <div class="col-lg-4 offset-lg-1 mt-5 mt-lg-0" data-aos="fade-left" data-aos-duration="700" data-aos-delay="150">
+            <aside class="booking-sidebar" aria-label="Booking information">
+              <div class="booking-card">
+                <!-- Price -->
+                <div class="d-flex align-items-baseline gap-2 mb-1">
+                  <span class="price-main" aria-label="$95 per person">$95</span>
+                  <span class="price-unit">per person</span>
+                </div>
+                <p class="price-pairing mb-0">
+                  <i class="bi bi-plus-circle" aria-hidden="true"></i>
+                  Optional pairing: +$35 pp
+                </p>
+
+                <hr class="my-3" />
+
+                <!-- Details -->
+                <ul class="detail-list" aria-label="Experience details">
+                  <li>
+                    <span aria-hidden="true"><i class="bi bi-calendar-event"></i></span>
+                    <div>
+                      <span class="fw-600 d-block" style="font-weight:600;">Availability</span>
+                      Thursday, Friday, Saturday
+                    </div>
+                  </li>
+                  <li>
+                    <span aria-hidden="true"><i class="bi bi-clock"></i></span>
+                    <div>
+                      <span class="fw-600 d-block" style="font-weight:600;">Doors Open</span>
+                      6:30pm · Seated 7:00pm
+                    </div>
+                  </li>
+                  <li>
+                    <span aria-hidden="true">⏱</span>
+                    <div>
+                      <span class="fw-600 d-block" style="font-weight:600;">Duration</span>
+                      Approx. 3 hours
+                    </div>
+                  </li>
+                  <li>
+                    <span aria-hidden="true"><i class="bi bi-people-fill"></i></span>
+                    <div>
+                      <span class="fw-600 d-block" style="font-weight:600;">Maximum Guests</span>
+                      12 per sitting
+                    </div>
+                  </li>
+                  <li>
+                    <span aria-hidden="true"><i class="bi bi-gift"></i></span>
+                    <div>
+                      <span class="fw-600 d-block" style="font-weight:600;">Gift Vouchers</span>
+                      Available in any denomination
+                    </div>
+                  </li>
+                </ul>
+
+                <!-- CTA -->
+                <button class="btn-book" aria-label="Book the Chef's Table experience">
+                  <i class="bi bi-calendar-check me-2" aria-hidden="true"></i>Book This Experience
+                </button>
+                <a href="#" class="btn-dl-menu" aria-label="Download the menu PDF">
+                  <i class="bi bi-file-earmark-pdf me-2" aria-hidden="true"></i>Download Menu PDF
+                </a>
+
+                <p class="cancel-note">
+                  <i class="bi bi-shield-check" aria-hidden="true"></i>
+                  Free cancellation up to 48 hours before. Full charge applies within 48 hours.
+                </p>
+              </div>
+            </aside>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 3 — THE 7-COURSE MENU
+    ═══════════════════════════════════════════ -->
+    <section class="menu-section" aria-label="The 7-course menu">
+      <div class="container">
+        <!-- Header -->
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="menu-h2">Tonight's Journey</h2>
+          <p class="menu-subtext mt-2">Every course tells a story of the season, the soil, and the hands that grew it.</p>
+        </div>
+
+        <div class="col-lg-10 mx-auto">
+
+          <!-- Course I -->
+          <div class="course-item" data-aos="fade-up" data-aos-delay="0">
+            <div class="course-num" aria-hidden="true">I</div>
+            <div class="course-body">
+              <p class="course-label">Amuse-Bouche</p>
+              <h3 class="course-name">"Truffle Foam on Celeriac Crisp"</h3>
+              <p class="course-desc">A single perfect bite: house-whipped truffle foam atop a wafer-thin celeriac crisp, finished with chive oil and a micro-herb garnish. An awakening for the palate before the journey truly begins.</p>
+              <span class="ingredient-pill"><i class="bi bi-tree-fill me-1" aria-hidden="true"></i>Black Truffle</span>
+            </div>
+          </div>
+          <div class="course-divider" aria-hidden="true">
+            <hr /><i class="bi bi-flower2"></i><hr />
+          </div>
+
+          <!-- Course II -->
+          <div class="course-item" data-aos="fade-up" data-aos-delay="60">
+            <div class="course-num" aria-hidden="true">II</div>
+            <div class="course-body">
+              <p class="course-label">Cold Starter</p>
+              <h3 class="course-name">"Heirloom Tomato &amp; Basil Water Consommé"</h3>
+              <p class="course-desc">A crystal-clear consommé of slow-pressed heirloom tomatoes, served chilled with a bruschetta of torn basil and sea salt. The simplicity of perfection — nothing hidden, everything celebrated.</p>
+              <span class="ingredient-pill"><i class="bi bi-tree-fill me-1" aria-hidden="true"></i>Heirloom Tomatoes</span>
+            </div>
+          </div>
+          <div class="course-divider" aria-hidden="true">
+            <hr /><i class="bi bi-flower2"></i><hr />
+          </div>
+
+          <!-- Course III -->
+          <div class="course-item" data-aos="fade-up" data-aos-delay="80">
+            <div class="course-num" aria-hidden="true">III</div>
+            <div class="course-body">
+              <p class="course-label">Warm Starter</p>
+              <h3 class="course-name">"Wild Mushroom Velouté"</h3>
+              <p class="course-desc">A silky velouté of porcini, shiitake and oyster mushrooms, finished with a swirl of cashew cream, truffle oil and crispy shallots. Deep, earthy and profoundly comforting — a course guests speak of long after the meal.</p>
+              <span class="ingredient-pill"><i class="bi bi-tree-fill me-1" aria-hidden="true"></i>Wild Porcini</span>
+            </div>
+          </div>
+          <div class="course-divider" aria-hidden="true">
+            <hr /><i class="bi bi-flower2"></i><hr />
+          </div>
+
+          <!-- Course IV -->
+          <div class="course-item" data-aos="fade-up" data-aos-delay="80">
+            <div class="course-num" aria-hidden="true">IV</div>
+            <div class="course-body">
+              <p class="course-label">Palate Cleanser</p>
+              <h3 class="course-name">"Cucumber, Mint &amp; Elderflower Granita"</h3>
+              <p class="course-desc">A refreshing interlude: hand-scraped granita of English cucumber and elderflower, with a mint oil finish and candied lemon zest. Light as first light, cold as a country morning — clearing the way for what's to come.</p>
+              <span class="ingredient-pill"><i class="bi bi-tree-fill me-1" aria-hidden="true"></i>Elderflower</span>
+            </div>
+          </div>
+          <div class="course-divider" aria-hidden="true">
+            <hr /><i class="bi bi-flower2"></i><hr />
+          </div>
+
+          <!-- Course V -->
+          <div class="course-item" data-aos="fade-up" data-aos-delay="80">
+            <div class="course-num" aria-hidden="true">V</div>
+            <div class="course-body">
+              <p class="course-label">Main Course</p>
+              <h3 class="course-name">"Pan-Roasted Heritage Cauliflower, Hazelnut Romesco"</h3>
+              <p class="course-desc">A whole roasted cauliflower steak, blackened at its edges, served on a river of hazelnut romesco with pickled raisins, herb oil and crispy capers. The humble made extraordinary — the heart of the evening's story.</p>
+              <span class="ingredient-pill"><i class="bi bi-tree-fill me-1" aria-hidden="true"></i>Heritage Cauliflower</span>
+            </div>
+          </div>
+          <div class="course-divider" aria-hidden="true">
+            <hr /><i class="bi bi-flower2"></i><hr />
+          </div>
+
+          <!-- Course VI -->
+          <div class="course-item" data-aos="fade-up" data-aos-delay="80">
+            <div class="course-num" aria-hidden="true">VI</div>
+            <div class="course-body">
+              <p class="course-label">Cheese Course</p>
+              <h3 class="course-name">"Artisan Cashew Cheeses &amp; Walnut Crackers"</h3>
+              <p class="course-desc">Three house-aged cashew cheeses: truffle-ash, herb-crusted and smoked paprika, served with walnut crackers, quince jelly and grapes. A revelation for cheese lovers and sceptics alike — rich, complex and deeply satisfying.</p>
+              <span class="ingredient-pill"><i class="bi bi-tree-fill me-1" aria-hidden="true"></i>Aged Cashew</span>
+            </div>
+          </div>
+          <div class="course-divider" aria-hidden="true">
+            <hr /><i class="bi bi-flower2"></i><hr />
+          </div>
+
+          <!-- Course VII -->
+          <div class="course-item" data-aos="fade-up" data-aos-delay="80">
+            <div class="course-num" aria-hidden="true">VII</div>
+            <div class="course-body">
+              <p class="course-label">Dessert</p>
+              <h3 class="course-name">"Dark Chocolate &amp; Raspberry Tart, Oat Cream"</h3>
+              <p class="course-desc">A glossy 70% dark chocolate tart in a hazelnut pastry shell, topped with fresh raspberries, raspberry coulis and a quenelle of vanilla oat cream. A finale as memorable as the journey — bittersweet, vivid and complete.</p>
+              <span class="ingredient-pill"><i class="bi bi-tree-fill me-1" aria-hidden="true"></i>70% Dark Chocolate</span>
+            </div>
+          </div>
+
+          <!-- Menu footer note -->
+          <p class="text-center fst-italic mt-5" style="color:var(--text-light);font-size:0.9rem;" data-aos="fade-up">
+            Subject to seasonal availability. Menu changes weekly.
+          </p>
+          <div class="text-center mt-3" data-aos="fade-up" data-aos-delay="100">
+            <a href="#" class="btn-sample-menu" aria-label="View sample menu PDF">
+              <i class="bi bi-file-earmark-text me-2" aria-hidden="true"></i>View Sample Menu PDF
+            </a>
+          </div>
+
+        </div><!-- /col -->
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 4 — INCLUSIONS & DIETARY INFO
+    ═══════════════════════════════════════════ -->
+    <section class="inclusions-section" aria-label="Inclusions and dietary information">
+      <div class="container">
+        <h2 class="incl-h2 text-center mb-5" data-aos="fade-up">Everything You Need to Know</h2>
+
+        <div class="row g-5">
+          <!-- Left — What's Included -->
+          <div class="col-md-6" data-aos="fade-right" data-aos-duration="700">
+            <h3 class="dietary-h3">What's Included</h3>
+            <ul class="incl-list" aria-label="Included items">
+              <li>
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <span>Full 7-course plant-based tasting menu</span>
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <span>Welcome amuse-bouche on arrival</span>
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <span>Freshly baked sourdough &amp; cultured cashew butter</span>
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <span>Optional natural wine flight or botanical juice pairing (+$35 pp)</span>
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <span>Petit fours with complimentary coffee or herbal tea to close</span>
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <span>Printed recipe card of the evening's full menu</span>
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <span>Signed menu by Chef Marco on request</span>
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                <span>Complimentary coat check</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right — Dietary Accommodations -->
+          <div class="col-md-6" data-aos="fade-left" data-aos-duration="700" data-aos-delay="150">
+            <h3 class="dietary-h3">We Accommodate with Care</h3>
+            <p class="dietary-p">We can prepare the full menu entirely gluten-free with 48 hours advance notice — every course is carefully adapted without compromising the vision. Nut-free menus are available with 72 hours advance notice; some courses will be thoughtfully reimagined using alternative techniques and ingredients.</p>
+            <p class="dietary-p">All dishes are 100% plant-based, dairy-free and egg-free as standard — this is a fully vegan kitchen, and not a single concession has been made in flavour or creativity for it.</p>
+
+            <div class="allergen-box" role="alert">
+              <strong><i class="bi bi-exclamation-triangle-fill me-1" aria-hidden="true"></i> Allergen Notice:</strong>
+              Our kitchen handles nuts, gluten, sesame and soy. Please inform us of <strong>all</strong> allergies and intolerances when booking so we can ensure a safe and spectacular evening for every guest.
+            </div>
+
+            <div class="meta-note mt-3">
+              <i class="bi bi-suit-club-fill" aria-hidden="true"></i>
+              <span><strong>Dress code:</strong> Smart casual. We kindly ask guests to refrain from strong fragrances.</span>
+            </div>
+            <div class="meta-note">
+              <i class="bi bi-person-x-fill" aria-hidden="true"></i>
+              <span>Not suitable for children under 12 years of age.</span>
+            </div>
+            <div class="meta-note">
+              <i class="bi bi-person-wheelchair" aria-hidden="true"></i>
+              <span>Fully wheelchair accessible. Please inform us when booking so we can ensure your comfort.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 5 — GUEST REVIEWS
+    ═══════════════════════════════════════════ -->
+    <section class="reviews-section" aria-label="Guest reviews">
+      <div class="container">
+        <!-- Header -->
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="reviews-h2">Memories at the Chef's Table</h2>
+          <p class="reviews-sub mt-2">Real stories from guests who've experienced the journey.</p>
+        </div>
+
+        <!-- Carousel -->
+        <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" aria-label="Guest reviews carousel">
+          <!-- Indicators -->
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Review 1"></button>
+            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1" aria-label="Review 2"></button>
+            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="2" aria-label="Review 3"></button>
+          </div>
+
+          <!-- Slides -->
+          <div class="carousel-inner pb-5">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+              <div class="review-card">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <img src="https://images.pexels.com/photos/3938693/pexels-photo-3938693.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=faces"
+                       alt="Emily and Tom R. dining together"
+                       class="review-avatar" />
+                  <div>
+                    <p class="reviewer-name mb-0">Emily &amp; Tom R.</p>
+                    <p class="reviewer-occasion mb-0">5th Anniversary Dinner</p>
+                  </div>
+                  <div class="ms-auto">
+                    <span class="review-stars" aria-label="5 out of 5 stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                  </div>
+                </div>
+                <blockquote class="review-text mb-0">
+                  "We booked the Chef's Table for our anniversary and it exceeded every expectation. The moment we sat down, Marco came to greet us personally and walked us through the evening's story — the farms, the seasons, the inspiration. Each course arrived as a small sculpture. The truffle velouté in course III made me genuinely emotional. The juice pairing was inspired — I didn't miss wine for a second. The team remembered we'd mentioned it was our anniversary and surprised us with a handwritten card and petits fours shaped into little hearts. We talked about this dinner for weeks afterwards. If you're considering it — just book it. You will not regret a single penny."
+                </blockquote>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+              <div class="review-card">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <img src="https://images.pexels.com/photos/36511054/pexels-photo-36511054.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=faces"
+                       alt="James K., business guest"
+                       class="review-avatar" />
+                  <div>
+                    <p class="reviewer-name mb-0">James K.</p>
+                    <p class="reviewer-occasion mb-0">Corporate Client Entertainment</p>
+                  </div>
+                  <div class="ms-auto">
+                    <span class="review-stars" aria-label="5 out of 5 stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                  </div>
+                </div>
+                <blockquote class="review-text mb-0">
+                  "I brought four international clients to LeafTable's Chef's Table for a business dinner, and it was the best decision I've made this year. None of them were vegan — in fact two were quite sceptical going in. By course three, the conversation had completely shifted from business to the food. By the end of the evening, everyone was exchanging notes about the ingredients and asking Marco for cooking tips. The experience does something magical: it makes food the entire conversation. My clients still talk about it three months later. I've now booked it twice more for different client groups. The service is impeccable, the pacing is perfect, and the quality of every single element is extraordinary."
+                </blockquote>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+              <div class="review-card">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <img src="https://images.pexels.com/photos/4972790/pexels-photo-4972790.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=faces"
+                       alt="Priya M., birthday celebration guest"
+                       class="review-avatar" />
+                  <div>
+                    <p class="reviewer-name mb-0">Priya M.</p>
+                    <p class="reviewer-occasion mb-0">40th Birthday Celebration</p>
+                  </div>
+                  <div class="ms-auto">
+                    <span class="review-stars" aria-label="5 out of 5 stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                  </div>
+                </div>
+                <blockquote class="review-text mb-0">
+                  "My sister organised the Chef's Table for my 40th birthday and I was completely overwhelmed — in the best possible way. As someone who has been vegan for ten years and visited countless plant-based restaurants, I can honestly say this is the finest vegan dining I have experienced anywhere in the world. The cashew cheese course alone was worth the entire price. Marco's passion and knowledge is infectious. He sat with us between courses and talked about the Sussex mushroom forager who supplies them, the heritage cauliflower farm in Norfolk, and his vision for where plant-based fine dining is heading. I left feeling genuinely inspired. The recipe card is framed on my kitchen wall."
+                </blockquote>
+              </div>
+            </div>
+
+          </div><!-- /carousel-inner -->
+
+          <!-- Controls -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="prev" aria-label="Previous review">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="next" aria-label="Next review">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
+
+        </div><!-- /carousel -->
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 6 — RELATED EXPERIENCES & FAQ
+    ═══════════════════════════════════════════ -->
+    <section class="related-faq-section" aria-label="Related experiences and frequently asked questions">
+      <div class="container">
+        <div class="row g-5">
+
+          <!-- Left — Related Experiences -->
+          <div class="col-lg-6" data-aos="fade-right" data-aos-duration="700">
+            <h3 class="related-h3">You Might Also Love</h3>
+
+            <!-- Card 1 -->
+            <article class="service-card-rel card">
+              <a href="services.html" aria-label="Learn about our Dine-In Experience">
+                <img src="https://images.pexels.com/photos/9685244/pexels-photo-9685244.jpeg?auto=compress&cs=tinysrgb&w=600"
+                     alt="Elegant restaurant interior with warm lighting" />
+              </a>
+              <div class="card-body">
+                <h5 class="mb-1">Dine-In Experience</h5>
+                <p>Our full à la carte menu in the warmth of our dining room — a celebration of plant-based cooking in a relaxed and beautiful setting.</p>
+                <a href="services.html" class="btn-discover" aria-label="Discover the Dine-In Experience">
+                  Discover <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="service-card-rel card">
+              <a href="services.html" aria-label="Learn about our Farm Dinner Series">
+                <img src="https://images.pexels.com/photos/701970/pexels-photo-701970.jpeg?auto=compress&cs=tinysrgb&w=600"
+                     alt="Vibrant farmers market stalls with seasonal produce" />
+              </a>
+              <div class="card-body">
+                <h5 class="mb-1">Farm Dinner Series</h5>
+                <p>Seasonal outdoor dinners held at our partner farms — eat surrounded by the very landscape that grew your food. From $75 per person.</p>
+                <a href="services.html" class="btn-discover" aria-label="Discover the Farm Dinner Series">
+                  Discover <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Right — FAQ -->
+          <div class="col-lg-6" data-aos="fade-left" data-aos-duration="700" data-aos-delay="150">
+            <h3 class="faq-h3">Frequently Asked Questions</h3>
+
+            <div class="accordion" id="faqAccordion">
+
+              <!-- Q1 -->
+              <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                <h4 class="accordion-header" id="faqHead1">
+                  <button class="accordion-button" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faqCollapse1"
+                          aria-expanded="true" aria-controls="faqCollapse1">
+                    Can I customise the menu for allergies or preferences?
+                  </button>
+                </h4>
+                <div id="faqCollapse1" class="accordion-collapse collapse show"
+                     aria-labelledby="faqHead1" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body" style="font-size:0.95rem;line-height:1.75;">
+                    Absolutely. We accommodate gluten-free, nut-free and other dietary requirements with 48–72 hours advance notice. Please include details in your booking notes and we'll personally contact you to confirm all adaptations. No guest should ever feel uncertain — your evening is as important to us as it is to you.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q2 -->
+              <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                <h4 class="accordion-header" id="faqHead2">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faqCollapse2"
+                          aria-expanded="false" aria-controls="faqCollapse2">
+                    Is the Chef's Table suitable for non-vegans?
+                  </button>
+                </h4>
+                <div id="faqCollapse2" class="accordion-collapse collapse"
+                     aria-labelledby="faqHead2" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body" style="font-size:0.95rem;line-height:1.75;">
+                    It absolutely is — and many of our most enthusiastic regulars are non-vegans. The experience focuses on flavour, creativity and storytelling rather than veganism as an ideology. We've had countless guests tell us it changed their entire perspective on plant-based food. It is an experience about the best of what plants can offer, not a lecture.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q3 -->
+              <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                <h4 class="accordion-header" id="faqHead3">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faqCollapse3"
+                          aria-expanded="false" aria-controls="faqCollapse3">
+                    What is the cancellation and refund policy?
+                  </button>
+                </h4>
+                <div id="faqCollapse3" class="accordion-collapse collapse"
+                     aria-labelledby="faqHead3" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body" style="font-size:0.95rem;line-height:1.75;">
+                    Cancellations made 48 hours or more in advance receive a full refund with no questions asked. Within 48 hours, the full per-person charge applies as we will have already sourced and prepared your menu. We understand emergencies happen — please contact us and we'll do our best to find a solution, including rescheduling wherever possible.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q4 -->
+              <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                <h4 class="accordion-header" id="faqHead4">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faqCollapse4"
+                          aria-expanded="false" aria-controls="faqCollapse4">
+                    Can I bring my own wine or celebration cake?
+                  </button>
+                </h4>
+                <div id="faqCollapse4" class="accordion-collapse collapse"
+                     aria-labelledby="faqHead4" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body" style="font-size:0.95rem;line-height:1.75;">
+                    We offer a small corkage allowance of one bottle per couple for $20. We don't permit outside food as a general rule, but please let us know in advance about celebration cakes and we'll arrange something special ourselves — often better than you'd have brought! Our pastry team love the creative challenge.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q5 -->
+              <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                <h4 class="accordion-header" id="faqHead5">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faqCollapse5"
+                          aria-expanded="false" aria-controls="faqCollapse5">
+                    Do you offer gift vouchers for the Chef's Table experience?
+                  </button>
+                </h4>
+                <div id="faqCollapse5" class="accordion-collapse collapse"
+                     aria-labelledby="faqHead5" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body" style="font-size:0.95rem;line-height:1.75;">
+                    Yes! Gift vouchers for the Chef's Table are available in any denomination from $50 upward, with no expiry date. They can be purchased in-restaurant or by emailing <a href="mailto:hello@leaftable.co.uk" style="color:var(--terracotta);">hello@leaftable.co.uk</a> — we'll send a beautifully designed digital or printed card, presented with care and ready to gift.
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /accordion -->
+          </div>
+
+        </div><!-- /row -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer-custom" role="contentinfo">
+    <div class="container">
+      <div class="row g-4 g-lg-5">
+
+        <!-- Brand -->
+        <div class="col-lg-4">
+          <div class="footer-logo">Leaf<span style="color:var(--terracotta)">T</span>able</div>
+          <p class="footer-tagline">Farm to Fork, Plant to Plate</p>
+          <p class="mt-3" style="color:#9ca3af;font-size:0.9rem;line-height:1.75;">
+            A plant-based fine dining destination rooted in seasonal craft, honest flavour, and deep respect for the land that feeds us.
+          </p>
+          <!-- Social -->
+          <div class="d-flex gap-2 mt-3">
+            <a href="#" class="social-icon" aria-label="LeafTable on Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+            <a href="#" class="social-icon" aria-label="LeafTable on Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+            <a href="#" class="social-icon" aria-label="LeafTable on X (Twitter)"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+            <a href="#" class="social-icon" aria-label="LeafTable on TikTok"><i class="bi bi-tiktok" aria-hidden="true"></i></a>
+            <a href="#" class="social-icon" aria-label="LeafTable on Pinterest"><i class="bi bi-pinterest" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-sm-6 col-lg-2 offset-lg-1">
+          <h4 class="footer-h">Quick Links</h4>
+          <ul class="footer-links">
+
+            <li><a href="index.html">Home</a></li>
+
+            <li><a href="index2.html">Home 2</a></li>
+
+            <li><a href="about.html">About Us</a></li>
+
+            <li><a href="services.html">Services</a></li>
+
+            <li><a href="blog.html">Blog</a></li>
+
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="col-sm-6 col-lg-2">
+          <h4 class="footer-h">Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">All Services</a></li>
+            <li><a href="service-detail.html">Chef's Table</a></li>
+            <li><a href="services.html">Dine-In</a></li>
+            <li><a href="services.html">Farm Dinners</a></li>
+            <li><a href="services.html">Private Events</a></li>
+            <li><a href="services.html">Cookery Classes</a></li>
+          </ul>
+        </div>
+
+        <!-- Connect -->
+        <div class="col-sm-6 col-lg-3">
+          <h4 class="footer-h">Connect</h4>
+          <ul class="footer-links">
+            <li>
+              <a href="tel:+441234567890">
+                <i class="bi bi-telephone me-1" aria-hidden="true"></i>+44 1234 567 890
+              </a>
+            </li>
+            <li>
+              <a href="mailto:hello@leaftable.co.uk">
+                <i class="bi bi-envelope me-1" aria-hidden="true"></i>hello@leaftable.co.uk
+              </a>
+            </li>
+            <li>
+              <span style="color:#9ca3af;font-size:0.9rem;">
+                <i class="bi bi-geo-alt me-1" aria-hidden="true"></i>12 Garden Lane, Brighton, BN1 4TH
+              </span>
+            </li>
+            <li>
+              <span style="color:#9ca3af;font-size:0.9rem;">
+                <i class="bi bi-clock me-1" aria-hidden="true"></i>Tue–Sun · 12pm–10pm
+              </span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+          <p class="footer-copy mb-0">© 2026 LeafTable. All rights reserved.</p>
+          <div class="d-flex gap-3" style="font-size:0.83rem;">
+            <a href="#" style="color:#6b7280;text-decoration:none;">Privacy Policy</a>
+            <a href="#" style="color:#6b7280;text-decoration:none;">Terms of Use</a>
+            <a href="#" style="color:#6b7280;text-decoration:none;">Allergen Info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+       CDN SCRIPTS
+  ═══════════════════════════════════════════ -->
+  <!-- Bootstrap 5.3 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom JS -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // ── Init AOS
+    AOS.init({ once: true, offset: 60, duration: 700, easing: 'ease-out-cubic' });
+
+    // ── Dark / Light Mode Toggle
+    const html       = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon   = document.getElementById('themeIcon');
+
+    function applyTheme(theme) {
+      html.setAttribute('data-bs-theme', theme);
+      themeIcon.className = theme === 'dark' ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill';
+      localStorage.setItem('leaftable-theme', theme);
+    }
+
+    themeToggle.addEventListener('click', function () {
+      const current = html.getAttribute('data-bs-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    // Restore saved theme
+    applyTheme(localStorage.getItem('leaftable-theme') || 'light');
+
+    // ── RTL Toggle
+    const rtlToggle = document.getElementById('rtlToggle');
+    rtlToggle.addEventListener('click', function () {
+      const current = html.getAttribute('dir');
+      html.setAttribute('dir', current === 'rtl' ? 'ltr' : 'rtl');
+      localStorage.setItem('leaftable-dir', html.getAttribute('dir'));
+    });
+
+    const savedDir = localStorage.getItem('leaftable-dir');
+    if (savedDir) html.setAttribute('dir', savedDir);
+  </script>
+</body>
+</html>

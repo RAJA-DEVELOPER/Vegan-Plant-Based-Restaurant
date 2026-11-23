@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light">
+<head>
+<script>
+(function () {
+  var pairs = [['lt-theme', 'leaftable-theme'], ['lt-direction', 'leaftable-dir'], ['lt-dir', 'leaftable-dir']];
+  pairs.forEach(function (pair) {
+    var oldValue = localStorage.getItem(pair[0]);
+    if (oldValue !== null && localStorage.getItem(pair[1]) === null) {
+      localStorage.setItem(pair[1], oldValue);
+    }
+    localStorage.removeItem(pair[0]);
+  });
+})();
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon — LeafTable</title>
+
+  <!-- Bootstrap 5.3 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── CSS Variables ── */
+    :root {
+      --forest-green: #2D5016;
+      --sage:         #7A9E5A;
+      --cream:        #FBF7F0;
+      --terracotta:   #C4612A;
+      --warm-beige:   #E8D5B0;
+      --dark-bg:      #1A1A1A;
+      --text-dark:    #2C2C2C;
+      --text-light:   #6B7280;
+    }
+
+    /* ── Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--cream);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: var(--dark-bg);
+    }
+
+    h1, h2, h3, h4, h5, h6, .font-playfair {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ── Fixed Full-Screen Background ── */
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        linear-gradient(to bottom,
+          rgba(26,26,26,0.72) 0%,
+          rgba(26,26,26,0.55) 40%,
+          rgba(26,26,26,0.80) 100%),
+        url('https://images.pexels.com/photos/18177440/pexels-photo-18177440.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+      background-attachment: fixed;
+    }
+
+    /* ── All content above fixed bg ── */
+    .site-wrapper {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+    }
+
+    /* ── Minimal Navbar ── */
+    .navbar-minimal {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1050;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(26, 26, 26, 0.45);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(251,247,240,0.08);
+    }
+
+    .navbar-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .navbar-logo span { color: var(--sage); }
+
+    .navbar-controls {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .ctrl-btn {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--cream);
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .ctrl-btn:hover {
+      background: var(--sage);
+      border-color: var(--sage);
+      color: #fff;
+    }
+
+    .nav-home-link {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(251,247,240,0.75);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      padding: 0.4rem 1rem;
+      border: 1px solid rgba(251,247,240,0.2);
+      border-radius: 20px;
+      transition: all 0.25s;
+    }
+
+    .nav-home-link:hover {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+      color: #fff;
+    }
+
+    /* ── Hero Section ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 1.5rem 60px;
+    }
+
+    .hero-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 400;
+      color: var(--sage);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-leaf-icon {
+      font-size: 2.2rem;
+      color: var(--sage);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.4);
+    }
+
+    .hero-headline em {
+      color: var(--sage);
+      font-style: italic;
+    }
+
+    .hero-subtext {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(1rem, 2.2vw, 1.3rem);
+      font-weight: 400;
+      color: rgba(251,247,240,0.78);
+      margin-bottom: 2rem;
+      max-width: 520px;
+    }
+
+    .launch-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--terracotta);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.55rem 1.5rem;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 20px rgba(196,97,42,0.45);
+      animation: badgePulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(196,97,42,0.45); }
+      50%       { box-shadow: 0 4px 32px rgba(196,97,42,0.75); }
+    }
+
+    .scroll-hint {
+      margin-top: 3rem;
+      color: rgba(251,247,240,0.4);
+      font-size: 1.5rem;
+      animation: bounceDown 1.8s ease-in-out infinite;
+    }
+
+    @keyframes bounceDown {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(8px); }
+    }
+
+    /* ── Section Base ── */
+    .content-section {
+      padding: 90px 0;
+    }
+
+    .section-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    /* ── Divider ── */
+    .leaf-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .leaf-divider::before,
+    .leaf-divider::after {
+      content: '';
+      flex: 1;
+      max-width: 120px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(122,158,90,0.5));
+    }
+
+    .leaf-divider::after {
+      background: linear-gradient(to left, transparent, rgba(122,158,90,0.5));
+    }
+
+    .leaf-divider i { color: var(--sage); font-size: 1.1rem; }
+
+    /* ── Countdown ── */
+    #countdown {
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .countdown-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+
+    .countdown-box {
+      background: rgba(26,26,26,0.65);
+      border: 1px solid rgba(122,158,90,0.25);
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
+      min-width: 130px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+      backdrop-filter: blur(8px);
+    }
+
+    .countdown-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(122,158,90,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .countdown-box:hover {
+      transform: translateY(-6px);
+      border-color: rgba(122,158,90,0.55);
+    }
+
+    .countdown-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 4.5rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1;
+      display: block;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .countdown-number.flip {
+      transform: scale(0.85);
+      opacity: 0.6;
+    }
+
+    .countdown-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-top: 0.5rem;
+      display: block;
+    }
+
+    .countdown-sep {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: rgba(122,158,90,0.4);
+      align-self: center;
+      margin-top: -1rem;
+      animation: sepPulse 1s ease-in-out infinite;
+    }
+
+    @keyframes sepPulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.2; }
+    }
+
+    /* ── Notify Form ── */
+    #notify {
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(10px);
+    }
+
+    .notify-card {
+      background: rgba(26,26,26,0.7);
+      border: 1px solid rgba(122,158,90,0.2);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      max-width: 600px;
+      margin: 0 auto;
+      backdrop-filter: blur(12px);
+    }
+
+    .notify-form .form-control {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--cream);
+      border-radius: 50px;
+      padding: 0.75rem 1.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .notify-form .form-control::placeholder { color: rgba(251,247,240,0.4); }
+
+    .notify-form .form-control:focus {
+      background: rgba(255,255,255,0.11);
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(122,158,90,0.2);
+      color: var(--cream);
+    }
+
+    .btn-terracotta {
+      background: var(--terracotta);
+      border: none;
+      color: #fff;
+      border-radius: 50px;
+      padding: 0.75rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      white-space: nowrap;
+    }
+
+    .btn-terracotta:hover {
+      background: #a84d20;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(196,97,42,0.45);
+      color: #fff;
+    }
+
+    .notify-success {
+      display: none;
+      background: rgba(45,80,22,0.5);
+      border: 1px solid var(--sage);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      text-align: center;
+      animation: fadeInUp 0.4s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .notify-fine-print {
+      font-size: 0.8rem;
+      color: rgba(251,247,240,0.45);
+      margin-top: 1rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* ── Sneak Peek ── */
+    #sneak {
+      background: rgba(0,0,0,0.2);
+    }
+
+    .peek-card {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 4/5;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .peek-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    .peek-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(4px) brightness(0.65) saturate(0.8);
+      transform: scale(1.08);
+      transition: filter 0.5s ease, transform 0.5s ease;
+    }
+
+    .peek-card:hover .peek-img {
+      filter: blur(0) brightness(0.78) saturate(1.1);
+      transform: scale(1.0);
+    }
+
+    .peek-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+    }
+
+    .peek-locked {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      font-size: 2.5rem;
+      color: rgba(251,247,240,0.55);
+      transition: opacity 0.4s;
+    }
+
+    .peek-card:hover .peek-locked { opacity: 0; }
+
+    .peek-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--cream);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+
+    .peek-category {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--sage);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s 0.05s, transform 0.4s 0.05s;
+      margin-bottom: 0.4rem;
+    }
+
+    .peek-card:hover .peek-name,
+    .peek-card:hover .peek-category {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .menu-note {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(251,247,240,0.55);
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .menu-note i { color: var(--terracotta); }
+
+    /* ── Social & Contact Strip ── */
+    #social-strip {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 60px 0 40px;
+    }
+
+    .social-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+
+    .social-icons-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .social-icon-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .social-icon-btn:hover { transform: translateY(-4px) scale(1.08); }
+    .social-icon-btn.ig:hover  { background: #E1306C; border-color: #E1306C; color: #fff; }
+    .social-icon-btn.fb:hover  { background: #1877F2; border-color: #1877F2; color: #fff; }
+    .social-icon-btn.tw:hover  { background: #000;    border-color: #555;    color: #fff; }
+    .social-icon-btn.tt:hover  { background: #69C9D0; border-color: #69C9D0; color: #fff; }
+
+    .contact-info {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(251,247,240,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-info a {
+      color: var(--warm-beige);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-info a:hover { color: var(--sage); }
+    .contact-info .pipe { color: rgba(255,255,255,0.2); }
+
+    .strip-copyright {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(251,247,240,0.3);
+      margin-bottom: 1rem;
+    }
+
+    .back-home-link {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(122,158,90,0.75);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s, gap 0.2s;
+    }
+
+    .back-home-link:hover {
+      color: var(--sage);
+      gap: 0.65rem;
+    }
+
+    /* ── Light mode overrides ── */
+    [data-bs-theme="light"] body { background: #f0ece5; }
+
+    [data-bs-theme="light"] .page-bg {
+      background:
+        linear-gradient(to bottom,
+          rgba(240,236,229,0.65) 0%,
+          rgba(240,236,229,0.42) 40%,
+          rgba(240,236,229,0.78) 100%),
+        url('https://images.pexels.com/photos/18177440/pexels-photo-18177440.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+      background-attachment: fixed;
+    }
+
+    [data-bs-theme="light"] .hero-headline,
+    [data-bs-theme="light"] .section-title,
+    [data-bs-theme="light"] .social-title { color: var(--text-dark); }
+
+    [data-bs-theme="light"] .hero-subtext,
+    [data-bs-theme="light"] .hero-logo-text { color: var(--text-dark); }
+
+    [data-bs-theme="light"] .countdown-number,
+    [data-bs-theme="light"] .peek-name { color: var(--text-dark); }
+
+    [data-bs-theme="light"] .navbar-minimal {
+      background: rgba(240,236,229,0.65);
+    }
+
+    [data-bs-theme="light"] .navbar-logo { color: var(--forest-green); }
+    [data-bs-theme="light"] .ctrl-btn { color: var(--text-dark); border-color: rgba(0,0,0,0.2); background: rgba(0,0,0,0.06); }
+
+    [data-bs-theme="light"] .notify-card {
+      background: rgba(240,236,229,0.75);
+      border-color: rgba(45,80,22,0.2);
+    }
+
+    [data-bs-theme="light"] .notify-form .form-control {
+      background: rgba(255,255,255,0.65);
+      color: var(--text-dark);
+      border-color: rgba(0,0,0,0.15);
+    }
+
+    [data-bs-theme="light"] .notify-form .form-control::placeholder { color: rgba(44,44,44,0.4); }
+    [data-bs-theme="light"] .notify-form .form-control:focus { color: var(--text-dark); }
+
+    [data-bs-theme="light"] .contact-info { color: rgba(44,44,44,0.65); }
+    [data-bs-theme="light"] .strip-copyright { color: rgba(44,44,44,0.4); }
+    [data-bs-theme="light"] .back-home-link { color: var(--forest-green); }
+
+    /* ── Responsive ── */
+    @media (max-width: 576px) {
+      .countdown-box { padding: 1.4rem 1.5rem; min-width: 100px; }
+      .countdown-sep { display: none; }
+      .notify-card { padding: 2rem 1.25rem; }
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     SECTION 1: FIXED BACKGROUND
+══════════════════════════════ -->
+<div class="page-bg" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════
+     MINIMAL NAVBAR
+══════════════════════════════ -->
+<nav class="navbar-minimal" aria-label="Site navigation">
+  <a href="index.html" class="navbar-logo">
+    Leaf<span>Table</span>
+  </a>
+  <div class="navbar-controls">
+    <a href="index.html" class="nav-home-link"><i class="bi bi-house-fill me-1"></i>Home</a>
+    <button class="ctrl-btn" id="themeToggle" title="Toggle light/dark mode" aria-label="Toggle colour mode">
+      <i class="bi bi-sun-fill" id="themeIcon"></i>
+    </button>
+    <button class="ctrl-btn" id="rtlToggle" title="Toggle RTL/LTR" aria-label="Toggle text direction">
+      <i class="bi bi-text-paragraph"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════
+     SITE WRAPPER
+══════════════════════════════ -->
+<div class="site-wrapper">
+
+  <!-- ══════════════════════════════
+       SECTION 2: HERO
+  ══════════════════════════════ -->
+  <section id="hero" aria-labelledby="hero-headline">
+    <div data-aos="fade-down" data-aos-duration="800">
+      <i class="bi bi-flower2 hero-leaf-icon" aria-hidden="true"></i>
+      <p class="hero-logo-text">LeafTable</p>
+    </div>
+
+    <h1 class="hero-headline" id="hero-headline" data-aos="fade-up" data-aos-delay="150" data-aos-duration="900">
+      Something <em>Delicious</em><br>Is Coming
+    </h1>
+
+    <p class="hero-subtext" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+      We're preparing something extraordinary for you — a plant-based dining experience like no other.
+    </p>
+
+    <div data-aos="zoom-in" data-aos-delay="450" data-aos-duration="700">
+      <span class="launch-badge">
+        <i class="bi bi-calendar3"></i>
+        Opening December 15, 2026
+      </span>
+    </div>
+
+    <div class="scroll-hint" data-aos="fade-up" data-aos-delay="700" aria-hidden="true">
+      <i class="bi bi-chevron-double-down"></i>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       SECTION 3: COUNTDOWN
+  ══════════════════════════════ -->
+  <section id="countdown" class="content-section" aria-label="Countdown timer">
+    <div class="container">
+      <div class="text-center mb-4" data-aos="fade-up" data-aos-duration="700">
+        <p class="section-eyebrow">Time Remaining</p>
+        <h2 class="section-title">The Doors Open In…</h2>
+        <div class="leaf-divider"><i class="bi bi-tree-fill"></i></div>
+      </div>
+
+      <div class="countdown-wrap" id="countdownWrap" data-aos="fade-up" data-aos-delay="150" data-aos-duration="800">
+        <div class="countdown-box">
+          <span class="countdown-number" id="cd-days">000</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <span class="countdown-sep" aria-hidden="true">:</span>
+        <div class="countdown-box">
+          <span class="countdown-number" id="cd-hours">00</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <span class="countdown-sep" aria-hidden="true">:</span>
+        <div class="countdown-box">
+          <span class="countdown-number" id="cd-minutes">00</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <span class="countdown-sep" aria-hidden="true">:</span>
+        <div class="countdown-box">
+          <span class="countdown-number" id="cd-seconds">00</span>
+          <span class="countdown-label">Seconds</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       SECTION 4: NOTIFY ME
+  ══════════════════════════════ -->
+  <section id="notify" class="content-section" aria-labelledby="notify-title">
+    <div class="container">
+      <div class="notify-card" data-aos="zoom-in" data-aos-duration="800">
+        <div class="text-center mb-4">
+          <p class="section-eyebrow">Stay In The Loop</p>
+          <h2 class="section-title" id="notify-title" style="font-size:clamp(1.5rem,3.5vw,2.2rem);">
+            Be the First to Know<br>When We Open
+          </h2>
+          <p style="color:rgba(251,247,240,0.6);font-size:0.9rem;font-family:'DM Sans',sans-serif;">
+            Get early access, exclusive offers, and our grand opening menu delivered straight to your inbox.
+          </p>
+        </div>
+
+        <form class="notify-form" id="notifyForm" novalidate>
+          <div class="d-flex flex-column flex-sm-row gap-2">
+            <input
+              type="email"
+              class="form-control flex-grow-1"
+              id="notifyEmail"
+              placeholder="your@email.com"
+              required
+              aria-label="Email address for notifications"
+            />
+            <button type="submit" class="btn-terracotta px-4">
+              <i class="bi bi-bell-fill me-1"></i> Notify Me
+            </button>
+          </div>
+          <div class="notify-success mt-3" id="notifySuccess" role="alert">
+            <i class="bi bi-stars"></i> You're on the list! We'll be in touch very soon.
+          </div>
+        </form>
+
+        <p class="notify-fine-print text-center">
+          <i class="bi bi-shield-lock me-1" style="color:var(--sage)"></i>
+          No spam. Only the good stuff. Unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       SECTION 5: SNEAK PEEK
+  ══════════════════════════════ -->
+  <section id="sneak" class="content-section" aria-labelledby="sneak-title">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up" data-aos-duration="700">
+        <p class="section-eyebrow">Menu Preview</p>
+        <h2 class="section-title" id="sneak-title">A Taste of What's Coming</h2>
+        <p style="color:rgba(251,247,240,0.55);font-size:0.95rem;font-family:'DM Sans',sans-serif;max-width:480px;margin:0 auto;">
+          Hover to reveal a glimpse. The full experience awaits.
+        </p>
+        <div class="leaf-divider mt-3"><i class="bi bi-tree-fill"></i></div>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+
+        <!-- Card 1: Truffle Mushroom Tart -->
+        <div class="col-10 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="0" data-aos-duration="800">
+          <div class="peek-card" tabindex="0" aria-label="Truffle Mushroom Tart — hover to reveal">
+            <img
+              src="https://images.pexels.com/photos/33111641/pexels-photo-33111641.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="Mushroom dish"
+              class="peek-img"
+              loading="lazy"
+            />
+            <div class="peek-overlay">
+              <i class="bi bi-lock-fill peek-locked" aria-hidden="true"></i>
+              <span class="peek-category">Signature Starter</span>
+              <span class="peek-name">Truffle Mushroom Tart</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Rainbow Buddha Bowl -->
+        <div class="col-10 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="120" data-aos-duration="800">
+          <div class="peek-card" tabindex="0" aria-label="Rainbow Buddha Bowl — hover to reveal">
+            <img
+              src="https://images.pexels.com/photos/37908498/pexels-photo-37908498.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="Buddha bowl"
+              class="peek-img"
+              loading="lazy"
+            />
+            <div class="peek-overlay">
+              <i class="bi bi-lock-fill peek-locked" aria-hidden="true"></i>
+              <span class="peek-category">Main Course</span>
+              <span class="peek-name">Rainbow Buddha Bowl</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Wild Berry Panna Cotta -->
+        <div class="col-10 col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="240" data-aos-duration="800">
+          <div class="peek-card" tabindex="0" aria-label="Wild Berry Panna Cotta — hover to reveal">
+            <img
+              src="https://images.pexels.com/photos/4332166/pexels-photo-4332166.jpeg?auto=compress&cs=tinysrgb&w=600"
+              alt="Vegan dessert"
+              class="peek-img"
+              loading="lazy"
+            />
+            <div class="peek-overlay">
+              <i class="bi bi-lock-fill peek-locked" aria-hidden="true"></i>
+              <span class="peek-category">Dessert</span>
+              <span class="peek-name">Wild Berry Panna Cotta</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="menu-note" data-aos="fade-up" data-aos-delay="300" data-aos-duration="600">
+        <i class="bi bi-calendar-event-fill"></i>
+        Full menu drops on December 15th — mark your calendar.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       SECTION 6: SOCIAL & CONTACT STRIP
+  ══════════════════════════════ -->
+  <section id="social-strip" aria-label="Social media and contact information">
+    <div class="container text-center">
+
+      <h2 class="social-title" data-aos="fade-up" data-aos-duration="700">Follow Our Journey</h2>
+      <p style="color:rgba(251,247,240,0.5);font-size:0.9rem;font-family:'DM Sans',sans-serif;margin-bottom:1.5rem;" data-aos="fade-up" data-aos-delay="80">
+        Behind-the-scenes, recipe teasers, and opening day announcements.
+      </p>
+
+      <div class="social-icons-row" data-aos="fade-up" data-aos-delay="150" data-aos-duration="700">
+        <a href="#" class="social-icon-btn ig" aria-label="Instagram" title="Instagram">
+          <i class="bi bi-instagram"></i>
+        </a>
+        <a href="#" class="social-icon-btn fb" aria-label="Facebook" title="Facebook">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="#" class="social-icon-btn tw" aria-label="X / Twitter" title="X / Twitter">
+          <i class="bi bi-twitter-x"></i>
+        </a>
+        <a href="#" class="social-icon-btn tt" aria-label="TikTok" title="TikTok">
+          <i class="bi bi-tiktok"></i>
+        </a>
+      </div>
+
+      <div class="contact-info" data-aos="fade-up" data-aos-delay="220" data-aos-duration="700">
+        <span><i class="bi bi-envelope-fill me-1" style="color:var(--sage)"></i>
+          <a href="mailto:hello@leaftable.co.uk">hello@leaftable.co.uk</a>
+        </span>
+        <span class="pipe">|</span>
+        <span><i class="bi bi-telephone-fill me-1" style="color:var(--sage)"></i>
+          <a href="tel:+442071234567">+44 20 7123 4567</a>
+        </span>
+      </div>
+
+      <!-- Footer Logo & Tagline -->
+      <div data-aos="fade-up" data-aos-delay="280" data-aos-duration="600">
+        <p style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--cream);margin-bottom:0.2rem;">
+          Leaf<span style="color:var(--sage);">Table</span>
+        </p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:rgba(251,247,240,0.4);margin-bottom:1.5rem;letter-spacing:1.5px;text-transform:uppercase;">
+          Farm to Fork, Plant to Plate
+        </p>
+      </div>
+
+      <p class="strip-copyright" data-aos="fade-up" data-aos-delay="340">
+        &copy; 2026 LeafTable. All rights reserved.
+      </p>
+
+      <a href="index.html" class="back-home-link" data-aos="fade-up" data-aos-delay="380">
+        <i class="bi bi-arrow-left"></i> Back to Home
+      </a>
+
+    </div>
+  </section>
+
+</div><!-- /.site-wrapper -->
+
+<!-- ══════════════════════════════
+     SCRIPTS
+══════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  // ── AOS Init ──
+  AOS.init({ once: true, offset: 60, easing: 'ease-out-cubic' });
+
+  // ── Dark / Light Mode Toggle ──
+  const htmlEl    = document.documentElement;
+  const themeIcon = document.getElementById('themeIcon');
+  const themeBtn  = document.getElementById('themeToggle');
+
+  function applyTheme(theme) {
+    htmlEl.setAttribute('data-bs-theme', theme);
+    themeIcon.className = theme === 'dark' ? 'bi bi-moon-stars-fill' : 'bi bi-sun-fill';
+    localStorage.setItem('leaftable-theme', theme);
+  }
+
+  themeBtn.addEventListener('click', () => {
+    applyTheme(htmlEl.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  // Restore saved theme
+  applyTheme(localStorage.getItem('leaftable-theme') || 'light');
+
+  // ── RTL Toggle ──
+  const rtlBtn = document.getElementById('rtlToggle');
+  rtlBtn.addEventListener('click', () => {
+    const current = htmlEl.getAttribute('dir');
+    htmlEl.setAttribute('dir', current === 'ltr' ? 'rtl' : 'ltr');
+  });
+
+  // ── Countdown Timer ──
+  const target = new Date('2026-12-15T00:00:00');
+
+  const cdDays    = document.getElementById('cd-days');
+  const cdHours   = document.getElementById('cd-hours');
+  const cdMinutes = document.getElementById('cd-minutes');
+  const cdSeconds = document.getElementById('cd-seconds');
+
+  function pad(n, digits = 2) {
+    return String(n).padStart(digits, '0');
+  }
+
+  function animFlip(el, newVal) {
+    if (el.textContent === newVal) return;
+    el.classList.add('flip');
+    setTimeout(() => {
+      el.textContent = newVal;
+      el.classList.remove('flip');
+    }, 200);
+  }
+
+  function updateCountdown() {
+    const now  = new Date();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      cdDays.textContent    = '000';
+      cdHours.textContent   = '00';
+      cdMinutes.textContent = '00';
+      cdSeconds.textContent = '00';
+      return;
+    }
+
+    const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    animFlip(cdDays,    pad(days, 3));
+    animFlip(cdHours,   pad(hours));
+    animFlip(cdMinutes, pad(minutes));
+    animFlip(cdSeconds, pad(seconds));
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ── Notify Me Form ──
+  document.getElementById('notifyForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const emailInput = document.getElementById('notifyEmail');
+    const successMsg = document.getElementById('notifySuccess');
+
+    if (!emailInput.value || !emailInput.validity.valid) {
+      emailInput.classList.add('is-invalid');
+      return;
+    }
+
+    emailInput.classList.remove('is-invalid');
+    this.querySelector('.d-flex').style.display = 'none';
+    successMsg.style.display = 'block';
+  });
+
+  // Remove invalid class on input
+  document.getElementById('notifyEmail').addEventListener('input', function() {
+    this.classList.remove('is-invalid');
+  });
+
+  // ── Keyboard accessibility for peek cards ──
+  document.querySelectorAll('.peek-card').forEach(card => {
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        card.classList.toggle('peek-revealed');
+      }
+    });
+    card.addEventListener('focus', () => card.classList.add('peek-revealed'));
+    card.addEventListener('blur',  () => card.classList.remove('peek-revealed'));
+  });
+
+  // Apply focus-based reveal same as hover
+  const peekStyle = document.createElement('style');
+  peekStyle.textContent = `
+    .peek-card.peek-revealed .peek-img { filter: blur(0) brightness(0.78) saturate(1.1); transform: scale(1.0); }
+    .peek-card.peek-revealed .peek-locked { opacity: 0; }
+    .peek-card.peek-revealed .peek-name,
+    .peek-card.peek-revealed .peek-category { opacity: 1; transform: translateY(0); }
+  `;
+  document.head.appendChild(peekStyle);
+</script>
+</body>
+</html>

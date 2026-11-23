@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light">
+<head>
+<script>
+(function () {
+  var pairs = [['lt-theme', 'leaftable-theme'], ['lt-direction', 'leaftable-dir'], ['lt-dir', 'leaftable-dir']];
+  pairs.forEach(function (pair) {
+    var oldValue = localStorage.getItem(pair[0]);
+    if (oldValue !== null && localStorage.getItem(pair[1]) === null) {
+      localStorage.setItem(pair[1], oldValue);
+    }
+    localStorage.removeItem(pair[0]);
+  });
+})();
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover the story behind LeafTable — our philosophy, team, sustainability commitments and awards. Farm to Fork, Plant to Plate." />
+  <title>About Us | LeafTable</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css" />
+
+  <style>
+    /* ── Critical above-the-fold styles ── */
+    :root {
+      --forest-green: #2D5016;
+      --sage: #7A9E5A;
+      --cream: #FBF7F0;
+      --terracotta: #C4612A;
+      --warm-beige: #E8D5B0;
+      --dark-bg: #1A1A1A;
+      --text-dark: #2C2C2C;
+      --text-light: #6B7280;
+    }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-dark);
+      background-color: var(--cream);
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ── Navbar ── */
+    .navbar-leaftable {
+      background: rgba(251, 247, 240, 0.85) !important;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(122, 158, 90, 0.2);
+      transition: background 0.3s;
+    }
+    [data-bs-theme="dark"] .navbar-leaftable {
+      background: rgba(26, 26, 26, 0.88) !important;
+    }
+    .navbar-brand-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--forest-green) !important;
+      letter-spacing: -0.5px;
+    }
+    [data-bs-theme="dark"] .navbar-brand-logo { color: var(--sage) !important; }
+    .nav-link-custom {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--text-dark) !important;
+      padding: 0.4rem 0.75rem !important;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-link-custom:hover, .nav-link-custom.active {
+      color: var(--terracotta) !important;
+      background: rgba(196, 97, 42, 0.08);
+    }
+    [data-bs-theme="dark"] .nav-link-custom { color: #e0e0e0 !important; }
+
+    /* ── Theme & RTL Toggle ── */
+    .toggle-btn {
+      border: 1.5px solid var(--sage);
+      color: var(--forest-green);
+      background: transparent;
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+    .toggle-btn:hover { background: var(--sage); color: #fff; }
+    [data-bs-theme="dark"] .toggle-btn { border-color: var(--sage); color: var(--sage); }
+
+    /* ── SECTION 1: Hero ── */
+    .about-hero {
+      min-height: 60vh;
+      background-image: url('https://images.pexels.com/photos/2387675/pexels-photo-2387675.jpeg?auto=compress&cs=tinysrgb&w=1920');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .about-hero .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .hero-breadcrumb { font-family: 'DM Sans', sans-serif; font-size: 0.85rem; }
+    .hero-breadcrumb a, .hero-breadcrumb span { color: rgba(255,255,255,0.75); text-decoration: none; }
+    .hero-breadcrumb .bc-sep { margin: 0 0.4rem; }
+    .hero-breadcrumb .bc-current { color: #fff; font-weight: 600; }
+    .hero-badge {
+      display: inline-block;
+      background: var(--terracotta);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 3.75rem);
+      color: #fff;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero-subtext {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--cream);
+      max-width: 560px;
+      margin: 0 auto 1.8rem;
+    }
+    .leaf-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--terracotta);
+      border-radius: 2px;
+      margin: 0 auto;
+    }
+
+    /* ── SECTION 2: Philosophy ── */
+    .philosophy-section { background: var(--warm-beige); padding: 100px 0; }
+    .pull-quote-wrap {
+      position: relative;
+    }
+    .pull-quote-mark {
+      position: absolute;
+      top: -40px;
+      left: -20px;
+      font-size: 120px;
+      font-family: 'Playfair Display', serif;
+      color: var(--terracotta);
+      opacity: 0.2;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .pull-quote-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--forest-green);
+      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    .quote-attribution {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-top: 1.2rem;
+    }
+    .pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 575px) { .pillar-grid { grid-template-columns: 1fr; } }
+    .pillar-card {
+      background: rgba(255,255,255,0.6);
+      border-radius: 14px;
+      padding: 1.5rem;
+      border: 1px solid rgba(122,158,90,0.2);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(45,80,22,0.12); }
+    .pillar-icon { font-size: 2rem; color: var(--terracotta); margin-bottom: 0.6rem; display: block; }
+    .pillar-title { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 1rem; margin-bottom: 0.4rem; color: var(--forest-green); }
+    .pillar-desc { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; margin: 0; }
+
+    /* ── SECTION 3: Timeline ── */
+    .timeline-section { background: #fff; padding: 100px 0; }
+    .timeline-wrapper { position: relative; }
+    .timeline-wrapper::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: var(--sage);
+      transform: translateX(-50%);
+    }
+    @media (max-width: 991px) {
+      .timeline-wrapper::before { left: 32px; transform: none; }
+    }
+    .timeline-item {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: calc(50% + 40px);
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+    .timeline-item.right {
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: calc(50% + 40px);
+    }
+    @media (max-width: 991px) {
+      .timeline-item, .timeline-item.right {
+        justify-content: flex-start;
+        padding-left: 80px;
+        padding-right: 0;
+      }
+    }
+    .timeline-badge {
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      transform: translateX(-50%);
+      background: var(--terracotta);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      white-space: nowrap;
+      z-index: 2;
+      border: 3px solid #fff;
+    }
+    @media (max-width: 991px) {
+      .timeline-badge { left: 32px; transform: translateX(-50%); }
+    }
+    .timeline-card {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 1.6rem;
+      max-width: 420px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      border: 1px solid rgba(122,158,90,0.15);
+      transition: transform 0.25s;
+    }
+    .timeline-card:hover { transform: translateY(-3px); }
+    .timeline-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    .timeline-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--forest-green);
+      margin-bottom: 0.5rem;
+    }
+    .timeline-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.65; margin: 0; }
+
+    /* ── SECTION 4: Sustainability ── */
+    .sustainability-section {
+      background: linear-gradient(135deg, #7A9E5A, #2D5016);
+      padding: 100px 0;
+      color: #fff;
+    }
+    .sustain-card {
+      background: rgba(0,0,0,0.25);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+    }
+    .sustain-card:hover { transform: scale(1.03); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .sustain-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .sustain-card h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--cream); margin-bottom: 1rem; }
+    .sustain-card p { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.65; }
+    .sustain-stat {
+      display: inline-block;
+      margin-top: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--cream);
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+    .farm-badge {
+      display: inline-block;
+      background: var(--cream);
+      color: var(--forest-green);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      margin: 0.3rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .farm-badge:hover { background: var(--warm-beige); }
+
+    /* ── SECTION 5: Team ── */
+    .team-section { background: var(--cream); padding: 100px 0; }
+    .flip-card {
+      perspective: 1000px;
+      height: 340px;
+      cursor: default;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s cubic-bezier(.4,0,.2,1);
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .flip-card-front {
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border: 1px solid rgba(122,158,90,0.15);
+    }
+    .flip-card-back {
+      background: var(--forest-green);
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      color: #fff;
+      border: 1px solid rgba(122,158,90,0.3);
+    }
+    .team-photo-front {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      object-fit: cover; object-position: 50% 35%;
+      border: 3px solid var(--sage);
+      margin-bottom: 1rem;
+    }
+    .team-photo-back {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      object-fit: cover; object-position: 50% 35%;
+      border: 2px solid rgba(255,255,255,0.4);
+      margin-bottom: 0.8rem;
+    }
+    .team-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--forest-green); margin-bottom: 0.2rem; }
+    .team-role { font-family: 'DM Sans', sans-serif; font-size: 0.82rem; color: var(--terracotta); font-weight: 600; margin-bottom: 0.5rem; }
+    .team-tagline { font-family: 'DM Sans', sans-serif; font-size: 0.84rem; color: var(--text-light); font-style: italic; }
+    .team-bio-back { font-size: 0.84rem; line-height: 1.6; color: rgba(255,255,255,0.88); margin-bottom: 0.8rem; }
+    .team-name-back { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--cream); margin-bottom: 0.15rem; }
+    .team-role-back { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; color: var(--sage); font-weight: 600; margin-bottom: 0.6rem; }
+
+    /* ── SECTION 6: Awards ── */
+    .awards-section { background: var(--forest-green); padding: 80px 0; }
+    .press-badge {
+      display: inline-flex;
+      align-items: center;
+      background: var(--cream);
+      color: var(--forest-green);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.5rem 1.3rem;
+      border-radius: 50px;
+      margin: 0.35rem;
+      letter-spacing: 0.3px;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .press-badge:hover { transform: translateY(-2px); background: var(--warm-beige); }
+    .award-card {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      height: 100%;
+      transition: transform 0.25s;
+    }
+    .award-card:hover { transform: translateY(-3px); }
+    .award-icon {
+      width: 58px; height: 58px;
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(251,247,240,0.12);
+      border: 1px solid rgba(251,247,240,0.22);
+      color: var(--warm-beige);
+      font-size: 1.6rem;
+    }
+    .award-card h5 { font-family: 'Playfair Display', serif; color: var(--cream); font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .award-source { font-family: 'DM Sans', sans-serif; font-size: 0.8rem; color: var(--sage); font-weight: 600; margin-bottom: 0.6rem; }
+    .award-quote { font-size: 0.87rem; color: rgba(255,255,255,0.75); line-height: 1.6; font-style: italic; margin: 0; }
+
+    /* ── Buttons ── */
+    .btn-terra-outline {
+      border: 2px solid var(--terracotta);
+      color: var(--terracotta);
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      padding: 0.7rem 2rem;
+      border-radius: 50px;
+      transition: background 0.25s, color 0.25s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-terra-outline:hover { background: var(--terracotta); color: #fff; }
+    .btn-cream-solid {
+      background: var(--cream);
+      color: var(--forest-green);
+      border: 2px solid var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      padding: 0.7rem 2rem;
+      border-radius: 50px;
+      transition: background 0.25s, transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-cream-solid:hover { background: var(--warm-beige); transform: translateY(-2px); color: var(--forest-green); }
+
+    /* ── Footer ── */
+    .site-footer { background: var(--dark-bg); color: rgba(255,255,255,0.75); padding: 70px 0 0; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--sage); letter-spacing: -0.5px; }
+    .footer-tagline { font-size: 0.88rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; }
+    .footer-heading { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--sage); font-weight: 600; margin-bottom: 1.2rem; }
+    .footer-link { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.9rem; display: block; margin-bottom: 0.6rem; transition: color 0.2s; }
+    .footer-link:hover { color: var(--sage); }
+    .social-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      text-decoration: none;
+      margin-right: 0.5rem;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .social-icon:hover { border-color: var(--sage); color: var(--sage); background: rgba(122,158,90,0.1); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 3rem; padding: 1.5rem 0; text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+
+    /* ── Dark mode adjustments ── */
+    [data-bs-theme="dark"] .philosophy-section { background: #2a2a2a; }
+    [data-bs-theme="dark"] .pull-quote-text { color: var(--sage); }
+    [data-bs-theme="dark"] .pillar-card { background: rgba(255,255,255,0.05); border-color: rgba(122,158,90,0.3); }
+    [data-bs-theme="dark"] .pillar-title { color: var(--cream); }
+    [data-bs-theme="dark"] .pillar-desc { color: rgba(255,255,255,0.6); }
+    [data-bs-theme="dark"] .timeline-section { background: #111; }
+    [data-bs-theme="dark"] .timeline-card { background: #1e1e1e; border-color: rgba(122,158,90,0.2); }
+    [data-bs-theme="dark"] .timeline-card h4 { color: var(--sage); }
+    [data-bs-theme="dark"] .team-section { background: #1A1A1A; }
+    [data-bs-theme="dark"] .flip-card-front { background: #2a2a2a; border-color: rgba(122,158,90,0.2); }
+    [data-bs-theme="dark"] .team-name { color: var(--cream); }
+
+    /* ── RTL adjustments ── */
+    [dir="rtl"] .pull-quote-mark { left: auto; right: -20px; }
+    [dir="rtl"] .timeline-item { padding-right: 0; padding-left: calc(50% + 40px); }
+    [dir="rtl"] .timeline-item.right { padding-left: 0; padding-right: calc(50% + 40px); }
+    @media (max-width: 991px) {
+      [dir="rtl"] .timeline-item, [dir="rtl"] .timeline-item.right { padding-left: 0; padding-right: 80px; }
+      [dir="rtl"] .timeline-wrapper::before { left: auto; right: 32px; }
+      [dir="rtl"] .timeline-badge { left: auto; right: 32px; transform: translateX(50%); }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     NAVBAR
+══════════════════════════════════ -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-leaftable fixed-top" aria-label="Main navigation">
+  <div class="container">
+    <a class="navbar-brand navbar-brand-logo" href="index.html">
+      <i class="bi bi-tree-fill me-1" style="color:#7A9E5A;"></i>LeafTable
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-list fs-4" style="color:#2D5016;"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="index2.html">Home 2</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom active" aria-current="page" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+        <button class="toggle-btn theme-toggle-btn" id="themeToggle" aria-label="Toggle dark/light mode">
+          <i class="bi bi-sun-fill" id="themeIcon"></i>
+        </button>
+        <button class="toggle-btn rtl-toggle-btn" id="rtlToggle" aria-label="Toggle RTL/LTR direction"><span class="rtl-text">RTL</span></button>
+      </div>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════
+     SECTION 1 — PAGE HERO
+══════════════════════════════════ -->
+<section class="about-hero" aria-label="About Us hero">
+
+  <div class="hero-content px-3" data-aos="fade-up">
+    <span class="hero-badge">Our Story</span>
+    <h1 class="hero-title">Our Story, Our Soul</h1>
+    <p class="hero-subtext">Born from a love of nature and a commitment to ethical, sustainable dining.</p>
+    <div class="leaf-divider"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SECTION 2 — OUR PHILOSOPHY
+══════════════════════════════════ -->
+<section class="philosophy-section" aria-labelledby="philosophy-heading">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- Left: Pull Quote -->
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="pull-quote-wrap ps-4 ps-lg-3">
+          <span class="pull-quote-mark" aria-hidden="true">"</span>
+          <p class="pull-quote-text">
+            "We believe food should heal, not harm — the earth and those who eat from it."
+          </p>
+          <p class="quote-attribution">— Chef Marco Viani, Founder</p>
+        </div>
+      </div>
+
+      <!-- Right: 4 Pillars -->
+      <div class="col-lg-6" data-aos="fade-right">
+        <h2 id="philosophy-heading" class="mb-4" style="color:var(--forest-green); font-size:clamp(1.6rem,3vw,2.1rem);">Our Core Philosophy</h2>
+        <div class="pillar-grid">
+
+          <div class="pillar-card">
+            <i class="bi bi-flower2 pillar-icon" aria-hidden="true"></i>
+            <p class="pillar-title">Plant-First</p>
+            <p class="pillar-desc">Every dish is built around plants, not built around removing meat. We celebrate vegetables as the hero ingredient.</p>
+          </div>
+
+          <div class="pillar-card">
+            <i class="bi bi-people-fill pillar-icon" aria-hidden="true"></i>
+            <p class="pillar-title">Community-Rooted</p>
+            <p class="pillar-desc">We employ locally, source locally and give back locally. 15% of profits fund community food education.</p>
+          </div>
+
+          <div class="pillar-card">
+            <i class="bi bi-recycle pillar-icon" aria-hidden="true"></i>
+            <p class="pillar-title">Zero Waste</p>
+            <p class="pillar-desc">Our kitchen composts 98% of food waste. All packaging is compostable. We measure and report quarterly.</p>
+          </div>
+
+          <div class="pillar-card">
+            <i class="bi bi-globe-europe-africa pillar-icon" aria-hidden="true"></i>
+            <p class="pillar-title">Carbon-Neutral</p>
+            <p class="pillar-desc">We've offset our full carbon footprint since 2022, certified by the Carbon Trust.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SECTION 3 — OUR STORY TIMELINE
+══════════════════════════════════ -->
+<section class="timeline-section" aria-labelledby="timeline-heading">
+  <div class="container">
+    <h2 id="timeline-heading" class="text-center mb-5 pb-2" style="color:var(--forest-green); font-size:clamp(1.8rem,3.5vw,2.5rem);" data-aos="fade-up">How LeafTable Came to Be</h2>
+
+    <div class="timeline-wrapper">
+
+      <!-- 2018 -->
+      <div class="timeline-item" data-aos="fade-right">
+        <span class="timeline-badge">2018</span>
+        <article class="timeline-card">
+          <img src="https://images.pexels.com/photos/16682438/pexels-photo-16682438.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Herb garden where LeafTable's founders drew early inspiration" loading="lazy" />
+          <h4>A Dream in a Small Kitchen</h4>
+          <p>Founded by Chef Marco Viani and sustainability advocate Lena Brooks in a rented Hackney kitchen. What started as a supper club for 12 friends became an instant sensation. Within weeks, the waiting list had grown to 300 people.</p>
+        </article>
+      </div>
+
+      <!-- 2019 -->
+      <div class="timeline-item right" data-aos="fade-left">
+        <span class="timeline-badge">2019</span>
+        <article class="timeline-card">
+          <img src="https://images.pexels.com/photos/6955644/pexels-photo-6955644.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Couple dining at the first LeafTable restaurant opening" loading="lazy" />
+          <h4>Opening Our Doors</h4>
+          <p>We opened our first 40-seat restaurant on Shoreditch's Bethnal Green Road, designed around reclaimed wood, living plant walls and natural light. Every piece of furniture was sourced from London ethical makers.</p>
+        </article>
+      </div>
+
+      <!-- 2021 -->
+      <div class="timeline-item" data-aos="fade-right">
+        <span class="timeline-badge">2021</span>
+        <article class="timeline-card">
+          <img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Elegant restaurant interior celebrating recognition and growth" loading="lazy" />
+          <h4>Recognition &amp; Growth</h4>
+          <p>Awarded 'Best Vegan Restaurant London' by TimeOut Magazine and featured in the Guardian's Top 50 UK Restaurants. We expanded to a second dining room, adding a private chef's table seating 12.</p>
+        </article>
+      </div>
+
+      <!-- 2023 -->
+      <div class="timeline-item right" data-aos="fade-left">
+        <span class="timeline-badge">2023</span>
+        <article class="timeline-card">
+          <img src="https://images.pexels.com/photos/26178998/pexels-photo-26178998.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Green rooftop herb and microgreen garden at LeafTable" loading="lazy" />
+          <h4>Zero Waste &amp; Rooftop Garden</h4>
+          <p>Launched our zero-waste initiative, achieving 98% waste diversion. Opened our 200sqm rooftop herb and microgreen garden, supplying 30% of our fresh herbs in-house. Partnered with 24 local organic farms.</p>
+        </article>
+      </div>
+
+      <!-- 2026 -->
+      <div class="timeline-item" data-aos="fade-right">
+        <span class="timeline-badge">2026</span>
+        <article class="timeline-card">
+          <img src="https://images.pexels.com/photos/31930012/pexels-photo-31930012.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Farmers market celebrating eight years of LeafTable" loading="lazy" />
+          <h4>Eight Years of Joyful Dining</h4>
+          <p>Celebrating eight years and 12,000+ happy guests. This year we launched our Vegan Cookery School, Farm Dinner Series and this new website to bring the LeafTable story to even more plant-based food lovers.</p>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SECTION 4 — SUSTAINABILITY & ETHICAL SOURCING
+══════════════════════════════════ -->
+<section class="sustainability-section" aria-labelledby="sustain-heading">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h2 id="sustain-heading" class="mb-3" style="font-family:'Playfair Display',serif; color:var(--cream); font-size:clamp(1.8rem,3.5vw,2.5rem);">Growing Responsibly</h2>
+      <p style="color:rgba(251,247,240,0.8); font-size:1.05rem; max-width:560px; margin:0 auto;">Sustainability isn't a marketing term for us — it's the reason we exist.</p>
+    </div>
+
+    <div class="row g-4 mb-5">
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="sustain-card">
+          <span class="sustain-icon" aria-hidden="true"><i class="bi bi-tree-fill"></i></span>
+          <h4>Farm Partnerships</h4>
+          <p>We partner with 24 certified organic farms within 50 miles of London. Every supplier is visited annually and held to our strict ethical sourcing charter.</p>
+          <span class="sustain-stat">24 Farm Partners • 50-mile radius</span>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="120">
+        <div class="sustain-card">
+          <span class="sustain-icon" aria-hidden="true"><i class="bi bi-recycle"></i></span>
+          <h4>Zero Waste Kitchen</h4>
+          <p>98% of our kitchen waste is composted or repurposed. Food off-cuts become staff meals. We produce less than 2kg of landfill waste per week — for a 60-seat restaurant.</p>
+          <span class="sustain-stat">98% Waste Diverted • &lt;2kg to Landfill/Week</span>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mx-auto" data-aos="fade-up" data-aos-delay="240">
+        <div class="sustain-card">
+          <span class="sustain-icon" aria-hidden="true"><i class="bi bi-water"></i></span>
+          <h4>Water Stewardship</h4>
+          <p>We use 60% less water than a conventional restaurant of our size, through grey-water recycling, low-flow equipment and rigorous team training.</p>
+          <span class="sustain-stat">60% Less Water • Fully Recycled Grey Water</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Farm name badges -->
+    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+      <p class="mb-3" style="color:rgba(251,247,240,0.65); font-size:0.85rem; letter-spacing:1px; text-transform:uppercase; font-weight:600;">Our Farm Partners</p>
+      <div>
+        <span class="farm-badge">Green Valley Farm</span>
+        <span class="farm-badge">Sussex Woodland Forage</span>
+        <span class="farm-badge">Kent Heritage Orchards</span>
+        <span class="farm-badge">Provence Lentil Co.</span>
+        <span class="farm-badge">Andean Quinoa Harvest</span>
+        <span class="farm-badge">Scottish Highlands Wild Berry Co.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SECTION 5 — MEET THE TEAM
+══════════════════════════════════ -->
+<section class="team-section" aria-labelledby="team-heading">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h2 id="team-heading" class="mb-3" style="color:var(--forest-green); font-size:clamp(1.8rem,3.5vw,2.5rem);">The People Behind the Plants</h2>
+      <p style="color:var(--text-light); font-size:1.05rem;">Passionate humans who believe good food changes the world.</p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Chef Marco Viani -->
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="flip-card" role="img" aria-label="Team member: Chef Marco Viani, Head Chef and Founder">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img class="team-photo-front" src="https://images.pexels.com/photos/7832079/pexels-photo-7832079.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop&crop=faces" alt="Chef Marco Viani — Head Chef and Founder of LeafTable" loading="lazy" />
+              <p class="team-name">Chef Marco Viani</p>
+              <p class="team-role">Head Chef &amp; Founder</p>
+              <p class="team-tagline">Turning plants into poetry since 2018</p>
+            </div>
+            <div class="flip-card-back">
+              <img class="team-photo-back" src="https://images.pexels.com/photos/7832079/pexels-photo-7832079.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop&crop=faces" alt="Chef Marco Viani" loading="lazy" />
+              <p class="team-name-back">Chef Marco Viani</p>
+              <p class="team-role-back">Head Chef &amp; Founder</p>
+              <p class="team-bio-back">Marco trained at Le Cordon Bleu and worked in Michelin-starred kitchens before founding LeafTable. His philosophy: every plant has a story worth telling on a plate. He forages personally every Thursday with our Sussex woodland partner.</p>
+              <a href="#" aria-label="Chef Marco Viani on LinkedIn" style="color:rgba(255,255,255,0.7); font-size:1.4rem; text-decoration:none;" onclick="return false;">
+                <i class="bi bi-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lena Brooks -->
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="flip-card" role="img" aria-label="Team member: Lena Brooks, Sustainability Director">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img class="team-photo-front" src="https://images.pexels.com/photos/17575887/pexels-photo-17575887.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop&crop=faces" alt="Lena Brooks — Sustainability Director at LeafTable" loading="lazy" />
+              <p class="team-name">Lena Brooks</p>
+              <p class="team-role">Sustainability Director</p>
+              <p class="team-tagline">Making zero-waste delicious</p>
+            </div>
+            <div class="flip-card-back">
+              <img class="team-photo-back" src="https://images.pexels.com/photos/17575887/pexels-photo-17575887.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop&crop=faces" alt="Lena Brooks" loading="lazy" />
+              <p class="team-name-back">Lena Brooks</p>
+              <p class="team-role-back">Sustainability Director</p>
+              <p class="team-bio-back">Lena holds an MSc in Environmental Management from UCL. She designed LeafTable's entire supply chain to be ethical, traceable and low-carbon. She launched our rooftop garden project in 2023.</p>
+              <a href="#" aria-label="Lena Brooks on LinkedIn" style="color:rgba(255,255,255,0.7); font-size:1.4rem; text-decoration:none;" onclick="return false;">
+                <i class="bi bi-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Amir Patel -->
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="flip-card" role="img" aria-label="Team member: Amir Patel, Pastry Artisan">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img class="team-photo-front" src="https://images.pexels.com/photos/16117422/pexels-photo-16117422.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop&crop=faces" alt="Amir Patel — Pastry Artisan at LeafTable" loading="lazy" />
+              <p class="team-name">Amir Patel</p>
+              <p class="team-role">Pastry Artisan</p>
+              <p class="team-tagline">Desserts that make dairy irrelevant</p>
+            </div>
+            <div class="flip-card-back">
+              <img class="team-photo-back" src="https://images.pexels.com/photos/16117422/pexels-photo-16117422.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop&crop=faces" alt="Amir Patel" loading="lazy" />
+              <p class="team-name-back">Amir Patel</p>
+              <p class="team-role-back">Pastry Artisan</p>
+              <p class="team-bio-back">Amir spent three years developing plant-based patisserie techniques before joining LeafTable. His cashew cheesecake and dark chocolate tart have been featured in Vogue Living. He holds workshops for home bakers monthly.</p>
+              <a href="#" aria-label="Amir Patel on LinkedIn" style="color:rgba(255,255,255,0.7); font-size:1.4rem; text-decoration:none;" onclick="return false;">
+                <i class="bi bi-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sara Okonkwo -->
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="flip-card" role="img" aria-label="Team member: Sara Okonkwo, Front-of-House Manager">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img class="team-photo-front" src="https://images.pexels.com/photos/8519048/pexels-photo-8519048.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop&crop=faces" alt="Sara Okonkwo — Front-of-House Manager at LeafTable" loading="lazy" />
+              <p class="team-name">Sara Okonkwo</p>
+              <p class="team-role">Front-of-House Manager</p>
+              <p class="team-tagline">Hospitality as an act of love</p>
+            </div>
+            <div class="flip-card-back">
+              <img class="team-photo-back" src="https://images.pexels.com/photos/8519048/pexels-photo-8519048.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop&crop=faces" alt="Sara Okonkwo" loading="lazy" />
+              <p class="team-name-back">Sara Okonkwo</p>
+              <p class="team-role-back">Front-of-House Manager</p>
+              <p class="team-bio-back">Sara brings 12 years of fine-dining service experience to LeafTable. She trained the entire front-of-house team in ingredient storytelling and allergy management. Under her leadership, LeafTable achieved a 4.9-star rating on Google.</p>
+              <a href="#" aria-label="Sara Okonkwo on LinkedIn" style="color:rgba(255,255,255,0.7); font-size:1.4rem; text-decoration:none;" onclick="return false;">
+                <i class="bi bi-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     SECTION 6 — AWARDS & PRESS
+══════════════════════════════════ -->
+<section class="awards-section" aria-labelledby="awards-heading">
+  <div class="container">
+
+    <h2 id="awards-heading" class="text-center mb-5" style="font-family:'Playfair Display',serif; color:var(--cream); font-size:clamp(1.8rem,3.5vw,2.5rem);" data-aos="fade-up">Recognised by the Best</h2>
+
+    <!-- Press Badge Strip -->
+    <div class="d-flex flex-wrap justify-content-center mb-5" data-aos="fade-up" data-aos-delay="80">
+      <span class="press-badge">TimeOut</span>
+      <span class="press-badge">The Guardian</span>
+      <span class="press-badge">The Independent</span>
+      <span class="press-badge">Vogue Living</span>
+      <span class="press-badge">BBC Good Food</span>
+      <span class="press-badge">Evening Standard</span>
+    </div>
+
+    <!-- Award Highlight Cards -->
+    <div class="row g-4 mb-5">
+
+      <div class="col-md-6" data-aos="fade-right">
+        <div class="award-card">
+          <span class="award-icon" aria-hidden="true"><i class="bi bi-trophy-fill"></i></span>
+          <div>
+            <h5>Best Vegan Restaurant London 2021</h5>
+            <p class="award-source">TimeOut Magazine</p>
+            <p class="award-quote">"LeafTable has completely redefined what plant-based dining can be in London — it is bold, inventive and utterly delicious. A landmark restaurant."</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6" data-aos="fade-left">
+        <div class="award-card">
+          <span class="award-icon" aria-hidden="true"><i class="bi bi-tree-fill"></i></span>
+          <div>
+            <h5>Sustainable Restaurant of the Year 2023</h5>
+            <p class="award-source">The Sustainable Restaurant Association</p>
+            <p class="award-quote">"LeafTable sets the gold standard for environmental responsibility in UK hospitality — their zero-waste model and farm network are unparalleled."</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTAs -->
+    <div class="text-center d-flex flex-column flex-sm-row align-items-center justify-content-center gap-3" data-aos="fade-up">
+      <a href="blog.html" class="btn-terra-outline" aria-label="Read our press coverage on the blog">
+        Read Our Press Coverage →
+      </a>
+      <a href="contact.html" class="btn-cream-solid" aria-label="Book a table at LeafTable">
+        Join Our Story — Book a Table
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════════════════════
+     FOOTER
+══════════════════════════════════ -->
+<footer class="site-footer" aria-label="Site footer">
+  <div class="container">
+    <div class="row g-5">
+
+      <!-- Brand -->
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-logo"><i class="bi bi-tree-fill me-2" style="color:var(--sage);"></i>LeafTable</div>
+        <p class="footer-tagline mt-1">Farm to Fork, Plant to Plate</p>
+        <p class="mt-3" style="font-size:0.88rem; color:rgba(255,255,255,0.5); max-width:280px;">A plant-based sanctuary in the heart of Shoreditch, London. Ethical, seasonal, joyful.</p>
+        <div class="mt-4">
+          <a href="#" class="social-icon" aria-label="LeafTable on Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-icon" aria-label="LeafTable on Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-icon" aria-label="LeafTable on X (Twitter)"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="social-icon" aria-label="LeafTable on TikTok"><i class="bi bi-tiktok"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-md-6">
+        <p class="footer-heading">Quick Links</p>
+        <a class="footer-link" href="index.html">Home</a>
+        <a class="footer-link" href="index2.html">Home 2</a>
+        <a class="footer-link" href="about.html">About Us</a>
+        <a class="footer-link" href="services.html">Services</a>
+        <a class="footer-link" href="blog.html">Blog</a>
+        <a class="footer-link" href="contact.html">Contact</a>
+      </div>
+
+      <!-- Services -->
+      <div class="col-lg-3 col-md-6">
+        <p class="footer-heading">Services</p>
+        <a class="footer-link" href="services.html">Dine In</a>
+        <a class="footer-link" href="services.html">Private Events</a>
+        <a class="footer-link" href="services.html">Vegan Cookery School</a>
+        <a class="footer-link" href="services.html">Farm Dinner Series</a>
+        <a class="footer-link" href="services.html">Catering &amp; Delivery</a>
+        <a class="footer-link" href="service-detail.html">View Service Detail</a>
+      </div>
+
+      <!-- Connect -->
+      <div class="col-lg-3 col-md-6">
+        <p class="footer-heading">Connect</p>
+        <p style="font-size:0.88rem; color:rgba(255,255,255,0.5); margin-bottom:0.4rem;">
+          <i class="bi bi-geo-alt-fill me-2" style="color:var(--sage);"></i>42 Bethnal Green Road, Shoreditch, London E1 6FF
+        </p>
+        <p style="font-size:0.88rem; color:rgba(255,255,255,0.5); margin-bottom:0.4rem;">
+          <i class="bi bi-telephone-fill me-2" style="color:var(--sage);"></i>+44 20 7946 0123
+        </p>
+        <p style="font-size:0.88rem; color:rgba(255,255,255,0.5); margin-bottom:0.4rem;">
+          <i class="bi bi-envelope-fill me-2" style="color:var(--sage);"></i>hello@leaftable.co.uk
+        </p>
+        <p style="font-size:0.88rem; color:rgba(255,255,255,0.5);">
+          <i class="bi bi-clock-fill me-2" style="color:var(--sage);"></i>Tue–Sun: 12pm – 10pm
+        </p>
+        <a href="login.html" class="footer-link mt-2" style="display:inline-block;">
+          <i class="bi bi-person-circle me-1"></i>Staff Login
+        </a>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p class="mb-0">&copy; 2026 LeafTable. All rights reserved. Made with <i class="bi bi-heart-fill" style="color:var(--terracotta);"></i> in London.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap 5.3 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<!-- Custom JS -->
+<script src="assets/js/main.js"></script>
+
+<script>
+  // ── AOS Init ──
+  AOS.init({
+    duration: 700,
+    easing: 'ease-out-cubic',
+    once: true,
+    offset: 60
+  });
+
+  document.querySelectorAll('.flip-card').forEach(function (card) {
+    card.setAttribute('tabindex', '0');
+    card.addEventListener('click', function (event) {
+      if (event.target.closest('a')) return;
+      card.classList.toggle('flipped');
+    });
+    card.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        card.classList.toggle('flipped');
+      }
+    });
+  });
+
+  // ── Theme Toggle ──
+  const html = document.documentElement;
+  const themeIcon = document.getElementById('themeIcon');
+  const themeToggle = document.getElementById('themeToggle');
+
+  function applyTheme(theme) {
+    html.setAttribute('data-bs-theme', theme);
+    if (theme === 'dark') {
+      themeIcon.className = 'bi bi-moon-stars-fill';
+    } else {
+      themeIcon.className = 'bi bi-sun-fill';
+    }
+    localStorage.setItem('leaftable-theme', theme);
+  }
+
+  themeToggle.addEventListener('click', function () {
+    const current = html.getAttribute('data-bs-theme');
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // Persist theme across pages
+  applyTheme(localStorage.getItem('leaftable-theme') || 'light');
+
+  // ── RTL Toggle ──
+  const rtlToggle = document.getElementById('rtlToggle');
+  rtlToggle.addEventListener('click', function () {
+    const current = html.getAttribute('dir');
+    html.setAttribute('dir', current === 'rtl' ? 'ltr' : 'rtl');
+  });
+
+  // ── Navbar scroll shadow ──
+  window.addEventListener('scroll', function () {
+    const nav = document.querySelector('.navbar-leaftable');
+    if (window.scrollY > 40) {
+      nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.12)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>

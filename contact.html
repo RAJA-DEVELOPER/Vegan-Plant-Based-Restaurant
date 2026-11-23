@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light" dir="ltr">
+<head>
+<script>
+(function () {
+  var pairs = [['lt-theme', 'leaftable-theme'], ['lt-direction', 'leaftable-dir'], ['lt-dir', 'leaftable-dir']];
+  pairs.forEach(function (pair) {
+    var oldValue = localStorage.getItem(pair[0]);
+    if (oldValue !== null && localStorage.getItem(pair[1]) === null) {
+      localStorage.setItem(pair[1], oldValue);
+    }
+    localStorage.removeItem(pair[0]);
+  });
+})();
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — LeafTable | Farm to Fork, Plant to Plate</title>
+  <meta name="description" content="Contact LeafTable restaurant in Shoreditch, London. Make a reservation, find directions, or get in touch with our team." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+  <!-- Bootstrap Icons 1.11 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- AOS 2.3.4 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css" />
+
+  <style>
+    :root {
+      --forest-green: #2D5016;
+      --sage: #7A9E5A;
+      --cream: #FBF7F0;
+      --terracotta: #C4612A;
+      --warm-beige: #E8D5B0;
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.18);
+    }
+
+    /* ── Base ── */
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      color: #2a2a2a;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, .playfair {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ── Dark Mode ── */
+    [data-bs-theme="dark"] body,
+    [data-bs-theme="dark"] {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    [data-bs-theme="dark"] .navbar { background: #1a1a1a !important; }
+    [data-bs-theme="dark"] .card-white { background: #1e1e1e !important; color: #e0e0e0; }
+    [data-bs-theme="dark"] .section-cream { background: #1a1a1a !important; }
+    [data-bs-theme="dark"] .section-beige { background: #252017 !important; }
+    [data-bs-theme="dark"] .contact-card { background: #1e1e1e !important; color: #e0e0e0; }
+    [data-bs-theme="dark"] .contact-card h4 { color: #a8c77a !important; }
+    [data-bs-theme="dark"] .sticky-panel { background: #1e1e1e !important; color: #e0e0e0; }
+    [data-bs-theme="dark"] .sticky-panel h5 { color: #a8c77a !important; }
+    [data-bs-theme="dark"] .faq-wrap { background: #1e1e1e !important; }
+    [data-bs-theme="dark"] .accordion-item { background: #1e1e1e; border-color: #333; }
+    [data-bs-theme="dark"] .accordion-button { background: #1e1e1e !important; color: #e0e0e0 !important; }
+    [data-bs-theme="dark"] .accordion-button:not(.collapsed) { color: var(--sage) !important; }
+    [data-bs-theme="dark"] .accordion-body { background: #1e1e1e; color: #ccc; }
+    [data-bs-theme="dark"] .transport-card { background: #1e1e1e !important; color: #e0e0e0; }
+    [data-bs-theme="dark"] .transport-card h5 { color: var(--cream) !important; }
+    [data-bs-theme="dark"] .form-control, [data-bs-theme="dark"] .form-select {
+      background: #2a2a2a; border-color: #444; color: #e0e0e0;
+    }
+    [data-bs-theme="dark"] .form-control:focus, [data-bs-theme="dark"] .form-select:focus {
+      background: #333; color: #fff;
+    }
+    [data-bs-theme="dark"] .text-muted { color: #999 !important; }
+    [data-bs-theme="dark"] hr { border-color: #444; }
+    [data-bs-theme="dark"] .hours-table tbody tr:nth-child(odd) td { background: rgba(255,255,255,0.05); }
+    [data-bs-theme="dark"] .hours-table tbody tr:nth-child(even) td { background: transparent; }
+
+    /* ── Navbar ── */
+    .navbar {
+      background: rgba(45, 80, 22, 0.97) !important;
+      backdrop-filter: blur(12px);
+      transition: background 0.3s;
+      padding: 0.6rem 0;
+    }
+    .navbar-brand span { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; }
+    .navbar-brand small { font-family: 'DM Sans', sans-serif; font-size: 0.65rem; color: var(--warm-beige); letter-spacing: 1.5px; text-transform: uppercase; }
+    .nav-link { color: rgba(255,255,255,0.85) !important; font-size: 0.88rem; font-weight: 500; padding: 0.5rem 0.9rem !important; border-radius: 6px; transition: color 0.2s, background 0.2s; }
+    .nav-link:hover, .nav-link.active { color: #fff !important; background: rgba(255,255,255,0.12); }
+    .navbar-toggler { border-color: rgba(255,255,255,0.4); }
+    .navbar-toggler-icon { filter: brightness(10); }
+    .btn-toggle { border-radius: 20px; padding: 0.3rem 0.8rem; font-size: 0.8rem; white-space: nowrap; }
+    .btn-dark-mode { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+    .btn-dark-mode:hover { background: rgba(255,255,255,0.25); color: #fff; }
+    .btn-rtl { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+    .btn-rtl:hover { background: rgba(255,255,255,0.2); color: #fff; }
+
+    /* ── Colors & Utilities ── */
+    .text-forest-green { color: var(--forest-green) !important; }
+    .text-sage { color: var(--sage) !important; }
+    .text-terracotta { color: var(--terracotta) !important; }
+    .bg-forest-green { background-color: var(--forest-green) !important; }
+    .bg-sage { background-color: var(--sage) !important; }
+    .bg-terracotta { background-color: var(--terracotta) !important; }
+
+    .btn-terracotta {
+      background-color: var(--terracotta);
+      color: #fff;
+      border: none;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-terracotta:hover {
+      background-color: #a84f22;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(196,97,42,0.35);
+    }
+    .btn-outline-terracotta {
+      border: 2px solid var(--terracotta);
+      color: var(--terracotta);
+      background: transparent;
+      transition: all 0.25s;
+    }
+    .btn-outline-terracotta:hover {
+      background: var(--terracotta);
+      color: #fff;
+    }
+
+    /* ── SECTION 1: Hero ── */
+    .contact-hero {
+      position: relative;
+      height: 40vh;
+      min-height: 320px;
+      background-image: url('https://images.pexels.com/photos/14192366/pexels-photo-14192366.jpeg?auto=compress&cs=tinysrgb&w=1920');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.52);
+      z-index: 1;
+    }
+    .hero-breadcrumb {
+      position: absolute;
+      top: 20px;
+      left: 24px;
+      z-index: 3;
+    }
+    .hero-breadcrumb a, .hero-breadcrumb span {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.82rem;
+      text-decoration: none;
+    }
+    .hero-breadcrumb a:hover { color: #fff; text-decoration: underline; }
+    .hero-breadcrumb .separator { color: rgba(255,255,255,0.5); margin: 0 6px; }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 1rem;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--sage);
+      color: #fff;
+      border-radius: 50px;
+      padding: 0.35rem 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+    }
+    .hero-content h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #fff;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero-subtext {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--cream);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── SECTION 2: Contact Cards ── */
+    .section-cream { background: var(--cream); }
+    .contact-card {
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 2.5rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-top 0.3s;
+      border-top: 3px solid transparent;
+      height: 100%;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    }
+    .contact-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-top-color: var(--terracotta);
+    }
+    .contact-card h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest-green);
+      margin: 1rem 0 0.5rem;
+    }
+    .contact-card hr { border-color: var(--warm-beige); margin: 1.2rem 0; }
+
+    /* ── SECTION 3: Reservation Form ── */
+    .section-beige { background: var(--warm-beige); }
+    .sticky-panel {
+      background: #fff;
+      border-radius: 1.25rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+      padding: 1.75rem;
+      position: sticky;
+      top: 100px;
+    }
+    .sticky-panel h5 {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest-green);
+    }
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+    .checklist-item i { color: var(--sage); flex-shrink: 0; margin-top: 2px; }
+    .form-control, .form-select {
+      border-radius: 10px;
+      border: 1.5px solid #d8d1c7;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 0.2rem rgba(122,158,90,0.2);
+    }
+    .form-label { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; }
+
+    /* ── SECTION 4: Map ── */
+    .map-section { position: relative; }
+    .map-overlay-card {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.16);
+      max-width: 300px;
+    }
+    .map-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--forest-green);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    /* ── SECTION 5: Hours ── */
+    .section-green { background: var(--forest-green); }
+    .hours-table { border-radius: 1rem; overflow: hidden; }
+    .hours-table thead th {
+      background: rgba(0,0,0,0.25);
+      color: var(--cream);
+      border: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 1rem 1.25rem;
+    }
+    .hours-table tbody tr:nth-child(odd) td { background: rgba(255,255,255,0.08); }
+    .hours-table tbody tr:nth-child(even) td { background: transparent; }
+    .hours-table tbody td {
+      border: none;
+      color: var(--cream);
+      padding: 0.9rem 1.25rem;
+      vertical-align: middle;
+    }
+    .festive-box {
+      background: var(--cream);
+      color: var(--forest-green);
+      border-radius: 0.75rem;
+      padding: 1rem 1.5rem;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* ── SECTION 6: Getting Here + FAQ ── */
+    .transport-card {
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+    }
+    .transport-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    .transport-card h5 {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest-green);
+      margin: 0.75rem 0 0.5rem;
+    }
+    .transport-card p { font-size: 0.9rem; color: #555; line-height: 1.65; margin: 0; }
+    [data-bs-theme="dark"] .transport-card p { color: #aaa; }
+    .faq-wrap {
+      background: #fff;
+      border-radius: 1.25rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+      overflow: hidden;
+    }
+    .accordion-button {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.98rem;
+      color: var(--forest-green);
+    }
+    .accordion-button:not(.collapsed) {
+      color: var(--terracotta);
+      background: rgba(196,97,42,0.05);
+      box-shadow: none;
+    }
+    .accordion-button::after {
+      filter: none;
+    }
+    .accordion-body { font-size: 0.93rem; line-height: 1.7; color: #444; }
+
+    /* ── Footer ── */
+    .footer-dark { background: #1A1A1A; }
+    .footer-dark h5 { font-family: 'Playfair Display', serif; color: var(--cream); margin-bottom: 1.2rem; }
+    .footer-dark p, .footer-dark li, .footer-dark a, .footer-dark small { color: rgba(251,247,240,0.72); font-size: 0.88rem; }
+    .footer-dark a { text-decoration: none; transition: color 0.2s; }
+    .footer-dark a:hover { color: var(--sage); }
+    .footer-dark ul { list-style: none; padding: 0; margin: 0; }
+    .footer-dark ul li { margin-bottom: 0.55rem; }
+    .footer-social a { font-size: 1.3rem; color: rgba(251,247,240,0.65); margin-right: 1rem; transition: color 0.2s, transform 0.2s; display: inline-block; }
+    .footer-social a:hover { color: var(--sage); transform: translateY(-3px); }
+    .footer-divider { border-color: rgba(255,255,255,0.1); }
+    .newsletter-input { border-radius: 50px 0 0 50px; border: none; padding: 0.6rem 1.2rem; font-size: 0.88rem; background: rgba(255,255,255,0.1); color: #fff; }
+    .newsletter-input::placeholder { color: rgba(255,255,255,0.5); }
+    .newsletter-input:focus { outline: none; background: rgba(255,255,255,0.15); }
+    .newsletter-btn { border-radius: 0 50px 50px 0; background: var(--sage); border: none; color: #fff; padding: 0.6rem 1.2rem; font-size: 0.88rem; cursor: pointer; transition: background 0.2s; }
+    .newsletter-btn:hover { background: var(--forest-green); }
+
+    /* ── Responsive ── */
+    @media (max-width: 991px) {
+      .sticky-panel { position: static; margin-top: 2.5rem; }
+      .map-overlay-card { display: none; }
+    }
+    @media (max-width: 575px) {
+      .contact-card { padding: 1.75rem 1.25rem; }
+      .hero-breadcrumb { top: 14px; left: 14px; }
+    }
+
+    /* ── AOS tweaks ── */
+    [data-aos] { pointer-events: none; }
+    [data-aos].aos-animate { pointer-events: auto; }
+
+    /* ── RTL ── */
+    [dir="rtl"] .hero-breadcrumb { left: auto; right: 24px; }
+    [dir="rtl"] .map-overlay-card { left: auto; right: 20px; }
+    [dir="rtl"] .footer-social a { margin-right: 0; margin-left: 1rem; }
+    [dir="rtl"] .newsletter-input { border-radius: 0 50px 50px 0; }
+    [dir="rtl"] .newsletter-btn { border-radius: 50px 0 0 50px; }
+
+    /* ── Scroll-to-top ── */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 2rem;
+      right: 1.5rem;
+      z-index: 999;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      color: #fff;
+      border: none;
+      font-size: 1.1rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(196,97,42,0.4);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    #scrollTopBtn:hover { transform: translateY(-3px); }
+    #scrollTopBtn.visible { display: flex; }
+  </style>
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════════ -->
+<nav class="navbar navbar-expand-lg navbar-leaftable fixed-top" aria-label="Main navigation">
+  <div class="container">
+    <a class="navbar-brand navbar-brand-logo" href="index.html">
+      <i class="bi bi-tree-fill me-1" style="color:#7A9E5A;"></i>LeafTable
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-list fs-4" style="color:#2D5016;"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="index2.html">Home 2</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom active" aria-current="page" href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+        <button class="toggle-btn theme-toggle-btn" id="themeToggle" aria-label="Toggle dark/light mode">
+          <i class="bi bi-sun-fill" id="themeIcon"></i>
+        </button>
+        <button class="toggle-btn rtl-toggle-btn" id="rtlToggle" aria-label="Toggle RTL/LTR direction"><span class="rtl-text">RTL</span></button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 1 — PAGE HERO
+══════════════════════════════════════════════ -->
+<section class="contact-hero" aria-label="Contact page hero">
+
+  <div class="hero-content" data-aos="fade-up" data-aos-duration="800">
+    <span class="hero-badge">Get In Touch</span>
+    <h1>Find Us, Reach Us,<br>Reserve with Us</h1>
+    <p class="hero-subtext">We'd love to hear from you — whether it's a table for two or a question about our seasonal menu.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 2 — CONTACT INFO CARDS
+══════════════════════════════════════════════ -->
+<section class="section-cream py-5" aria-label="Contact information" style="padding-top:100px;padding-bottom:100px;">
+  <div class="container">
+    <h2 class="text-center text-forest-green mb-5" data-aos="fade-up" style="font-size:clamp(1.75rem,3vw,2.5rem);">How to Reach Us</h2>
+    <div class="row g-4 justify-content-center">
+
+      <!-- Card 1: Visit Us -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="contact-card">
+          <i class="bi bi-geo-alt-fill" style="font-size:48px;color:#C4612A;" aria-hidden="true"></i>
+          <h4>Our Address</h4>
+          <p class="mb-0">42 Garden Lane, Shoreditch<br>London, E1 6RF</p>
+          <hr />
+          <p class="mb-0">
+            <strong>Opening Hours</strong><br>
+            Mon–Thu: 12:00pm – 10:00pm<br>
+            Fri–Sat: 12:00pm – 11:00pm<br>
+            Sun: 12:00pm – 9:00pm
+          </p>
+          <a href="https://www.google.com/maps/search/42+Garden+Lane+Shoreditch+London"
+            target="_blank" rel="noopener noreferrer"
+            class="btn btn-outline-terracotta rounded-pill mt-3 px-4"
+            aria-label="Get directions to LeafTable on Google Maps">
+            Get Directions <i class="bi bi-arrow-up-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: Call & Email -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="contact-card">
+          <i class="bi bi-telephone-fill" style="font-size:48px;color:#C4612A;" aria-hidden="true"></i>
+          <h4>Call or Email</h4>
+          <p class="mb-1"><strong>+44 20 7123 4567</strong></p>
+          <p class="mb-1">hello@leaftable.co.uk</p>
+          <p class="mb-0"><small class="text-muted">We reply within 2 hours during opening hours.</small></p>
+          <hr />
+          <p class="mb-1"><strong>@leaftable</strong></p>
+          <div class="d-flex justify-content-center gap-3 mt-2" aria-label="LeafTable social media links">
+            <a href="#" class="text-sage fs-4" aria-label="LeafTable on Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-sage fs-4" aria-label="LeafTable on X (Twitter)"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-sage fs-4" aria-label="LeafTable on Facebook"><i class="bi bi-facebook"></i></a>
+          </div>
+          <a href="mailto:hello@leaftable.co.uk"
+            class="btn btn-outline-terracotta rounded-pill mt-3 px-4"
+            aria-label="Send email to LeafTable">Send Email</a>
+        </div>
+      </div>
+
+      <!-- Card 3: Reservations -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="contact-card">
+          <i class="bi bi-calendar-check-fill" style="font-size:48px;color:#C4612A;" aria-hidden="true"></i>
+          <h4>Make a Reservation</h4>
+          <p class="mb-0">Walk-ins welcome. Advance booking highly recommended for Friday and Saturday evenings and all Chef's Table experiences.<br><br>Chef's Table must be booked minimum 48 hours in advance.</p>
+          <a href="#reservation-form"
+            class="btn btn-terracotta rounded-pill mt-3 px-4 text-white"
+            aria-label="Scroll to online reservation form">Book Online Now</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 3 — RESERVATION FORM
+══════════════════════════════════════════════ -->
+<section id="reservation-form" class="section-beige" style="padding-top:100px;padding-bottom:100px;" aria-label="Reservation booking form">
+  <div class="container">
+    <div class="row">
+
+      <!-- LEFT: Form -->
+      <div class="col-lg-7" data-aos="fade-right" data-aos-duration="700">
+        <h2 class="text-forest-green mb-2" style="font-size:clamp(1.75rem,3vw,2.5rem);">Make a Reservation</h2>
+        <p class="text-muted mb-4">Fill in the form below and we'll confirm your booking within 2 hours during opening hours.</p>
+
+        <form id="res-form" novalidate aria-label="Reservation form">
+          <div class="row g-3">
+
+            <!-- Row 1 -->
+            <div class="col-md-6">
+              <label class="form-label" for="res-name">Full Name <span class="text-danger">*</span></label>
+              <input type="text" id="res-name" class="form-control form-control-lg" placeholder="Jane Smith" required minlength="2" aria-required="true" autocomplete="name" />
+              <div class="invalid-feedback" id="err-name"></div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="res-email">Email Address <span class="text-danger">*</span></label>
+              <input type="email" id="res-email" class="form-control form-control-lg" placeholder="jane@email.com" required aria-required="true" autocomplete="email" />
+              <div class="invalid-feedback" id="err-email"></div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="col-md-6">
+              <label class="form-label" for="res-phone">Phone Number <span class="text-muted small">(optional)</span></label>
+              <input type="tel" id="res-phone" class="form-control form-control-lg" placeholder="+44 20 xxxx xxxx" autocomplete="tel" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="res-date">Date of Visit <span class="text-danger">*</span></label>
+              <input type="date" id="res-date" class="form-control form-control-lg" required aria-required="true" />
+              <div class="invalid-feedback" id="err-date"></div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="col-md-6">
+              <label class="form-label" for="res-time">Preferred Time <span class="text-danger">*</span></label>
+              <select id="res-time" class="form-select form-select-lg" required aria-required="true">
+                <option value="">Select a time…</option>
+                <option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option>
+                <option>14:00</option><option>14:30</option><option>15:00</option><option>15:30</option>
+                <option>16:00</option><option>16:30</option><option>17:00</option><option>17:30</option>
+                <option>18:00</option><option>18:30</option><option>19:00</option><option>19:30</option>
+                <option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option>
+              </select>
+              <div class="invalid-feedback" id="err-time"></div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="res-guests">Number of Guests <span class="text-danger">*</span></label>
+              <select id="res-guests" class="form-select form-select-lg" required aria-required="true">
+                <option value="">Select…</option>
+                <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+                <option>11</option><option>12</option><option>13</option><option>14</option><option>15</option>
+                <option>16</option><option>17</option><option>18</option><option>19</option><option>20</option>
+              </select>
+              <div class="invalid-feedback" id="err-guests"></div>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="col-12">
+              <label class="form-label" for="res-occasion">Occasion <span class="text-danger">*</span></label>
+              <select id="res-occasion" class="form-select form-select-lg" required aria-required="true">
+                <option value="">Select occasion…</option>
+                <option>Regular Dining</option><option>Birthday Celebration</option>
+                <option>Anniversary</option><option>Business Lunch / Dinner</option>
+                <option>Private Event</option><option>Proposal</option><option>Other</option>
+              </select>
+              <div class="invalid-feedback" id="err-occasion"></div>
+            </div>
+
+            <!-- Row 5 -->
+            <div class="col-12">
+              <label class="form-label" for="res-requests">
+                Special Requests / Dietary Requirements
+                <small class="text-muted ms-2"><span id="req-count">0</span> / 300 characters</small>
+              </label>
+              <textarea id="res-requests" class="form-control" rows="4" maxlength="300"
+                placeholder="Allergies, dietary requirements, occasion details, seating preferences…"
+                aria-label="Special requests or dietary requirements, max 300 characters"></textarea>
+            </div>
+
+            <!-- Submit -->
+            <div class="col-12">
+              <button type="submit" id="res-submit"
+                class="btn btn-lg rounded-pill px-5 py-3 w-100 text-white"
+                style="background:#C4612A;"
+                aria-label="Confirm reservation">
+                <span id="res-btn-text">Confirm Reservation <i class="bi bi-calendar-check ms-2"></i></span>
+                <span id="res-btn-spinner" class="spinner-border spinner-border-sm d-none ms-2" role="status" aria-hidden="true"></span>
+              </button>
+            </div>
+
+          </div>
+        </form>
+
+        <!-- Success Message -->
+        <div id="reservation-success" class="d-none mt-4 p-4 rounded-4 text-center"
+          style="background:#d4edda;border:1px solid #c3e6cb;" role="alert" aria-live="polite">
+          <i class="bi bi-check-circle-fill text-success fs-1 mb-3 d-block" aria-hidden="true"></i>
+          <h4 class="text-success" style="font-family:'Playfair Display',serif;">Reservation Request Received!</h4>
+          <p id="success-message" class="mb-2"></p>
+          <small class="text-muted">Ref: <strong id="booking-ref"></strong></small>
+        </div>
+      </div>
+
+      <!-- RIGHT: Info Panel -->
+      <div class="col-lg-4 offset-lg-1" data-aos="fade-left" data-aos-duration="700" data-aos-delay="150">
+        <div class="sticky-panel">
+          <h5>What to Expect</h5>
+          <div class="checklist-item">
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+            <span>Confirmation within 2 hours by email</span>
+          </div>
+          <div class="checklist-item">
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+            <span>Table held for 15 minutes after booking time</span>
+          </div>
+          <div class="checklist-item">
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+            <span>Free cancellation up to 24 hours before</span>
+          </div>
+          <div class="checklist-item">
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+            <span>Allergy info sent in confirmation email</span>
+          </div>
+          <div class="checklist-item">
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+            <span>Special occasion requests noted and actioned</span>
+          </div>
+          <hr />
+          <p class="small mb-0">
+            <strong><i class="bi bi-gift"></i> Celebrating Something Special?</strong><br>
+            Let us know in Special Requests and we'll make it unforgettable — complimentary petit fours for birthdays and anniversaries.
+          </p>
+          <hr />
+          <p class="text-center mb-0">
+            <span style="font-size:1.5rem;font-family:'Playfair Display',serif;color:#2D5016;font-weight:700;">+44 20 7123 4567</span><br>
+            <small class="text-muted">Available Mon–Sat 10am–9pm</small>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 4 — INTERACTIVE MAP
+══════════════════════════════════════════════ -->
+<section class="map-section" aria-label="Restaurant location map">
+  <div style="position:relative;">
+    <iframe
+      src="https://www.openstreetmap.org/export/embed.html?bbox=-0.0850%2C51.5145%2C-0.0650%2C51.5345&amp;layer=mapnik&amp;marker=51.5245%2C-0.0750"
+      style="width:100%;height:500px;border:0;display:block;"
+      loading="lazy"
+      title="LeafTable Restaurant Location — 42 Garden Lane, Shoreditch, London"
+      aria-label="Interactive map showing LeafTable restaurant location in Shoreditch, London">
+    </iframe>
+
+    <!-- Map Overlay Card (desktop only) -->
+    <div class="map-overlay-card d-none d-md-block" aria-hidden="true">
+      <div class="map-brand"><i class="bi bi-tree-fill"></i> LeafTable</div>
+      <p class="mb-2 small">
+        <i class="bi bi-geo-alt-fill text-terracotta me-1"></i>
+        42 Garden Lane, Shoreditch<br>London, E1 6RF
+      </p>
+      <div id="map-status" class="badge mb-3" role="status" aria-live="polite"></div>
+      <a href="https://www.google.com/maps/search/42+Garden+Lane+Shoreditch+London"
+        target="_blank" rel="noopener noreferrer"
+        class="btn btn-sm btn-terracotta rounded-pill text-white w-100"
+        aria-label="Open Google Maps directions to LeafTable">
+        Get Directions <i class="bi bi-arrow-up-right ms-1"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 5 — OPENING HOURS
+══════════════════════════════════════════════ -->
+<section class="section-green" style="padding-top:80px;padding-bottom:80px;" aria-label="Opening hours">
+  <div class="container">
+    <h2 class="text-center mb-4" style="color:var(--cream);font-size:clamp(1.75rem,3vw,2.5rem);" data-aos="fade-up">Opening Hours</h2>
+
+    <div class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+      <span id="current-status"
+        style="border-radius:50px;padding:0.5rem 1.5rem;font-weight:600;display:inline-block;transition:all 0.3s;"
+        role="status" aria-live="polite"></span>
+    </div>
+
+    <div class="mx-auto" style="max-width:800px;" data-aos="fade-up" data-aos-delay="150">
+      <div class="hours-table">
+        <table class="table table-borderless mb-0 hours-table" aria-label="Opening hours schedule">
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">Hours</th>
+              <th scope="col">Kitchen Closes</th>
+              <th scope="col">Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:var(--warm-beige);">Monday – Thursday</strong></td>
+              <td>12:00pm – 10:00pm</td>
+              <td>9:15pm</td>
+              <td><span class="badge" style="background:rgba(122,158,90,0.3);color:#a8c77a;">Booking recommended</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--warm-beige);">Friday – Saturday</strong></td>
+              <td>12:00pm – 11:00pm</td>
+              <td>10:15pm</td>
+              <td><span class="badge" style="background:rgba(196,97,42,0.35);color:#f4aa7f;">Booking essential <i class="bi bi-star-fill"></i></span></td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--warm-beige);">Sunday</strong></td>
+              <td>12:00pm – 9:00pm</td>
+              <td>8:15pm</td>
+              <td><span class="badge" style="background:rgba(122,158,90,0.3);color:#a8c77a;">Family-friendly</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--warm-beige);">Public Holidays</strong></td>
+              <td>1:00pm – 8:00pm</td>
+              <td>7:15pm</td>
+              <td><span class="badge" style="background:rgba(255,255,255,0.15);color:#ccc;">Varies — check Instagram</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-center mt-3" style="color:rgba(251,247,240,0.7);font-style:italic;font-size:0.9rem;">
+        Kitchen closes 45 minutes before restaurant closing time.
+      </p>
+
+      <div class="festive-box mt-3" data-aos="fade-up" data-aos-delay="200">
+        <i class="bi bi-tree-fill"></i> Special festive season hours apply December 20 – January 2. Follow us <strong>@leaftable</strong> for the latest updates.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 6 — GETTING HERE + FAQ
+══════════════════════════════════════════════ -->
+<section class="section-cream" style="padding-top:80px;padding-bottom:80px;" aria-label="Getting to LeafTable and frequently asked questions">
+  <div class="container">
+    <h2 class="text-center text-forest-green mb-5" style="font-size:clamp(1.75rem,3vw,2.5rem);" data-aos="fade-up">Getting Here</h2>
+
+    <div class="row g-4 mb-5">
+
+      <!-- Card 1: By Tube -->
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="transport-card">
+          <i class="bi bi-train-front-fill" style="font-size:40px;color:#C4612A;" aria-hidden="true"></i>
+          <h5>By Tube</h5>
+          <p>Shoreditch High Street Overground — 2 min walk east.<br><br>Liverpool Street (Central / Circle / Metropolitan) — 10 min walk north-west.</p>
+        </div>
+      </div>
+
+      <!-- Card 2: By Bus -->
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="transport-card">
+          <i class="bi bi-bus-front-fill" style="font-size:40px;color:#C4612A;" aria-hidden="true"></i>
+          <h5>By Bus</h5>
+          <p>Routes 8, 26 and 55 stop directly outside on Garden Lane.<br><br>Night buses N8, N26 run Fri–Sat until 4am for late dining.</p>
+        </div>
+      </div>
+
+      <!-- Card 3: By Bike -->
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="transport-card">
+          <i class="bi bi-bicycle" style="font-size:40px;color:#C4612A;" aria-hidden="true"></i>
+          <h5>By Bike</h5>
+          <p>Santander Cycle docking station 50m from the restaurant on Garden Lane. Secure cycle parking for 20 bikes at our rear entrance — just ask staff.</p>
+        </div>
+      </div>
+
+      <!-- Card 4: By Car -->
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="transport-card">
+          <i class="bi bi-car-front-fill" style="font-size:40px;color:#C4612A;" aria-hidden="true"></i>
+          <h5>By Car</h5>
+          <p>NCP Car Park, Commercial Street — 10-min walk. £4/hr. We provide a 2-hour validation stamp with any dinner booking of 2+ courses. Congestion charge zone — check TfL.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div data-aos="fade-up" data-aos-delay="100">
+      <h3 class="text-forest-green mb-4" style="font-size:clamp(1.5rem,2.5vw,2rem);">Frequently Asked Questions</h3>
+      <div class="faq-wrap">
+        <div class="accordion accordion-flush" id="faqAccordion">
+
+          <div class="accordion-item">
+            <h4 class="accordion-header" id="faq-h1">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1"
+                aria-expanded="true" aria-controls="faq1">
+                Is there parking on-site?
+              </button>
+            </h4>
+            <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faq-h1" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                We don't have dedicated on-site parking, but NCP Commercial Street is a 10-minute walk and we provide a 2-hour validation stamp with any dinner booking of two or more courses.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header" id="faq-h2">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2"
+                aria-expanded="false" aria-controls="faq2">
+                Is the restaurant wheelchair accessible?
+              </button>
+            </h4>
+            <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faq-h2" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes, fully. The entrance, all dining areas and bathrooms are step-free and wheelchair accessible. We have a dedicated accessible bay on Garden Lane (1-hour free). Please let us know when booking if you need any additional assistance and we'll ensure everything is arranged.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header" id="faq-h3">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3"
+                aria-expanded="false" aria-controls="faq3">
+                Are children welcome?
+              </button>
+            </h4>
+            <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faq-h3" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Absolutely! Children are welcome at all sittings. We have high chairs available and a dedicated children's plant-based menu (ask when booking). The Chef's Table is recommended for guests aged 12 and over due to the nature of the extended dining experience.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header" id="faq-h4">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4"
+                aria-expanded="false" aria-controls="faq4">
+                Do you welcome dogs?
+              </button>
+            </h4>
+            <div id="faq4" class="accordion-collapse collapse" aria-labelledby="faq-h4" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Well-behaved dogs are welcome in our outdoor terrace area (weather permitting, April–October). We provide a water bowl and a small plant-based dog treat on arrival. Indoor dining areas are for humans only, except certified assistance dogs.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header" id="faq-h5">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5"
+                aria-expanded="false" aria-controls="faq5">
+                What is the dress code?
+              </button>
+            </h4>
+            <div id="faq5" class="accordion-collapse collapse" aria-labelledby="faq-h5" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                We describe our dress code as 'smart casual with personality'. Jeans and trainers are absolutely fine — we just ask guests to feel comfortable and confident. The Chef's Table has a slightly elevated expectation of smart casual. No sportswear please.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer class="footer-dark py-5" aria-label="Site footer">
+  <div class="container">
+    <div class="row g-4 pb-4">
+
+      <!-- Col 1: Brand + Social -->
+      <div class="col-lg-3 col-md-6">
+        <h5 style="font-size:1.5rem;"><i class="bi bi-tree-fill"></i> LeafTable</h5>
+        <p style="color:rgba(251,247,240,0.65);font-size:0.8rem;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:1rem;">Farm to Fork, Plant to Plate</p>
+        <p>A plant-forward dining experience rooted in seasonal British produce and sustainable sourcing. Every dish tells the story of the land it came from.</p>
+        <div class="footer-social mt-3" aria-label="LeafTable social media">
+          <a href="#" aria-label="LeafTable on Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="LeafTable on X (Twitter)"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="LeafTable on Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="LeafTable on TikTok"><i class="bi bi-tiktok"></i></a>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="col-lg-3 col-md-6">
+        <h5>Quick Links</h5>
+        <ul>
+
+          <li><a href="index.html"><i class="bi bi-chevron-right me-1 text-sage"></i>Home</a></li>
+
+          <li><a href="index2.html"><i class="bi bi-chevron-right me-1 text-sage"></i>Home 2</a></li>
+
+          <li><a href="about.html"><i class="bi bi-chevron-right me-1 text-sage"></i>About Us</a></li>
+
+          <li><a href="services.html"><i class="bi bi-chevron-right me-1 text-sage"></i>Services</a></li>
+
+          <li><a href="blog.html"><i class="bi bi-chevron-right me-1 text-sage"></i>Blog</a></li>
+
+          <li><a href="contact.html"><i class="bi bi-chevron-right me-1 text-sage"></i>Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Services -->
+      <div class="col-lg-3 col-md-6">
+        <h5>Our Services</h5>
+        <ul>
+          <li><a href="service-detail.html"><i class="bi bi-chevron-right me-1 text-sage"></i>À La Carte Dining</a></li>
+          <li><a href="service-detail.html"><i class="bi bi-chevron-right me-1 text-sage"></i>Chef's Table Experience</a></li>
+          <li><a href="service-detail.html"><i class="bi bi-chevron-right me-1 text-sage"></i>Private Event Hire</a></li>
+          <li><a href="service-detail.html"><i class="bi bi-chevron-right me-1 text-sage"></i>Seasonal Tasting Menu</a></li>
+          <li><a href="service-detail.html"><i class="bi bi-chevron-right me-1 text-sage"></i>Brunch & Lunch</a></li>
+          <li><a href="service-detail.html"><i class="bi bi-chevron-right me-1 text-sage"></i>Corporate Catering</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Hours + Newsletter -->
+      <div class="col-lg-3 col-md-6">
+        <h5>Hours &amp; Newsletter</h5>
+        <ul class="mb-3">
+          <li><small><span style="color:var(--warm-beige);">Mon–Thu:</span> 12:00pm – 10:00pm</small></li>
+          <li><small><span style="color:var(--warm-beige);">Fri–Sat:</span> 12:00pm – 11:00pm</small></li>
+          <li><small><span style="color:var(--warm-beige);">Sunday:</span> 12:00pm – 9:00pm</small></li>
+        </ul>
+        <p class="mb-2" style="font-size:0.82rem;">Subscribe to our seasonal newsletter for menus, events &amp; exclusive offers:</p>
+        <form class="d-flex" aria-label="Newsletter signup" onsubmit="return false;">
+          <input type="email" class="newsletter-input flex-grow-1" placeholder="your@email.com" aria-label="Email address for newsletter" />
+          <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">
+            <i class="bi bi-send-fill"></i>
+          </button>
+        </form>
+      </div>
+
+    </div>
+    <hr class="footer-divider" />
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-3 gap-2">
+      <small style="color:rgba(251,247,240,0.5);">© 2026 LeafTable. All rights reserved. Registered in England &amp; Wales.</small>
+      <div class="d-flex gap-3">
+        <a href="#" style="color:rgba(251,247,240,0.5);font-size:0.8rem;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="color:rgba(251,247,240,0.5);font-size:0.8rem;text-decoration:none;">Terms of Use</a>
+        <a href="#" style="color:rgba(251,247,240,0.5);font-size:0.8rem;text-decoration:none;">Allergen Info</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<button id="scrollTopBtn" aria-label="Scroll back to top" title="Back to top">
+  <i class="bi bi-chevron-up"></i>
+</button>
+
+<!-- ══════════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════════ -->
+
+<!-- Bootstrap 5.3.3 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+<!-- Main JS -->
+<script src="main.js"></script>
+
+<!-- Inline Page JS -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── AOS Init ── */
+  AOS.init({ once: true, duration: 650, offset: 60 });
+
+  /* ── Dark Mode Toggle ── */
+  const html = document.documentElement;
+  const darkBtn = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('leaftable-theme') || 'light';
+  html.setAttribute('data-bs-theme', savedTheme);
+  updateDarkBtn(savedTheme);
+
+  darkBtn.addEventListener('click', function () {
+    const current = html.getAttribute('data-bs-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-bs-theme', next);
+    localStorage.setItem('leaftable-theme', next);
+    updateDarkBtn(next);
+  });
+
+  function updateDarkBtn(theme) {
+    if (theme === 'dark') {
+      darkBtn.innerHTML = '<i class="bi bi-moon-stars-fill"></i>';
+    } else {
+      darkBtn.innerHTML = '<i class="bi bi-sun-fill"></i>';
+    }
+  }
+
+  /* ── RTL Toggle ── */
+  const rtlBtn = document.getElementById('rtlToggle');
+  const savedDir = localStorage.getItem('leaftable-dir') || 'ltr';
+  html.setAttribute('dir', savedDir);
+  updateRtlBtn(savedDir);
+
+  rtlBtn.addEventListener('click', function () {
+    const current = html.getAttribute('dir');
+    const next = current === 'rtl' ? 'ltr' : 'rtl';
+    html.setAttribute('dir', next);
+    localStorage.setItem('leaftable-dir', next);
+    updateRtlBtn(next);
+  });
+
+  function updateRtlBtn(dir) {
+    rtlBtn.innerHTML = dir === 'rtl'
+      ? '<span class="rtl-text">RTL</span>'
+      : '<span class="rtl-text">RTL</span>';
+  }
+
+  /* ── Scroll To Top ── */
+  const scrollBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 400) {
+      scrollBtn.classList.add('visible');
+    } else {
+      scrollBtn.classList.remove('visible');
+    }
+  });
+  scrollBtn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ── Map Status Badge ── */
+  (function updateMapStatus() {
+    var now = new Date();
+    var gmtHour = now.getUTCHours();
+    var gmtMin = now.getUTCMinutes();
+    var totalMins = gmtHour * 60 + gmtMin;
+    var day = now.getUTCDay();
+    var closeMins;
+    if (day === 0) closeMins = 1260;
+    else if (day === 5 || day === 6) closeMins = 1380;
+    else closeMins = 1320;
+    var isOpen = totalMins >= 720 && totalMins < closeMins;
+    var el = document.getElementById('map-status');
+    if (el) {
+      if (isOpen) {
+        el.textContent = '● Currently Open';
+        el.style.background = '#28a745';
+        el.style.color = '#fff';
+        el.style.padding = '0.35rem 0.9rem';
+        el.style.borderRadius = '50px';
+      } else {
+        el.textContent = '● Closed — Opens at 12:00pm';
+        el.style.background = '#ffc107';
+        el.style.color = '#333';
+        el.style.padding = '0.35rem 0.9rem';
+        el.style.borderRadius = '50px';
+      }
+    }
+  })();
+
+  /* ── Opening Hours Status ── */
+  (function updateHoursStatus() {
+    var now = new Date();
+    var gmtHour = now.getUTCHours();
+    var gmtMin = now.getUTCMinutes();
+    var totalMins = gmtHour * 60 + gmtMin;
+    var day = now.getUTCDay();
+    var openMins = 720;
+    var closeMins;
+    if (day === 0) closeMins = 1260;
+    else if (day === 5 || day === 6) closeMins = 1380;
+    else closeMins = 1320;
+    var isOpen = totalMins >= openMins && totalMins < closeMins;
+    var statusEl = document.getElementById('current-status');
+    if (statusEl) {
+      if (isOpen) {
+        statusEl.textContent = '● Currently Open';
+        statusEl.style.background = '#d4edda';
+        statusEl.style.color = '#155724';
+      } else {
+        statusEl.textContent = '● Closed — Opens at 12:00pm';
+        statusEl.style.background = '#fff3cd';
+        statusEl.style.color = '#856404';
+      }
+    }
+  })();
+
+  /* ── Reservation Form ── */
+
+  // Set min date to today
+  var dateInput = document.getElementById('res-date');
+  if (dateInput) {
+    var today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+  }
+
+  // Live char counter
+  var textarea = document.getElementById('res-requests');
+  var countEl = document.getElementById('req-count');
+  if (textarea && countEl) {
+    textarea.addEventListener('input', function () {
+      countEl.textContent = this.value.length;
+    });
+  }
+
+  // Form submission
+  var form = document.getElementById('res-form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var valid = validateForm();
+      if (valid) {
+        submitReservation();
+      }
+    });
+  }
+
+  function getVal(id) {
+    var el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+
+  function setError(fieldId, errId, msg) {
+    var field = document.getElementById(fieldId);
+    var err = document.getElementById(errId);
+    if (field) field.classList.add('is-invalid');
+    if (err) err.textContent = msg;
+    return false;
+  }
+
+  function clearError(fieldId) {
+    var field = document.getElementById(fieldId);
+    if (field) {
+      field.classList.remove('is-invalid');
+      field.classList.add('is-valid');
+    }
+  }
+
+  function validateForm() {
+    var allValid = true;
+    var firstError = null;
+
+    // Reset
+    ['res-name', 'res-email', 'res-date', 'res-time', 'res-guests', 'res-occasion'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.classList.remove('is-invalid', 'is-valid');
+      }
+    });
+    ['err-name', 'err-email', 'err-date', 'err-time', 'err-guests', 'err-occasion'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = '';
+    });
+
+    // Name
+    var name = getVal('res-name');
+    if (name.length < 2) {
+      setError('res-name', 'err-name', 'Please enter your full name (at least 2 characters).');
+      if (!firstError) firstError = document.getElementById('res-name');
+      allValid = false;
+    } else {
+      clearError('res-name');
+    }
+
+    // Email
+    var email = getVal('res-email');
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError('res-email', 'err-email', 'Please enter a valid email address.');
+      if (!firstError) firstError = document.getElementById('res-email');
+      allValid = false;
+    } else {
+      clearError('res-email');
+    }
+
+    // Date
+    var dateVal = getVal('res-date');
+    var todayDate = new Date();
+    todayDate.setHours(0, 0, 0, 0);
+    if (!dateVal || new Date(dateVal) < todayDate) {
+      setError('res-date', 'err-date', 'Please select a valid future date.');
+      if (!firstError) firstError = document.getElementById('res-date');
+      allValid = false;
+    } else {
+      clearError('res-date');
+    }
+
+    // Time
+    var timeVal = getVal('res-time');
+    if (!timeVal) {
+      setError('res-time', 'err-time', 'Please select a preferred time.');
+      if (!firstError) firstError = document.getElementById('res-time');
+      allValid = false;
+    } else {
+      clearError('res-time');
+    }
+
+    // Guests
+    var guestsVal = getVal('res-guests');
+    if (!guestsVal) {
+      setError('res-guests', 'err-guests', 'Please select the number of guests.');
+      if (!firstError) firstError = document.getElementById('res-guests');
+      allValid = false;
+    } else {
+      clearError('res-guests');
+    }
+
+    // Occasion
+    var occasionVal = getVal('res-occasion');
+    if (!occasionVal) {
+      setError('res-occasion', 'err-occasion', 'Please select an occasion.');
+      if (!firstError) firstError = document.getElementById('res-occasion');
+      allValid = false;
+    } else {
+      clearError('res-occasion');
+    }
+
+    if (firstError) {
+      firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      firstError.focus();
+    }
+
+    return allValid;
+  }
+
+  function submitReservation() {
+    var submitBtn = document.getElementById('res-submit');
+    var btnText = document.getElementById('res-btn-text');
+    var spinner = document.getElementById('res-btn-spinner');
+
+    // Show spinner, disable button
+    if (spinner) spinner.classList.remove('d-none');
+    if (btnText) btnText.textContent = 'Processing…';
+    if (submitBtn) submitBtn.disabled = true;
+
+    var name = getVal('res-name');
+    var guests = getVal('res-guests');
+    var date = getVal('res-date');
+    var time = getVal('res-time');
+
+    // Format date nicely
+    var dateObj = new Date(date);
+    var formattedDate = dateObj.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+    setTimeout(function () {
+      // Hide form
+      var formEl = document.getElementById('res-form');
+      if (formEl) formEl.classList.add('d-none');
+
+      // Fill success message
+      var successMsg = document.getElementById('success-message');
+      if (successMsg) {
+        successMsg.textContent = 'Thank you, ' + name + '! We\'ve received your request for ' + guests + ' guest' + (parseInt(guests) > 1 ? 's' : '') + ' on ' + formattedDate + ' at ' + time + '. We\'ll confirm within 2 hours by email.';
+      }
+
+      // Fill booking reference
+      var bookingRef = document.getElementById('booking-ref');
+      if (bookingRef) {
+        bookingRef.textContent = 'LT-' + Math.floor(100000 + Math.random() * 900000);
+      }
+
+      // Show success block
+      var successBlock = document.getElementById('reservation-success');
+      if (successBlock) {
+        successBlock.classList.remove('d-none');
+        successBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 1500);
+  }
+
+})();
+</script>
+
+</body>
+</html>

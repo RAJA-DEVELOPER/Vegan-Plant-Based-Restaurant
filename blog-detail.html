@@ -1,0 +1,2125 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+<script>
+(function () {
+  var pairs = [['lt-theme', 'leaftable-theme'], ['lt-direction', 'leaftable-dir'], ['lt-dir', 'leaftable-dir']];
+  pairs.forEach(function (pair) {
+    var oldValue = localStorage.getItem(pair[0]);
+    if (oldValue !== null && localStorage.getItem(pair[1]) === null) {
+      localStorage.setItem(pair[1], oldValue);
+    }
+    localStorage.removeItem(pair[0]);
+  });
+})();
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eating with the Seasons: A Guide to Autumn Plant-Based Cooking by Chef Marco Viani — LeafTable Chef's Notes Blog">
+  <title>Eating with the Seasons: A Guide to Autumn Plant-Based Cooking | LeafTable</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+  <!-- Bootstrap Icons 1.11 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- AOS 2.3.4 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+  <style>
+    /* =============================================
+       CSS CUSTOM PROPERTIES & ROOT SETUP
+    ============================================= */
+    :root {
+      --forest-green: #2D5016;
+      --sage: #7A9E5A;
+      --cream: #FBF7F0;
+      --terracotta: #C4612A;
+      --warm-beige: #E8D5B0;
+      --bs-body-font-family: 'DM Sans', sans-serif;
+      --bs-heading-font-family: 'Playfair Display', serif;
+    }
+
+    [data-bs-theme="dark"] {
+      --bs-body-bg: #1a1a1a;
+      --bs-body-color: #e0ddd8;
+      --bs-card-bg: #2a2a2a;
+      --bs-border-color: #444;
+    }
+
+    /* =============================================
+       BASE TYPOGRAPHY
+    ============================================= */
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      color: #2a2a2a;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    h1, h2, h3, h4, h5, h6,
+    .font-playfair {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* =============================================
+       NAVBAR
+    ============================================= */
+    .navbar {
+      background-color: var(--forest-green) !important;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand .brand-leaf {
+      color: var(--sage);
+    }
+
+    .navbar-brand .brand-name {
+      font-family: 'Playfair Display', serif;
+      color: var(--cream);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .navbar-brand .brand-tagline {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--warm-beige);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-top: -4px;
+    }
+
+    .navbar .nav-link {
+      color: var(--warm-beige) !important;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
+      transition: color 0.2s ease;
+    }
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+      color: var(--sage) !important;
+    }
+
+    .navbar .nav-link.active {
+      font-weight: 600;
+    }
+
+    .navbar-toggler {
+      border-color: var(--sage);
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(122, 158, 90, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .btn-toggle-theme,
+    .btn-toggle-rtl {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--cream);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-toggle-theme:hover,
+    .btn-toggle-rtl:hover {
+      background: rgba(255,255,255,0.25);
+      color: #fff;
+    }
+
+    /* =============================================
+       SECTION 1 — ARTICLE HEADER HERO
+    ============================================= */
+    .article-hero {
+      position: relative;
+      height: 60vh;
+      min-height: 480px;
+      background-image: url('https://images.pexels.com/photos/36946663/pexels-photo-36946663.jpeg?auto=compress&cs=tinysrgb&w=1920');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.52);
+      z-index: 1;
+    }
+
+    .article-hero .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .article-hero .breadcrumb-wrap {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 3;
+    }
+
+    @media (min-width: 992px) {
+      .article-hero .breadcrumb-wrap {
+        left: calc((100% - 1140px) / 2 + 12px);
+      }
+    }
+
+    .article-hero .breadcrumb-item a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .article-hero .breadcrumb-item a:hover {
+      color: #fff;
+    }
+
+    .article-hero .breadcrumb-item.active {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.8rem;
+    }
+
+    .article-hero .breadcrumb-item + .breadcrumb-item::before {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      line-height: 1.2;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    @media (max-width: 767px) {
+      .hero-h1 {
+        font-size: 1.875rem;
+      }
+      .article-hero {
+        height: auto;
+        padding: 100px 0 60px;
+        min-height: unset;
+      }
+    }
+
+    .category-badge {
+      background-color: var(--sage);
+      color: #fff;
+      border-radius: 50px;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      color: var(--warm-beige);
+      font-size: 0.875rem;
+      margin-top: 1rem;
+    }
+
+    .hero-meta .meta-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover; object-position: 50% 20%;
+      border: 2px solid var(--warm-beige);
+    }
+
+    .hero-meta .pipe {
+      color: rgba(255,255,255,0.4);
+    }
+
+    .share-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+
+    .share-btn {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      border-radius: 50px;
+      padding: 5px 14px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .share-btn:hover {
+      background: #fff;
+      color: #1a1a1a;
+      border-color: #fff;
+    }
+
+    .copy-tooltip {
+      display: none;
+      position: absolute;
+      bottom: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--forest-green);
+      color: #fff;
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .copy-wrap {
+      position: relative;
+    }
+
+    /* =============================================
+       SECTION 2 — ARTICLE BODY + SIDEBAR
+    ============================================= */
+    .article-section {
+      background: #fff;
+      padding: 80px 0;
+    }
+
+    [data-bs-theme="dark"] .article-section {
+      background: #1e1e1e;
+    }
+
+    .article-body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      color: #2a2a2a;
+    }
+
+    [data-bs-theme="dark"] .article-body {
+      color: #d4d0c8;
+    }
+
+    /* Drop Cap */
+    .drop-cap::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 4em;
+      float: left;
+      line-height: 0.8;
+      margin: 0.1em 0.12em 0 0;
+      color: var(--terracotta);
+    }
+
+    .article-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      color: var(--forest-green);
+      margin-top: 2.5rem;
+    }
+
+    [data-bs-theme="dark"] .article-h2 {
+      color: var(--sage);
+    }
+
+    .article-blockquote {
+      border-left: 4px solid var(--terracotta);
+      padding-left: 1.5rem;
+      margin: 1.75rem 0;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.375rem;
+      color: var(--forest-green);
+      line-height: 1.6;
+    }
+
+    [data-bs-theme="dark"] .article-blockquote {
+      color: var(--warm-beige);
+    }
+
+    .article-blockquote .quote-attr {
+      font-style: normal;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: var(--terracotta);
+      margin-top: 0.5rem;
+      display: block;
+    }
+
+    /* Numbered List with terracotta circles */
+    .styled-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+    }
+
+    .styled-list li {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .styled-list .num-badge {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.875rem;
+      margin-top: 2px;
+    }
+
+    .styled-list .ingredient-name {
+      font-weight: 700;
+      color: var(--forest-green);
+    }
+
+    [data-bs-theme="dark"] .styled-list .ingredient-name {
+      color: var(--sage);
+    }
+
+    /* Callout Box */
+    .callout-box {
+      background: var(--cream);
+      border-left: 4px solid var(--sage);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    [data-bs-theme="dark"] .callout-box {
+      background: #2a2a2a;
+    }
+
+    /* Recipe Cards */
+    .recipe-card {
+      background: var(--cream);
+      border-left: 4px solid var(--sage);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    [data-bs-theme="dark"] .recipe-card {
+      background: #2a2a2a;
+    }
+
+    .recipe-card h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest-green);
+    }
+
+    [data-bs-theme="dark"] .recipe-card h3 {
+      color: var(--sage);
+    }
+
+    .recipe-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .recipe-card ul li {
+      padding: 3px 0;
+      font-size: 0.925rem;
+    }
+
+    .recipe-card ol {
+      padding-left: 1.25rem;
+    }
+
+    .recipe-card ol li {
+      margin-bottom: 0.5rem;
+      font-size: 0.925rem;
+    }
+
+    /* =============================================
+       SECTION 3 — AUTHOR BIO
+    ============================================= */
+    .author-bio-section {
+      background: var(--cream);
+      padding: 60px 0;
+    }
+
+    [data-bs-theme="dark"] .author-bio-section {
+      background: #252525;
+    }
+
+    .author-card {
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1.75rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    [data-bs-theme="dark"] .author-card {
+      background: #2d2d2d;
+    }
+
+    @media (max-width: 575px) {
+      .author-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    .author-avatar-lg {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover; object-position: 50% 20%;
+      border: 3px solid var(--terracotta);
+      flex-shrink: 0;
+    }
+
+    .author-label {
+      font-size: 11px;
+      color: var(--terracotta);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .author-name {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest-green);
+      font-size: 1.3rem;
+      margin: 2px 0 2px;
+    }
+
+    [data-bs-theme="dark"] .author-name {
+      color: var(--warm-beige);
+    }
+
+    .author-role {
+      color: var(--sage);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .author-bio-text {
+      font-size: 0.925rem;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 0.75rem;
+    }
+
+    [data-bs-theme="dark"] .author-bio-text {
+      color: #aaa;
+    }
+
+    .author-social a {
+      color: var(--terracotta);
+      font-size: 1.1rem;
+      margin-right: 12px;
+      transition: color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .author-social a:hover {
+      color: var(--forest-green);
+      transform: translateY(-2px);
+    }
+
+    [data-bs-theme="dark"] .author-social a:hover {
+      color: var(--sage);
+    }
+
+    /* Tags */
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1.5rem;
+    }
+
+    .tag-pill {
+      border: 1.5px solid var(--sage);
+      color: var(--sage);
+      border-radius: 50px;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .tag-pill:hover {
+      background: var(--sage);
+      color: #fff;
+    }
+
+    /* =============================================
+       SECTION 4 — COMMENTS
+    ============================================= */
+    .comments-section {
+      background: #fff;
+      padding: 60px 0;
+    }
+
+    [data-bs-theme="dark"] .comments-section {
+      background: #1e1e1e;
+    }
+
+    .comments-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest-green);
+      font-size: 2rem;
+      margin-bottom: 4px;
+    }
+
+    [data-bs-theme="dark"] .comments-title {
+      color: var(--warm-beige);
+    }
+
+    .comments-count {
+      color: var(--sage);
+      font-size: 0.9rem;
+      margin-bottom: 1.75rem;
+      display: block;
+    }
+
+    .comment-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid #e8e4de;
+    }
+
+    [data-bs-theme="dark"] .comment-item {
+      border-bottom-color: #3a3a3a;
+    }
+
+    .comment-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover; object-position: 50% 20%;
+      flex-shrink: 0;
+    }
+
+    .comment-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #2a2a2a;
+      margin-bottom: 1px;
+    }
+
+    [data-bs-theme="dark"] .comment-name {
+      color: #d4d0c8;
+    }
+
+    .comment-date {
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    .comment-text {
+      font-size: 0.925rem;
+      line-height: 1.65;
+      color: #444;
+      margin: 0.5rem 0 0.4rem;
+    }
+
+    [data-bs-theme="dark"] .comment-text {
+      color: #aaa;
+    }
+
+    .comment-reply {
+      font-size: 0.82rem;
+      color: var(--terracotta);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .comment-reply:hover {
+      text-decoration: underline;
+    }
+
+    .comment-form-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest-green);
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    [data-bs-theme="dark"] .comment-form-title {
+      color: var(--warm-beige);
+    }
+
+    .form-label {
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    [data-bs-theme="dark"] .form-label {
+      color: #ccc;
+    }
+
+    .form-control {
+      border-radius: 8px;
+      border: 1.5px solid #d8d4ce;
+      font-size: 0.9rem;
+      padding: 0.6rem 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(122,158,90,0.15);
+    }
+
+    .btn-terracotta {
+      background-color: var(--terracotta);
+      border-color: var(--terracotta);
+      color: #fff;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+
+    .btn-terracotta:hover {
+      background-color: #a84f22;
+      border-color: #a84f22;
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(196,97,42,0.3);
+    }
+
+    /* =============================================
+       SECTION 5 — RELATED ARTICLES
+    ============================================= */
+    .related-section {
+      background: var(--warm-beige);
+      padding: 80px 0;
+    }
+
+    [data-bs-theme="dark"] .related-section {
+      background: #252525;
+    }
+
+    .related-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest-green);
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    [data-bs-theme="dark"] .related-title {
+      color: var(--warm-beige);
+    }
+
+    .related-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+    }
+
+    [data-bs-theme="dark"] .related-card {
+      background: #2a2a2a;
+    }
+
+    .related-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.13);
+    }
+
+    .related-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .related-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .related-card-body {
+      padding: 1.25rem;
+    }
+
+    .related-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      line-height: 1.35;
+      color: #1a1a1a;
+      margin: 0.4rem 0 0.5rem;
+    }
+
+    [data-bs-theme="dark"] .related-card-title {
+      color: var(--warm-beige);
+    }
+
+    .related-card-excerpt {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    [data-bs-theme="dark"] .related-card-excerpt {
+      color: #aaa;
+    }
+
+    .badge-sage {
+      background-color: var(--sage);
+      color: #fff;
+      font-size: 0.72rem;
+      border-radius: 50px;
+      padding: 3px 10px;
+    }
+
+    .badge-terracotta {
+      background-color: var(--terracotta);
+      color: #fff;
+      font-size: 0.72rem;
+      border-radius: 50px;
+      padding: 3px 10px;
+    }
+
+    .read-more-link {
+      color: var(--terracotta);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+
+    .read-more-link:hover {
+      color: var(--forest-green);
+      text-decoration: underline;
+    }
+
+    /* =============================================
+       SECTION 6 — SIDEBAR
+    ============================================= */
+    .sidebar-sticky {
+      position: sticky;
+      top: 100px;
+    }
+
+    .sidebar-card {
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+      margin-bottom: 1.5rem;
+    }
+
+    [data-bs-theme="dark"] .sidebar-card {
+      background: #2a2a2a;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.3);
+    }
+
+    .sidebar-card-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest-green);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    [data-bs-theme="dark"] .sidebar-card-title {
+      color: var(--sage);
+    }
+
+    .sidebar-author-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover; object-position: 50% 20%;
+      border: 2px solid var(--terracotta);
+    }
+
+    .popular-post-img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .popular-post-item {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid #eee;
+      align-items: flex-start;
+    }
+
+    [data-bs-theme="dark"] .popular-post-item {
+      border-bottom-color: #3a3a3a;
+    }
+
+    .popular-post-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .popular-post-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: #2a2a2a;
+      text-decoration: none;
+    }
+
+    [data-bs-theme="dark"] .popular-post-title {
+      color: #d4d0c8;
+    }
+
+    .popular-post-title:hover {
+      color: var(--terracotta);
+    }
+
+    .popular-post-date {
+      font-size: 0.72rem;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    .newsletter-widget {
+      background: var(--forest-green);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--cream);
+    }
+
+    .newsletter-widget h6 {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .newsletter-widget p {
+      font-size: 0.82rem;
+      color: var(--warm-beige);
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-widget .form-control {
+      border-radius: 50px;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.875rem;
+    }
+
+    .social-follow-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      width: 100%;
+    }
+
+    .social-follow-btn:hover {
+      opacity: 0.88;
+      color: #fff;
+      transform: translateX(3px);
+    }
+
+    .social-follow-btn.instagram { background: linear-gradient(135deg, #e1306c, #f56040, #833ab4); }
+    .social-follow-btn.facebook { background: #1877f2; }
+    .social-follow-btn.twitter { background: #000; }
+    .social-follow-btn.tiktok { background: #111; }
+
+    .social-follow-count {
+      font-size: 0.75rem;
+      opacity: 0.85;
+    }
+
+    .category-list .list-group-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border: none;
+      border-bottom: 1px solid #eee;
+      text-decoration: none;
+      color: #333;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+      background: transparent;
+    }
+
+    [data-bs-theme="dark"] .category-list .list-group-item {
+      color: #ccc;
+      border-bottom-color: #3a3a3a;
+    }
+
+    .category-list .list-group-item:hover {
+      color: var(--terracotta);
+    }
+
+    .category-list .list-group-item:last-child {
+      border-bottom: none;
+    }
+
+    .cat-badge {
+      background: rgba(122,158,90,0.15);
+      color: var(--sage);
+      border-radius: 50px;
+      padding: 2px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .site-footer {
+      background: #1A1A1A;
+      color: var(--cream);
+      padding: 70px 0 0;
+    }
+
+    .footer-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      color: var(--cream);
+      font-weight: 700;
+    }
+
+    .footer-tagline {
+      color: var(--warm-beige);
+      font-size: 0.85rem;
+    }
+
+    .footer-brand-desc {
+      color: #aaa;
+      font-size: 0.875rem;
+      line-height: 1.65;
+      margin-top: 0.75rem;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid #444;
+      color: #aaa;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      margin-right: 6px;
+    }
+
+    .footer-social a:hover {
+      border-color: var(--sage);
+      color: var(--sage);
+      transform: translateY(-2px);
+    }
+
+    .footer-heading {
+      font-family: 'Playfair Display', serif;
+      color: var(--cream);
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--sage);
+    }
+
+    .footer-hours p {
+      color: #aaa;
+      font-size: 0.875rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-newsletter .form-control {
+      background: #2a2a2a;
+      border: 1.5px solid #444;
+      color: var(--cream);
+      border-radius: 50px 0 0 50px;
+      border-right: none;
+      padding: 0.6rem 1rem;
+      font-size: 0.875rem;
+    }
+
+    .footer-newsletter .form-control::placeholder {
+      color: #666;
+    }
+
+    .footer-newsletter .btn {
+      background: var(--terracotta);
+      border: none;
+      color: #fff;
+      border-radius: 0 50px 50px 0;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .footer-newsletter .btn:hover {
+      background: #a84f22;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #2e2e2e;
+      margin-top: 50px;
+      padding: 20px 0;
+      text-align: center;
+      color: #666;
+      font-size: 0.8rem;
+    }
+
+    .footer-bottom a {
+      color: #888;
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--sage);
+    }
+
+    /* =============================================
+       RTL SUPPORT
+    ============================================= */
+    [dir="rtl"] .breadcrumb-item + .breadcrumb-item {
+      padding-left: 0;
+      padding-right: var(--bs-breadcrumb-item-padding-x);
+    }
+
+    [dir="rtl"] .breadcrumb-item + .breadcrumb-item::before {
+      float: right;
+      padding-right: 0;
+      padding-left: var(--bs-breadcrumb-item-padding-x);
+    }
+
+    [dir="rtl"] .drop-cap::first-letter {
+      float: right;
+      margin: 0.1em 0 0 0.12em;
+    }
+
+    [dir="rtl"] .article-blockquote {
+      border-left: none;
+      border-right: 4px solid var(--terracotta);
+      padding-left: 0;
+      padding-right: 1.5rem;
+    }
+
+    [dir="rtl"] .callout-box,
+    [dir="rtl"] .recipe-card {
+      border-left: none;
+      border-right: 4px solid var(--sage);
+    }
+
+    /* =============================================
+       DARK MODE OVERRIDES
+    ============================================= */
+    [data-bs-theme="dark"] .comments-section {
+      background: #1e1e1e;
+    }
+
+    [data-bs-theme="dark"] .related-section {
+      background: #252525;
+    }
+
+    [data-bs-theme="dark"] .author-bio-section {
+      background: #252525;
+    }
+
+    [data-bs-theme="dark"] .newsletter-widget {
+      background: #0d2008;
+    }
+
+    [data-bs-theme="dark"] .footer-bottom {
+      border-top-color: #2e2e2e;
+    }
+
+    [data-bs-theme="dark"] .navbar {
+      background-color: #0d1a05 !important;
+    }
+
+    [data-bs-theme="dark"] body {
+      background-color: #1a1a1a;
+    }
+
+    /* =============================================
+       GENERAL UTILITIES
+    ============================================= */
+    ::selection {
+      background: rgba(122,158,90,0.3);
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .overflow-hidden {
+      overflow: hidden;
+    }
+
+    @media (max-width: 991px) {
+      .sidebar-sticky {
+        position: static;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+</head>
+<body>
+
+  <!-- =============================================
+       STICKY NAVBAR
+  ============================================= -->
+  <nav class="navbar navbar-expand-lg navbar-leaftable fixed-top" aria-label="Main navigation">
+  <div class="container">
+    <a class="navbar-brand navbar-brand-logo" href="index.html">
+      <i class="bi bi-tree-fill me-1" style="color:#7A9E5A;"></i>LeafTable
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-list fs-4" style="color:#2D5016;"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="index2.html">Home 2</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom active" aria-current="page" href="blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+        <button class="toggle-btn theme-toggle-btn" id="themeToggle" aria-label="Toggle dark/light mode">
+          <i class="bi bi-sun-fill" id="themeIcon"></i>
+        </button>
+        <button class="toggle-btn rtl-toggle-btn" id="rtlToggle" aria-label="Toggle RTL/LTR direction"><span class="rtl-text">RTL</span></button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <!-- =============================================
+       SECTION 1 — ARTICLE HEADER HERO
+  ============================================= -->
+  <section class="article-hero" aria-label="Article header">
+
+    <!-- Hero Content -->
+    <div class="hero-content w-100">
+      <div class="container">
+        <div class="col-xl-8 col-lg-9 mx-auto text-white text-center">
+          <span class="category-badge mb-3 d-inline-block" data-aos="fade-down">Chef's Notes</span>
+          <h1 class="hero-h1" data-aos="fade-up" data-aos-delay="100">
+            Eating with the Seasons:<br>A Guide to Autumn Plant-Based Cooking
+          </h1>
+          <div class="hero-meta justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <img src="https://images.pexels.com/photos/7832079/pexels-photo-7832079.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=faces" alt="Chef Marco Viani" class="meta-avatar">
+            <span>Chef Marco Viani</span>
+            <span class="pipe">|</span>
+            <span><i class="bi bi-calendar3 me-1"></i>November 15, 2026</span>
+            <span class="pipe">|</span>
+            <span><i class="bi bi-clock me-1"></i>8 min read</span>
+            <span class="pipe">|</span>
+            <span><i class="bi bi-chat-dots me-1"></i>24 Comments</span>
+          </div>
+          <div class="share-buttons justify-content-center" data-aos="fade-up" data-aos-delay="300">
+            <a href="https://twitter.com/intent/tweet?text=Eating%20with%20the%20Seasons%20-%20LeafTable&url=" class="share-btn" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter">
+              <i class="bi bi-twitter-x"></i> Tweet
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=" class="share-btn" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
+              <i class="bi bi-facebook"></i> Share
+            </a>
+            <a href="https://pinterest.com/pin/create/button/?url=" class="share-btn" target="_blank" rel="noopener noreferrer" aria-label="Share on Pinterest">
+              <i class="bi bi-pinterest"></i> Pin
+            </a>
+            <span class="copy-wrap">
+              <button id="copy-link-btn" class="share-btn" onclick="copyArticleLink()" aria-label="Copy link to clipboard">
+                <i class="bi bi-link-45deg"></i> Copy Link
+              </button>
+              <span class="copy-tooltip" id="copy-tooltip">Copied!</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 2 — ARTICLE BODY + SIDEBAR
+  ============================================= -->
+  <section class="article-section" aria-label="Article content">
+    <div class="container">
+      <div class="row g-5">
+
+        <!-- ARTICLE CONTENT — col-lg-8 -->
+        <div class="col-lg-8">
+          <article class="article-body" data-aos="fade-up">
+
+            <!-- Paragraph 1 — Drop Cap -->
+            <p class="drop-cap">As the days shorten and the air carries that first bite of autumn chill, the kitchen at LeafTable transforms into something altogether more warming and deeply satisfying. Gone are the abundant summer tomatoes and courgettes; in their place arrive the magnificent root vegetables, brassicas, wild mushrooms and squashes that define this most generous of seasons. At LeafTable, we don't fight the seasons — we surrender to them completely, allowing what our partner farms bring us each Thursday morning to dictate the week's creative menu.</p>
+
+            <!-- H2: Why Seasonal -->
+            <h2 class="article-h2">Why Seasonal Cooking Matters More Than Ever</h2>
+
+            <p>Seasonal cooking is not merely a culinary trend — it is the most honest relationship food can have with the environment. When an ingredient is grown in its natural season, it reaches peak nutritional density, peak flavour complexity, and requires the least energy-intensive agricultural intervention. At LeafTable, our sourcing decisions are entirely seasonal: we commit to never purchasing a vegetable out of its natural growing season, even if it means adapting our menu week by week. This requires genuine creativity and a deep knowledge of what our 24 partner farms can offer at any given moment. The result is a menu that feels alive — always changing, always surprising, always at its very best.</p>
+
+            <!-- Blockquote -->
+            <blockquote class="article-blockquote">
+              "A vegetable grown in its natural season and harvested at peak ripeness contains more nutrients, more flavour and more life than anything grown in a polytunnel in January. The earth knows what it's doing — we just have to listen."
+              <span class="quote-attr">— Chef Marco Viani, Head Chef &amp; Founder</span>
+            </blockquote>
+
+            <!-- H2: Autumn Ingredients -->
+            <h2 class="article-h2">Autumn's Star Ingredients This Season</h2>
+
+            <p>This autumn has gifted us an extraordinary harvest. Here are the five ingredients that are defining our menu right now — and how we're using them:</p>
+
+            <ol class="styled-list" aria-label="Autumn star ingredients">
+              <li>
+                <span class="num-badge" aria-hidden="true">1</span>
+                <div>
+                  <span class="ingredient-name">Heritage Cauliflower</span> — No longer a side dish. In purple, orange and romanesco forms, heritage cauliflower delivers extraordinary visual drama and natural sweetness when roasted whole. We serve ours as a main course steak — seared, blackened at the edges, magnificent.
+                </div>
+              </li>
+              <li>
+                <span class="num-badge" aria-hidden="true">2</span>
+                <div>
+                  <span class="ingredient-name">Celeriac</span> — Knobbly and unassuming outside, this root reveals a silky celery-scented interior when roasted or puréed. It forms our seasonal velouté base and pairs perfectly with truffle oil.
+                </div>
+              </li>
+              <li>
+                <span class="num-badge" aria-hidden="true">3</span>
+                <div>
+                  <span class="ingredient-name">Wild Mushrooms</span> — Sussex woodlands supply us weekly with porcini, chanterelle and oyster mushrooms. The umami depth they bring to plant-based cooking is completely unmatched by anything else in the larder.
+                </div>
+              </li>
+              <li>
+                <span class="num-badge" aria-hidden="true">4</span>
+                <div>
+                  <span class="ingredient-name">Butternut Squash</span> — Sweet, abundant and deeply versatile. We roast the flesh for risotto, toast the seeds for salad garnish, and dehydrate the skin as a savoury crisp topping.
+                </div>
+              </li>
+              <li>
+                <span class="num-badge" aria-hidden="true">5</span>
+                <div>
+                  <span class="ingredient-name">Purple Kale</span> — Grown on our rooftop garden above the restaurant, purple kale is at its sweetest after the first frost. Massaged with lemon oil, it becomes the finest salad leaf of the season.
+                </div>
+              </li>
+            </ol>
+
+            <!-- Mid-article wide image -->
+            <img src="https://images.pexels.com/photos/13574407/pexels-photo-13574407.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Seasonal plant-based bowl with autumn vegetables, root vegetables and herbs" class="img-fluid rounded-3 my-4" loading="lazy">
+
+            <!-- Callout Box -->
+            <div class="callout-box">
+              <strong><i class="bi bi-tree-fill"></i> Pro Tip from Chef Marco:</strong> "Always taste your vegetables raw first — this tells you everything you need to know about how to treat them in the kitchen. A sweet parsnip wants very little done to it; a bitter radicchio needs balancing. Listen to the ingredient."
+            </div>
+
+            <!-- H2: Recipes -->
+            <h2 class="article-h2">Three Recipes to Try at Home This Weekend</h2>
+
+            <p>These are home-cook adaptations of dishes from our current menu — simplified for your kitchen without sacrificing any of the flavour or soul. Each serves four people.</p>
+
+            <!-- Recipe Card 1 -->
+            <div class="recipe-card" aria-label="Recipe: Butternut Squash and Sage Risotto">
+              <h3 class="h5"><i class="bi bi-cup-hot"></i> Butternut Squash &amp; Sage Risotto</h3>
+              <div class="d-flex flex-wrap gap-3 small text-muted mb-3">
+                <span>⏱ Prep: 15 min</span>
+                <span><i class="bi bi-fire"></i> Cook: 35 min</span>
+                <span><i class="bi bi-people-fill"></i> Serves: 4</span>
+              </div>
+              <strong>Ingredients:</strong>
+              <ul>
+                <li><i class="bi bi-tree-fill"></i> 1 large butternut squash, peeled and diced</li>
+                <li><i class="bi bi-tree-fill"></i> 300g arborio rice</li>
+                <li><i class="bi bi-tree-fill"></i> 1.2L hot vegetable stock</li>
+                <li><i class="bi bi-tree-fill"></i> 1 large white onion, finely diced</li>
+                <li><i class="bi bi-tree-fill"></i> 4 garlic cloves, minced</li>
+                <li><i class="bi bi-tree-fill"></i> 100ml dry white wine (or extra stock)</li>
+                <li><i class="bi bi-tree-fill"></i> 2 tbsp nutritional yeast</li>
+                <li><i class="bi bi-tree-fill"></i> Fresh sage leaves, 2 tbsp olive oil, salt, white pepper</li>
+              </ul>
+              <strong>Method:</strong>
+              <ol>
+                <li>Roast squash at 200°C for 25 minutes until golden. Reserve half as chunks; purée the rest with a splash of stock until silky.</li>
+                <li>Sauté onion and garlic in olive oil over medium heat for 8 minutes. Add rice, toast 2 minutes, deglaze with wine.</li>
+                <li>Add hot stock ladle by ladle, stirring constantly, until each addition is absorbed — about 22 minutes total. Fold in squash purée, roasted chunks, nutritional yeast and seasoning. Fry sage in hot oil until crisp and serve immediately on top.</li>
+              </ol>
+            </div>
+
+            <!-- Recipe Card 2 -->
+            <div class="recipe-card" aria-label="Recipe: Roasted Root Vegetable Tray Bake">
+              <h3 class="h5"><i class="bi bi-basket"></i> Roasted Root Vegetable Tray Bake with Tahini Dressing</h3>
+              <div class="d-flex flex-wrap gap-3 small text-muted mb-3">
+                <span>⏱ Prep: 10 min</span>
+                <span><i class="bi bi-fire"></i> Cook: 40 min</span>
+                <span><i class="bi bi-people-fill"></i> Serves: 4</span>
+              </div>
+              <strong>Ingredients:</strong>
+              <ul>
+                <li><i class="bi bi-tree-fill"></i> 2 large carrots, 2 parsnips, 1 small celeriac, 1 red onion, 200g beetroot (all diced 2cm)</li>
+                <li><i class="bi bi-tree-fill"></i> 3 tbsp olive oil, 2 tsp cumin, 1 tsp smoked paprika, 1 tsp ground coriander, salt and pepper</li>
+                <li><i class="bi bi-tree-fill"></i> <strong>Dressing:</strong> 3 tbsp tahini, 1 lemon juiced, 1 garlic clove grated, 4–6 tbsp cold water, pinch of salt</li>
+              </ul>
+              <strong>Method:</strong>
+              <ol>
+                <li>Toss all veg in oil and spices. Roast at 200°C for 40 mins, turning once halfway through.</li>
+                <li>Whisk tahini, lemon, garlic and water together until pourable and smooth.</li>
+                <li>Serve roasted veg on a bed of peppery rocket, with tahini dressing drizzled generously over the top.</li>
+              </ol>
+            </div>
+
+            <!-- Recipe Card 3 -->
+            <div class="recipe-card" aria-label="Recipe: Apple and Cinnamon Overnight Oats">
+              <h3 class="h5"><i class="bi bi-moon-fill"></i> Apple &amp; Cinnamon Overnight Oats</h3>
+              <div class="d-flex flex-wrap gap-3 small text-muted mb-3">
+                <span>⏱ Prep: 5 min</span>
+                <span><i class="bi bi-moon-fill"></i> Overnight</span>
+                <span><i class="bi bi-people-fill"></i> Serves: 2</span>
+              </div>
+              <strong>Ingredients:</strong>
+              <ul>
+                <li><i class="bi bi-tree-fill"></i> 160g rolled oats</li>
+                <li><i class="bi bi-tree-fill"></i> 400ml oat milk</li>
+                <li><i class="bi bi-tree-fill"></i> 2 tbsp chia seeds</li>
+                <li><i class="bi bi-tree-fill"></i> 1 tsp ground cinnamon</li>
+                <li><i class="bi bi-tree-fill"></i> 2 tbsp maple syrup</li>
+                <li><i class="bi bi-tree-fill"></i> 2 eating apples</li>
+              </ul>
+              <strong>Method:</strong>
+              <ol>
+                <li>Mix oats, milk, chia, cinnamon and maple syrup in a jar or container. Stir well to combine.</li>
+                <li>Cover and refrigerate overnight (minimum 6 hours).</li>
+                <li>In the morning, top with grated apple, a sprinkle of cinnamon, and toasted pecans if you have them.</li>
+              </ol>
+            </div>
+
+            <!-- Closing Paragraph -->
+            <p>Seasonal cooking is ultimately an act of trust — trust in nature's intelligence, trust in our farmers, and trust in the idea that the best ingredient is the one that grew when and where it was meant to. At LeafTable, every dish we serve is an expression of that trust. We hope these recipes bring a little of that philosophy into your own kitchen this autumn. If you make any of these dishes at home, we'd genuinely love to see them — tag us @leaftable on Instagram and we'll share our favourites. Until next time, eat well, eat seasonally, and eat with joy.</p>
+
+          </article>
+
+          <!-- =============================================
+               SECTION 3 — AUTHOR BIO
+          ============================================= -->
+          <section class="author-bio-section mt-5 rounded-4 p-4" aria-label="About the author" data-aos="fade-up">
+            <div class="author-card">
+              <img src="https://images.pexels.com/photos/7832079/pexels-photo-7832079.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop&crop=faces" alt="Chef Marco Viani, Head Chef at LeafTable" class="author-avatar-lg">
+              <div class="flex-grow-1">
+                <span class="author-label">About the Author</span>
+                <h4 class="author-name">Chef Marco Viani</h4>
+                <p class="author-role">Head Chef &amp; Culinary Director, LeafTable</p>
+                <p class="author-bio-text">Chef Marco trained at Le Cordon Bleu Paris before working in Michelin-starred kitchens across London and Florence. In 2018 he co-founded LeafTable with a mission to prove that plant-based cooking could be as emotionally resonant and technically accomplished as any other fine-dining tradition. He forages personally every Thursday with our Sussex woodland partner and believes every plant has a story worth telling on a plate.</p>
+                <div class="author-social">
+                  <a href="#" aria-label="Chef Marco on Twitter/X"><i class="bi bi-twitter-x"></i></a>
+                  <a href="#" aria-label="Chef Marco on Instagram"><i class="bi bi-instagram"></i></a>
+                  <a href="#" aria-label="Chef Marco on LinkedIn"><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Article Tags -->
+            <div class="article-tags" aria-label="Article tags">
+              <a href="blog.html" class="tag-pill">Seasonal Cooking</a>
+              <a href="blog.html" class="tag-pill">Autumn</a>
+              <a href="blog.html" class="tag-pill">Plant-Based</a>
+              <a href="blog.html" class="tag-pill">Recipes</a>
+              <a href="blog.html" class="tag-pill">Chef's Notes</a>
+              <a href="blog.html" class="tag-pill">Vegan Cooking</a>
+              <a href="blog.html" class="tag-pill">Zero Waste</a>
+              <a href="blog.html" class="tag-pill">Farm-to-Fork</a>
+              <a href="blog.html" class="tag-pill">Mushrooms</a>
+              <a href="blog.html" class="tag-pill">Root Vegetables</a>
+            </div>
+          </section>
+
+          <!-- =============================================
+               SECTION 4 — COMMENTS
+          ============================================= -->
+          <section class="comments-section mt-5 rounded-4 p-4" aria-label="Comments section" data-aos="fade-up">
+            <h2 class="comments-title">Join the Conversation</h2>
+            <span class="comments-count"><i class="bi bi-chat-square-dots me-1"></i>3 Comments</span>
+
+            <!-- Comment 1 -->
+            <div class="comment-item" data-aos="fade-up" data-aos-delay="50">
+              <img src="https://images.pexels.com/photos/3791554/pexels-photo-3791554.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=faces" alt="Sarah M." class="comment-avatar">
+              <div class="flex-grow-1">
+                <div class="d-flex justify-content-between align-items-start flex-wrap gap-1">
+                  <span class="comment-name">Sarah M.</span>
+                  <span class="comment-date"><i class="bi bi-clock me-1"></i>Nov 16, 2026</span>
+                </div>
+                <p class="comment-text">This is exactly the seasonal thinking I try to apply at home! The butternut squash risotto is now on my meal plan for Sunday. I love using nutritional yeast instead of cheese — it gives real umami depth without any dairy. Quick question: could I substitute pearl barley for arborio for a more wholesome version?</p>
+                <a href="#comment-form" class="comment-reply" aria-label="Reply to Sarah M."><i class="bi bi-reply me-1"></i>Reply</a>
+              </div>
+            </div>
+
+            <!-- Comment 2 -->
+            <div class="comment-item" data-aos="fade-up" data-aos-delay="100">
+              <img src="https://images.pexels.com/photos/36511054/pexels-photo-36511054.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=faces" alt="James K." class="comment-avatar">
+              <div class="flex-grow-1">
+                <div class="d-flex justify-content-between align-items-start flex-wrap gap-1">
+                  <span class="comment-name">James K.</span>
+                  <span class="comment-date"><i class="bi bi-clock me-1"></i>Nov 17, 2026</span>
+                </div>
+                <p class="comment-text">I visited LeafTable for the first time after reading this post and ordered the heritage cauliflower main. Genuinely one of the best things I've ever eaten — and I say that as someone who was extremely sceptical about vegan fine dining. The hazelnut romesco was revelatory. Thank you for changing my mind Chef Marco.</p>
+                <a href="#comment-form" class="comment-reply" aria-label="Reply to James K."><i class="bi bi-reply me-1"></i>Reply</a>
+              </div>
+            </div>
+
+            <!-- Comment 3 -->
+            <div class="comment-item" data-aos="fade-up" data-aos-delay="150">
+              <img src="https://images.pexels.com/photos/1586335/pexels-photo-1586335.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=faces" alt="Priya S." class="comment-avatar">
+              <div class="flex-grow-1">
+                <div class="d-flex justify-content-between align-items-start flex-wrap gap-1">
+                  <span class="comment-name">Priya S.</span>
+                  <span class="comment-date"><i class="bi bi-clock me-1"></i>Nov 18, 2026</span>
+                </div>
+                <p class="comment-text">The overnight oats have become my weekday staple — I added a tablespoon of almond butter and it's perfect. Would love more breakfast content on the blog! The tip about purple kale being sweeter after the first frost was something I genuinely didn't know. This journal is teaching me so much.</p>
+                <a href="#comment-form" class="comment-reply" aria-label="Reply to Priya S."><i class="bi bi-reply me-1"></i>Reply</a>
+              </div>
+            </div>
+
+            <!-- Comment Form -->
+            <div class="mt-5" data-aos="fade-up">
+              <h3 class="comment-form-title">Leave a Comment</h3>
+              <form id="comment-form" novalidate aria-label="Leave a comment form">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="comment-name" class="form-label">Full Name *</label>
+                    <input type="text" id="comment-name" class="form-control" placeholder="Your name" required aria-required="true">
+                    <div class="invalid-feedback">Please enter your name.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="comment-email" class="form-label">Email * <small class="text-muted">(never published)</small></label>
+                    <input type="email" id="comment-email" class="form-control" placeholder="your@email.com" required aria-required="true">
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                  </div>
+                  <div class="col-12">
+                    <label for="comment-text" class="form-label">
+                      Comment * <span id="char-count" class="text-muted small" aria-live="polite">0 / 300 characters</span>
+                    </label>
+                    <textarea id="comment-text" class="form-control" rows="5" maxlength="300" placeholder="Share your thoughts, questions or cooking results…" required aria-required="true" aria-describedby="char-count"></textarea>
+                    <div class="invalid-feedback">Please write a comment (max 300 characters).</div>
+                  </div>
+                  <!-- Honeypot -->
+                  <input type="text" name="website" style="display:none;position:absolute;" tabindex="-1" autocomplete="off" aria-hidden="true">
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-terracotta rounded-pill px-5 py-2" aria-label="Submit your comment">
+                      Post Comment <i class="bi bi-send ms-2"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <div id="comment-success" class="alert alert-success mt-3 d-none" role="alert" aria-live="assertive">
+                <i class="bi bi-check-circle-fill me-2"></i>Thank you! Your comment is awaiting moderation and will appear shortly.
+              </div>
+            </div>
+          </section>
+        </div><!-- end col-lg-8 -->
+
+        <!-- =============================================
+             SECTION 6 — SIDEBAR (col-lg-4)
+        ============================================= -->
+        <div class="col-lg-4">
+          <aside class="sidebar-sticky" aria-label="Blog sidebar">
+
+            <!-- Widget 1: About Author -->
+            <div class="sidebar-card text-center" data-aos="fade-left" data-aos-delay="100">
+              <img src="https://images.pexels.com/photos/7832079/pexels-photo-7832079.jpeg?auto=compress&cs=tinysrgb&w=160&h=160&fit=crop&crop=faces" alt="Chef Marco Viani" class="sidebar-author-avatar mb-3">
+              <h5 class="font-playfair" style="color:var(--forest-green);font-size:1.1rem;">Chef Marco Viani</h5>
+              <p class="small mb-1" style="color:var(--sage);">Head Chef &amp; Culinary Director</p>
+              <p class="small text-muted mb-3">Plant-based culinary artist since 2018</p>
+              <a href="#" class="btn btn-sm btn-outline-terracotta rounded-pill w-100" style="border-color:var(--terracotta);color:var(--terracotta);" aria-label="Follow Chef Marco on Instagram">
+                <i class="bi bi-instagram me-1"></i> Follow on Instagram
+              </a>
+            </div>
+
+            <!-- Widget 2: Popular Posts -->
+            <div class="sidebar-card" data-aos="fade-left" data-aos-delay="150">
+              <h6 class="sidebar-card-title">Popular Posts</h6>
+              <div class="popular-post-item">
+                <img src="https://images.pexels.com/photos/36143709/pexels-photo-36143709.jpeg?auto=compress&cs=tinysrgb&w=120" alt="A vibrant autumn grain bowl" class="popular-post-img">
+                <div>
+                  <a href="blog-detail.html" class="popular-post-title">The Art of the Grain Bowl: Autumn Edition</a>
+                  <p class="popular-post-date"><i class="bi bi-calendar3 me-1"></i>Nov 2, 2026</p>
+                </div>
+              </div>
+              <div class="popular-post-item">
+                <img src="https://images.pexels.com/photos/30637886/pexels-photo-30637886.jpeg?auto=compress&cs=tinysrgb&w=120" alt="Fermented vegetables in jars" class="popular-post-img">
+                <div>
+                  <a href="blog-detail.html" class="popular-post-title">Fermentation at Home: A Beginner's Guide</a>
+                  <p class="popular-post-date"><i class="bi bi-calendar3 me-1"></i>Oct 20, 2026</p>
+                </div>
+              </div>
+              <div class="popular-post-item">
+                <img src="https://images.pexels.com/photos/13729780/pexels-photo-13729780.jpeg?auto=compress&cs=tinysrgb&w=120" alt="Beautiful vegan cheese board" class="popular-post-img">
+                <div>
+                  <a href="blog-detail.html" class="popular-post-title">The Ultimate Vegan Cheese Board Guide</a>
+                  <p class="popular-post-date"><i class="bi bi-calendar3 me-1"></i>Oct 10, 2026</p>
+                </div>
+              </div>
+              <div class="popular-post-item">
+                <img src="https://images.pexels.com/photos/3034427/pexels-photo-3034427.jpeg?auto=compress&cs=tinysrgb&w=120" alt="Colourful smoothie bowls" class="popular-post-img">
+                <div>
+                  <a href="blog-detail.html" class="popular-post-title">5 Smoothie Bowl Bases That Actually Satisfy</a>
+                  <p class="popular-post-date"><i class="bi bi-calendar3 me-1"></i>Sep 28, 2026</p>
+                </div>
+              </div>
+              <div class="popular-post-item">
+                <img src="https://images.pexels.com/photos/35695377/pexels-photo-35695377.jpeg?auto=compress&cs=tinysrgb&w=120" alt="A warming vegan stew" class="popular-post-img">
+                <div>
+                  <a href="blog-detail.html" class="popular-post-title">Slow Cooker Plant-Based Stews for Autumn</a>
+                  <p class="popular-post-date"><i class="bi bi-calendar3 me-1"></i>Sep 14, 2026</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Widget 3: Newsletter -->
+            <div class="newsletter-widget" data-aos="fade-left" data-aos-delay="200">
+              <h6><i class="bi bi-tree-fill"></i> Weekly Plant-Based Inspiration</h6>
+              <p>Get recipes, nutrition tips and restaurant news straight to your inbox.</p>
+              <form onsubmit="handleNewsletterSidebar(event)" aria-label="Newsletter subscription">
+                <input type="email" class="form-control mb-2" placeholder="your@email.com" aria-label="Email for newsletter" required>
+                <button type="submit" class="btn btn-terracotta w-100 rounded-pill fw-semibold">
+                  Subscribe <i class="bi bi-arrow-right ms-1"></i>
+                </button>
+              </form>
+            </div>
+
+            <!-- Widget 4: Follow Us -->
+            <div class="sidebar-card" data-aos="fade-left" data-aos-delay="250">
+              <h6 class="sidebar-card-title">Follow LeafTable</h6>
+              <a href="#" class="social-follow-btn instagram" aria-label="Follow LeafTable on Instagram">
+                <span><i class="bi bi-instagram me-2"></i>Instagram</span>
+                <span class="social-follow-count">12.4K followers</span>
+              </a>
+              <a href="#" class="social-follow-btn facebook" aria-label="Follow LeafTable on Facebook">
+                <span><i class="bi bi-facebook me-2"></i>Facebook</span>
+                <span class="social-follow-count">8.1K followers</span>
+              </a>
+              <a href="#" class="social-follow-btn twitter" aria-label="Follow LeafTable on Twitter/X">
+                <span><i class="bi bi-twitter-x me-2"></i>Twitter / X</span>
+                <span class="social-follow-count">5.6K followers</span>
+              </a>
+              <a href="#" class="social-follow-btn tiktok" aria-label="Follow LeafTable on TikTok">
+                <span><i class="bi bi-tiktok me-2"></i>TikTok</span>
+                <span class="social-follow-count">18.2K followers</span>
+              </a>
+            </div>
+
+            <!-- Widget 5: Categories -->
+            <div class="sidebar-card" data-aos="fade-left" data-aos-delay="300">
+              <h6 class="sidebar-card-title">Browse by Category</h6>
+              <ul class="category-list list-group list-group-flush" aria-label="Blog categories">
+                <li>
+                  <a href="blog.html" class="list-group-item" aria-label="Recipes category, 12 posts">
+                    <span>Recipes</span>
+                    <span class="cat-badge">12</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="blog.html" class="list-group-item" aria-label="Nutrition category, 8 posts">
+                    <span>Nutrition</span>
+                    <span class="cat-badge">8</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="blog.html" class="list-group-item" aria-label="Sustainability category, 10 posts">
+                    <span>Sustainability</span>
+                    <span class="cat-badge">10</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="blog.html" class="list-group-item" aria-label="Chef's Notes category, 5 posts">
+                    <span>Chef's Notes</span>
+                    <span class="cat-badge">5</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="blog.html" class="list-group-item" aria-label="Events category, 3 posts">
+                    <span>Events</span>
+                    <span class="cat-badge">3</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </aside>
+        </div><!-- end col-lg-4 sidebar -->
+
+      </div><!-- end row -->
+    </div><!-- end container -->
+  </section>
+
+  <!-- =============================================
+       SECTION 5 — RELATED ARTICLES
+  ============================================= -->
+  <section class="related-section" aria-label="Related articles">
+    <div class="container">
+      <h2 class="related-title" data-aos="fade-up">You Might Also Enjoy</h2>
+      <div class="row g-4">
+
+        <!-- Related Card 1 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <article class="related-card">
+            <div class="overflow-hidden">
+              <img src="https://images.pexels.com/photos/11287582/pexels-photo-11287582.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Rich raw chocolate mousse in elegant glasses with cacao powder dusting" loading="lazy">
+            </div>
+            <div class="related-card-body">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="badge-sage">Recipes</span>
+                <span class="small text-muted">Oct 28, 2026</span>
+              </div>
+              <h3 class="related-card-title">Raw Chocolate Mousse in 5 Minutes</h3>
+              <p class="related-card-excerpt">Five ingredients, one blender, five minutes. This raw cacao and avocado mousse is so rich three guests insisted it contained dairy. It doesn't.</p>
+              <div class="d-flex align-items-center justify-content-between mt-3">
+                <span class="small text-muted"><i class="bi bi-person me-1"></i>Amir Patel</span>
+                <a href="blog-detail.html" class="read-more-link" aria-label="Read more: Raw Chocolate Mousse in 5 Minutes">Read More →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Related Card 2 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <article class="related-card">
+            <div class="overflow-hidden">
+              <img src="https://images.pexels.com/photos/37283271/pexels-photo-37283271.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Vibrant green smoothie with chia seeds and tropical fruits" loading="lazy">
+            </div>
+            <div class="related-card-body">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="badge-terracotta">Nutrition</span>
+                <span class="small text-muted">Nov 10, 2026</span>
+              </div>
+              <h3 class="related-card-title">10 High-Protein Vegan Breakfasts You'll Actually Love</h3>
+              <p class="related-card-excerpt">Protein is the question every plant-based eater gets asked. Breakfast is the perfect place to answer it — from hemp seed porridge to tempeh scrambles.</p>
+              <div class="d-flex align-items-center justify-content-between mt-3">
+                <span class="small text-muted"><i class="bi bi-person me-1"></i>Lena Brooks</span>
+                <a href="blog-detail.html" class="read-more-link" aria-label="Read more: 10 High-Protein Vegan Breakfasts">Read More →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Related Card 3 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <article class="related-card">
+            <div class="overflow-hidden">
+              <img src="https://images.pexels.com/photos/12968279/pexels-photo-12968279.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Velvety roasted pumpkin soup with sage and cashew cream drizzle" loading="lazy">
+            </div>
+            <div class="related-card-body">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <span class="badge-sage">Recipes</span>
+                <span class="small text-muted">Oct 5, 2026</span>
+              </div>
+              <h3 class="related-card-title">Autumn Pumpkin Soup with Sage &amp; Cashew Cream</h3>
+              <p class="related-card-excerpt">The soup our dining room team request every year the moment September arrives. Velvety roasted pumpkin with warming spices and house-made cashew cream.</p>
+              <div class="d-flex align-items-center justify-content-between mt-3">
+                <span class="small text-muted"><i class="bi bi-person me-1"></i>Amir Patel</span>
+                <a href="blog-detail.html" class="read-more-link" aria-label="Read more: Autumn Pumpkin Soup">Read More →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="container">
+      <div class="row g-5">
+
+        <!-- Col 1: Brand + Social -->
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-brand-name mb-1"><i class="bi bi-tree-fill"></i> LeafTable</div>
+          <div class="footer-tagline mb-3">Farm to Fork, Plant to Plate</div>
+          <p class="footer-brand-desc">We are a plant-based fine-dining restaurant committed to seasonal, sustainable, and deeply flavourful cooking. Every dish is a conversation between chef, farmer, and earth.</p>
+          <div class="footer-social mt-4" aria-label="Social media links">
+            <a href="#" aria-label="LeafTable on Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="LeafTable on Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="LeafTable on Twitter/X"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="LeafTable on TikTok"><i class="bi bi-tiktok"></i></a>
+            <a href="#" aria-label="LeafTable on YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="col-lg-3 col-md-6">
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+
+            <li><a href="index.html"><i class="bi bi-chevron-right me-1"></i>Home</a></li>
+
+            <li><a href="index2.html"><i class="bi bi-chevron-right me-1"></i>Home 2</a></li>
+
+            <li><a href="about.html"><i class="bi bi-chevron-right me-1"></i>About Us</a></li>
+
+            <li><a href="services.html"><i class="bi bi-chevron-right me-1"></i>Services</a></li>
+
+            <li><a href="blog.html"><i class="bi bi-chevron-right me-1"></i>Blog</a></li>
+
+            <li><a href="contact.html"><i class="bi bi-chevron-right me-1"></i>Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Services -->
+        <div class="col-lg-3 col-md-6">
+          <h3 class="footer-heading">Our Services</h3>
+          <ul class="footer-links">
+            <li><a href="service-detail.html"><i class="bi bi-chevron-right me-1"></i>Fine Dining Experience</a></li>
+            <li><a href="service-detail.html"><i class="bi bi-chevron-right me-1"></i>Private Chef Events</a></li>
+            <li><a href="service-detail.html"><i class="bi bi-chevron-right me-1"></i>Cookery Classes</a></li>
+            <li><a href="service-detail.html"><i class="bi bi-chevron-right me-1"></i>Farm-to-Table Boxes</a></li>
+            <li><a href="service-detail.html"><i class="bi bi-chevron-right me-1"></i>Catering &amp; Events</a></li>
+            <li><a href="service-detail.html"><i class="bi bi-chevron-right me-1"></i>Corporate Wellness</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Hours + Newsletter -->
+        <div class="col-lg-3 col-md-6">
+          <h3 class="footer-heading">Opening Hours</h3>
+          <div class="footer-hours">
+            <p><strong style="color:var(--warm-beige);">Tuesday – Friday</strong><br>12:00 – 14:30 | 18:00 – 22:00</p>
+            <p><strong style="color:var(--warm-beige);">Saturday – Sunday</strong><br>11:00 – 15:00 | 18:00 – 23:00</p>
+            <p><strong style="color:var(--terracotta);">Monday: Closed</strong></p>
+          </div>
+          <h3 class="footer-heading mt-4">Newsletter</h3>
+          <form class="footer-newsletter d-flex" onsubmit="handleFooterNewsletter(event)" aria-label="Footer newsletter subscription">
+            <input type="email" class="form-control" placeholder="Your email…" aria-label="Email for newsletter" required>
+            <button type="submit" aria-label="Subscribe to newsletter">Go</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 LeafTable. All rights reserved.</span>
+        &nbsp;·&nbsp;
+        <a href="#">Privacy Policy</a>
+        &nbsp;·&nbsp;
+        <a href="#">Terms of Use</a>
+        &nbsp;·&nbsp;
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Inline Page JS -->
+  <script>
+    // =============================================
+    // AOS INIT
+    // =============================================
+    AOS.init({
+      duration: 700,
+      easing: 'ease-out-quad',
+      once: true,
+      offset: 60
+    });
+
+    // =============================================
+    // DARK / LIGHT MODE TOGGLE
+    // =============================================
+    const htmlEl = document.documentElement;
+    const themeToggleDesktop = document.getElementById('themeToggle');
+    const themeToggleMobile  = null;
+
+    function applyTheme(mode) {
+      htmlEl.setAttribute('data-bs-theme', mode);
+      localStorage.setItem('leaftable-theme', mode);
+      const icon = mode === 'dark' ? '<i class="bi bi-moon-stars-fill"></i>' : '<i class="bi bi-sun-fill"></i>';
+      const iconMobile = icon;
+      if (themeToggleDesktop) themeToggleDesktop.innerHTML = icon;
+      if (themeToggleMobile)  themeToggleMobile.innerHTML  = iconMobile;
+    }
+
+    function toggleTheme() {
+      const current = htmlEl.getAttribute('data-bs-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    }
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('leaftable-theme') || 'light';
+    applyTheme(savedTheme);
+
+    if (themeToggleDesktop) themeToggleDesktop.addEventListener('click', toggleTheme);
+    if (themeToggleMobile)  themeToggleMobile.addEventListener('click', toggleTheme);
+
+    // =============================================
+    // RTL TOGGLE
+    // =============================================
+    const rtlToggle = document.getElementById('rtlToggle');
+    let isRTL = false;
+
+    if (rtlToggle) {
+      rtlToggle.addEventListener('click', function () {
+        isRTL = !isRTL;
+        document.body.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+        htmlEl.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+        rtlToggle.innerHTML = '<span class="rtl-text">RTL</span>';
+      });
+    }
+
+    // =============================================
+    // COPY LINK BUTTON
+    // =============================================
+    function copyArticleLink() {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(function () {
+        const tooltip = document.getElementById('copy-tooltip');
+        if (tooltip) {
+          tooltip.style.display = 'block';
+          setTimeout(function () {
+            tooltip.style.display = 'none';
+          }, 2000);
+        }
+      }).catch(function () {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try { document.execCommand('copy'); } catch(e) {}
+        document.body.removeChild(textArea);
+        const tooltip = document.getElementById('copy-tooltip');
+        if (tooltip) {
+          tooltip.style.display = 'block';
+          setTimeout(function () { tooltip.style.display = 'none'; }, 2000);
+        }
+      });
+    }
+
+    // =============================================
+    // COMMENT CHARACTER COUNTER
+    // =============================================
+    const commentText  = document.getElementById('comment-text');
+    const charCountEl  = document.getElementById('char-count');
+
+    if (commentText && charCountEl) {
+      commentText.addEventListener('input', function () {
+        const len = this.value.length;
+        charCountEl.textContent = len + ' / 300 characters';
+        charCountEl.style.color = len >= 280 ? '#C4612A' : '';
+      });
+    }
+
+    // =============================================
+    // COMMENT FORM SUBMISSION
+    // =============================================
+    const commentForm    = document.getElementById('comment-form');
+    const commentSuccess = document.getElementById('comment-success');
+
+    if (commentForm) {
+      commentForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        // Check honeypot
+        const honeypot = commentForm.querySelector('input[name="website"]');
+        if (honeypot && honeypot.value !== '') return;
+
+        // Simple validation
+        const name    = document.getElementById('comment-name');
+        const email   = document.getElementById('comment-email');
+        const comment = commentText;
+        let valid = true;
+
+        [name, email, comment].forEach(function (field) {
+          if (!field.value.trim()) {
+            field.classList.add('is-invalid');
+            valid = false;
+          } else {
+            field.classList.remove('is-invalid');
+            field.classList.add('is-valid');
+          }
+        });
+
+        // Email format check
+        if (email && email.value.trim()) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email.value.trim())) {
+            email.classList.add('is-invalid');
+            email.classList.remove('is-valid');
+            valid = false;
+          }
+        }
+
+        if (valid) {
+          commentForm.reset();
+          if (charCountEl) charCountEl.textContent = '0 / 300 characters';
+          [name, email, comment].forEach(function (field) {
+            field.classList.remove('is-valid', 'is-invalid');
+          });
+          if (commentSuccess) {
+            commentSuccess.classList.remove('d-none');
+            commentSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            setTimeout(function () {
+              commentSuccess.classList.add('d-none');
+            }, 6000);
+          }
+        }
+      });
+    }
+
+    // =============================================
+    // NEWSLETTER SIDEBAR HANDLER
+    // =============================================
+    function handleNewsletterSidebar(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn  = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Subscribed!';
+        btn.disabled = true;
+        setTimeout(function () {
+          btn.textContent = 'Subscribe';
+          btn.disabled = false;
+          form.reset();
+        }, 3500);
+      }
+    }
+
+    // =============================================
+    // FOOTER NEWSLETTER HANDLER
+    // =============================================
+    function handleFooterNewsletter(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn  = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.innerHTML = '<i class="bi bi-check-circle-fill"></i>';
+        btn.style.background = 'var(--sage)';
+        setTimeout(function () {
+          btn.textContent = 'Go';
+          btn.style.background = '';
+          form.reset();
+        }, 3500);
+      }
+    }
+
+    // =============================================
+    // NAVBAR SCROLL SHADOW
+    // =============================================
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('.navbar');
+      if (navbar) {
+        navbar.style.boxShadow = window.scrollY > 50
+          ? '0 2px 20px rgba(0,0,0,0.25)'
+          : 'none';
+      }
+    });
+
+  </script>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var raw = params.get('img');
+      if (!raw) return;
+      var url;
+      try {
+        url = new URL(raw, window.location.href);
+      } catch (e) {
+        return;
+      }
+      if (url.origin !== 'https://images.pexels.com') return;
+      var src = url.href;
+      var hero = document.querySelector('.article-hero');
+      if (hero) hero.style.backgroundImage = 'url(' + JSON.stringify(src) + ')';
+      var bodyImg = document.querySelector('.article-body img');
+      if (bodyImg) {
+        bodyImg.src = src;
+        var alt = params.get('alt');
+        if (alt) bodyImg.alt = alt;
+      }
+      var title = params.get('title');
+      if (title) {
+        var heading = document.querySelector('.hero-h1');
+        if (heading) heading.textContent = title;
+        document.title = title + ' — LeafTable';
+      }
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light">
+<head>
+<script>
+(function () {
+  var pairs = [['lt-theme', 'leaftable-theme'], ['lt-direction', 'leaftable-dir'], ['lt-dir', 'leaftable-dir']];
+  pairs.forEach(function (pair) {
+    var oldValue = localStorage.getItem(pair[0]);
+    if (oldValue !== null && localStorage.getItem(pair[1]) === null) {
+      localStorage.setItem(pair[1], oldValue);
+    }
+    localStorage.removeItem(pair[0]);
+  });
+})();
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeafTable — Plant-Based Fine Dining | Home</title>
+  <meta name="description" content="LeafTable is London's premier plant-based fine dining restaurant. Farm to Fork, Plant to Plate — experience nature's finest ingredients crafted with culinary excellence." />
+  <meta property="og:title" content="LeafTable — Plant-Based Fine Dining" />
+  <meta property="og:description" content="Farm to Fork, Plant to Plate. Experience the art of plant-based dining at LeafTable." />
+  <meta property="og:image" content="https://images.pexels.com/photos/32568165/pexels-photo-32568165.jpeg?auto=compress&cs=tinysrgb&w=1200" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://leaftable.co.uk/" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+  <!-- Bootstrap Icons 1.11 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- AOS 2.3.4 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css" />
+
+  <style>
+    /* ── Critical Above-the-Fold Styles ── */
+    :root {
+      --forest-green: #2D5016;
+      --sage: #7A9E5A;
+      --cream: #FBF7F0;
+      --terracotta: #C4612A;
+      --warm-beige: #E8D5B0;
+      --dark-bg: #1A1A1A;
+      --text-dark: #2C2C2C;
+      --text-light: #6B7280;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-dark);
+      background-color: var(--cream);
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+
+    /* ── Navbar ── */
+    .navbar-leaftable {
+      background: rgba(251, 247, 240, 0.85) !important;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(122, 158, 90, 0.2);
+      transition: background 0.3s;
+    }
+    .navbar-leaftable.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.12); }
+    [data-bs-theme="dark"] .navbar-leaftable {
+      background: rgba(26, 26, 26, 0.88) !important;
+    }
+    [data-bs-theme="dark"] .navbar-leaftable.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.12); }
+    .navbar-brand-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--forest-green) !important;
+      letter-spacing: -0.5px;
+    }
+    [data-bs-theme="dark"] .navbar-brand-logo { color: var(--sage) !important; }
+    .nav-link-custom {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--text-dark) !important;
+      padding: 0.4rem 0.75rem !important;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-link-custom:hover, .nav-link-custom.active {
+      color: var(--terracotta) !important;
+      background: rgba(196, 97, 42, 0.08);
+    }
+    [data-bs-theme="dark"] .nav-link-custom { color: #e0e0e0 !important; }
+    .navbar-toggler { border: none; box-shadow: none !important; }
+
+    /* ── Hero ── */
+    #hero {
+      height: 100vh;
+      min-height: 600px;
+      background-image: url('https://images.pexels.com/photos/3822749/pexels-photo-3822749.jpeg?auto=compress&cs=tinysrgb&w=1920');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #hero .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
+    #hero .hero-content { position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #fff;
+      border-radius: 50px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      backdrop-filter: blur(6px);
+      margin-bottom: 1.5rem;
+    }
+    #hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+    #hero .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--cream);
+      max-width: 560px;
+      margin: 0 auto 2.2rem;
+    }
+    .btn-terracotta {
+      background: var(--terracotta);
+      color: #fff;
+      border: 2px solid var(--terracotta);
+      border-radius: 50px;
+      padding: 0.85rem 2.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-terracotta:hover { background: #a84f22; border-color: #a84f22; color: #fff; transform: translateY(-2px); }
+    .btn-outline-white {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 50px;
+      padding: 0.85rem 2.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.25s, color 0.25s, transform 0.2s;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.15); color: #fff; transform: translateY(-2px); }
+
+    /* Scroll chevron */
+    .scroll-chevron {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: rgba(255,255,255,0.8);
+      font-size: 2rem;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* ── Section Utilities ── */
+    .section-badge {
+      display: inline-block;
+      background: rgba(122,158,90,0.15);
+      color: var(--sage);
+      border: 1px solid rgba(122,158,90,0.35);
+      border-radius: 50px;
+      padding: 0.35rem 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    .section-badge.terra {
+      background: rgba(196,97,42,0.1);
+      color: var(--terracotta);
+      border-color: rgba(196,97,42,0.3);
+    }
+    .section-badge.cream-badge {
+      background: rgba(251,247,240,0.2);
+      color: var(--cream);
+      border-color: rgba(251,247,240,0.4);
+    }
+
+    /* ── Section 2 — Dish Cards ── */
+    #signature { background: var(--cream); padding: 100px 0; }
+    .dish-card {
+      border: none;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #fff;
+    }
+    .dish-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0,0,0,0.13); }
+    .dish-card img { height: 280px; object-fit: cover; width: 100%; }
+    .dish-badge {
+      display: inline-block;
+      border-radius: 50px;
+      padding: 0.25rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .dish-badge.sage-badge { background: var(--sage); color: #fff; }
+    .dish-badge.terra-badge { background: var(--terracotta); color: #fff; }
+    .dish-badge.beige-badge { background: var(--warm-beige); color: var(--text-dark); }
+    .dish-price { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--terracotta); font-weight: 700; }
+    .btn-order {
+      border: 2px solid var(--terracotta);
+      color: var(--terracotta);
+      border-radius: 50px;
+      padding: 0.5rem 1.5rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.25s, color 0.25s;
+    }
+    .btn-order:hover { background: var(--terracotta); color: #fff; }
+
+    /* ── Section 3 — Chef's Specials ── */
+    #chefs-specials { background: #fff; padding: 100px 0; }
+    .specials-img { border-radius: 1rem; box-shadow: 0 8px 30px rgba(0,0,0,0.12); width: 100%; object-fit: cover; height: 420px; }
+    .terra-bar {
+      display: inline-block;
+      width: 5px;
+      height: 100%;
+      background: var(--terracotta);
+      border-radius: 3px;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+    .specials-heading-wrap { display: flex; align-items: flex-start; }
+    .chef-quote {
+      border-left: 3px solid var(--sage);
+      padding-left: 1rem;
+      font-style: italic;
+      color: var(--text-light);
+      margin: 1rem 0 1.2rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .ingredient-list { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+    .ingredient-list li { padding: 0.3rem 0; font-size: 0.95rem; color: var(--text-dark); }
+    .ingredient-list li::before { content: "\f5e1"; font-family: "bootstrap-icons"; font-weight: normal; font-style: normal; line-height: 1; display: inline-block; margin-right: 0.35rem; color: var(--sage); }
+    .btn-recipe {
+      color: var(--terracotta);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 2px solid var(--terracotta);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    .btn-recipe:hover { color: var(--forest-green); border-color: var(--forest-green); }
+
+    /* ── Section 4 — Seasonal Ingredients ── */
+    #seasonal {
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(122,158,90,0.3), transparent 38%),
+        radial-gradient(circle at 88% 82%, rgba(196,97,42,0.18), transparent 42%),
+        var(--forest-green);
+    }
+    #seasonal::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    #seasonal > .container { position: relative; z-index: 1; }
+    .seasonal-lead { color: rgba(255,255,255,0.78); max-width: 620px; font-size: 1.05rem; }
+    .seasonal-meta {
+      display: flex; justify-content: center; align-items: center; flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      margin-top: 1.25rem;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+    .seasonal-meta i { color: var(--sage); margin-right: 0.35rem; }
+    .ingredient-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 1.25rem;
+      padding: 2.25rem 1.5rem 2rem;
+      text-align: center;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      transition: transform 0.3s, border-color 0.3s, background 0.3s, box-shadow 0.3s;
+    }
+    .ingredient-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(122,158,90,0.75);
+      background: rgba(255,255,255,0.12);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+    }
+    .ingredient-img {
+      width: 92px; height: 92px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(251,247,240,0.9);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      margin-bottom: 1.25rem;
+      transition: transform 0.3s;
+    }
+    .ingredient-card:hover .ingredient-img { transform: scale(1.05); }
+    .ingredient-card h5 { color: var(--cream); font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.6rem; }
+    .ingredient-card p { color: rgba(255,255,255,0.72); font-size: 0.9rem; margin: 0; line-height: 1.65; }
+
+    /* ── Section 5 — Reviews ── */
+    #reviews { background: var(--warm-beige); padding: 100px 0; }
+    .review-card { background: #fff; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06); height: 100%; }
+    .stars { color: var(--terracotta); font-size: 1.1rem; letter-spacing: 2px; }
+    .review-text { color: var(--text-dark); font-size: 0.93rem; line-height: 1.75; margin: 1rem 0 1.2rem; }
+    .reviewer-avatar { width: 48px; height: 48px; border-radius: 50%; border: 3px solid var(--sage); object-fit: cover; object-position: 50% 20%; }
+    .reviewer-name { font-weight: 600; font-size: 0.95rem; color: var(--text-dark); margin-bottom: 2px; }
+    .verified-badge { display: inline-block; background: rgba(45,80,22,0.1); color: var(--forest-green); border-radius: 50px; padding: 0.15rem 0.7rem; font-size: 0.72rem; font-weight: 600; }
+
+    /* ── Section 6 — Reservation CTA ── */
+    #reservation { background: linear-gradient(135deg, var(--terracotta), var(--forest-green)); padding: 80px 0; }
+    #reservation h2 { color: #fff; font-size: clamp(2rem, 4vw, 3rem); }
+    #reservation .res-sub { color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 2rem; }
+    .res-form-input {
+      background: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      width: 100%;
+    }
+    .res-form-input:focus { outline: none; box-shadow: 0 0 0 3px rgba(196,97,42,0.3); }
+    .btn-reserve {
+      background: var(--forest-green);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 0.7rem 2rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      transition: background 0.25s;
+      width: 100%;
+    }
+    .btn-reserve:hover { background: #1e3610; color: #fff; }
+    .res-contact { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+
+    /* ── Footer ── */
+    .site-footer { background: var(--dark-bg); color: rgba(255,255,255,0.75); padding: 70px 0 0; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--sage); letter-spacing: -0.5px; }
+    .footer-tagline { font-size: 0.88rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; }
+    .footer-heading { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--sage); font-weight: 600; margin-bottom: 1.2rem; }
+    .footer-link { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.9rem; display: block; margin-bottom: 0.6rem; transition: color 0.2s; }
+    .footer-link:hover { color: var(--sage); }
+    .social-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      text-decoration: none;
+      margin-right: 0.5rem;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .social-icon:hover { border-color: var(--sage); color: var(--sage); background: rgba(122,158,90,0.1); }
+    .hours-row { display: flex; justify-content: space-between; font-size: 0.88rem; padding: 0.3rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.65); }
+    .hours-row:last-child { border-bottom: none; }
+    .newsletter-input { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 50px 0 0 50px; color: #fff; padding: 0.55rem 1.2rem; font-size: 0.88rem; width: 100%; }
+    .newsletter-input::placeholder { color: rgba(255,255,255,0.4); }
+    .newsletter-input:focus { outline: none; border-color: var(--sage); background: rgba(255,255,255,0.12); }
+    .newsletter-btn { background: var(--terracotta); border: none; color: #fff; border-radius: 0 50px 50px 0; padding: 0.55rem 1.1rem; font-size: 0.88rem; font-weight: 600; white-space: nowrap; transition: background 0.2s; }
+    .newsletter-btn:hover { background: #a84f22; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 3rem; padding: 1.5rem 0; text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+    .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--sage); }
+
+    /* ── Dark Mode ── */
+    [data-bs-theme="dark"] body { background: #121212; color: var(--cream); }
+    [data-bs-theme="dark"] #signature { background: #1e1e1e; }
+    [data-bs-theme="dark"] .dish-card { background: #2a2a2a; }
+    [data-bs-theme="dark"] #chefs-specials { background: #181818; }
+    [data-bs-theme="dark"] #reviews { background: #232323; }
+    [data-bs-theme="dark"] .review-card { background: #2d2d2d; }
+    [data-bs-theme="dark"] .review-text { color: var(--cream); }
+
+    /* ── Misc ── */
+    @media (max-width: 768px) {
+      #hero { background-attachment: scroll; }
+      .specials-img { height: 280px; }
+      .res-form-input, .btn-reserve { margin-bottom: 0.6rem; }
+    }
+    .toggle-btn {
+      border: 1.5px solid var(--sage);
+      color: var(--forest-green);
+      background: transparent;
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+    .toggle-btn:hover { background: var(--sage); color: #fff; }
+    [data-bs-theme="dark"] .toggle-btn { border-color: var(--sage); color: var(--sage); }
+    .navbar-nav .dropdown-menu { background: #fff; border: none; box-shadow: 0 8px 25px rgba(0,0,0,0.12); border-radius: 0.75rem; }
+    .carousel-indicators [data-bs-target] { background-color: var(--terracotta); }
+  </style>
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════ -->
+<header>
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-leaftable fixed-top" aria-label="Main navigation">
+  <div class="container">
+    <a class="navbar-brand navbar-brand-logo" href="index.html">
+      <i class="bi bi-tree-fill me-1" style="color:#7A9E5A;"></i>LeafTable
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-list fs-4" style="color:#2D5016;"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link nav-link-custom active" aria-current="page" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="index2.html">Home 2</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
+        <button class="toggle-btn theme-toggle-btn" id="themeToggle" aria-label="Toggle dark/light mode">
+          <i class="bi bi-sun-fill" id="themeIcon"></i>
+        </button>
+        <button class="toggle-btn rtl-toggle-btn" id="rtlToggle" aria-label="Toggle RTL/LTR direction"><span class="rtl-text">RTL</span></button>
+      </div>
+    </div>
+  </div>
+</nav>
+</header>
+
+<!-- ══════════════════════════════════════════
+     MAIN CONTENT
+══════════════════════════════════════════ -->
+<main>
+
+  <!-- ── SECTION 1: HERO ── -->
+  <section id="hero" aria-label="Hero section — plant-based fine dining at LeafTable">
+    <div class="overlay" aria-hidden="true"></div>
+
+    <div class="hero-content text-center px-3">
+      <div class="hero-badge" data-aos="fade-down" data-aos-delay="100"><i class="bi bi-tree-fill"></i> 100% Plant-Based Dining</div>
+      <h1 data-aos="fade-up" data-aos-delay="200">
+        Experience the Art of<br>Plant-Based Dining
+      </h1>
+      <p class="hero-sub mx-auto" data-aos="fade-up" data-aos-delay="300">
+        Where nature's finest ingredients meet culinary excellence at LeafTable
+      </p>
+      <div class="d-flex flex-wrap justify-content-center gap-3" data-aos="fade-up" data-aos-delay="400">
+        <a href="services.html" class="btn btn-terracotta" aria-label="Explore our plant-based menu">Explore Menu</a>
+        <a href="contact.html" class="btn btn-outline-white" aria-label="Reserve a table at LeafTable">Reserve a Table</a>
+      </div>
+    </div>
+
+    <!-- Scroll chevron -->
+    <a href="#signature" class="scroll-chevron" aria-label="Scroll to signature dishes section">
+      <i class="bi bi-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- ── SECTION 2: SIGNATURE DISHES ── -->
+  <section id="signature" aria-labelledby="signature-heading">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-badge">Our Specialties</span>
+        <h2 id="signature-heading" class="display-5 mt-2 mb-3" style="color:var(--forest-green);">Signature Plant-Based Dishes</h2>
+        <p class="lead" style="color:var(--sage);">Crafted with love, sourced from nature</p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+
+        <!-- Card 1 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="dish-card h-100">
+            <img src="https://images.pexels.com/photos/34227755/pexels-photo-34227755.jpeg?auto=compress&cs=tinysrgb&w=600"
+                 alt="Roasted Rainbow Bowl — turmeric quinoa topped with seasonal roasted vegetables and tahini drizzle"
+                 loading="lazy" />
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="dish-badge sage-badge">Chef's Pick</span>
+                <span class="dish-price">$16</span>
+              </div>
+              <h3 class="h5 mb-2" style="font-family:'Playfair Display',serif;">Roasted Rainbow Bowl</h3>
+              <p class="text-muted small mb-3" style="line-height:1.7;">
+                A vibrant medley of roasted seasonal vegetables, tahini drizzle, pickled red onion and toasted seeds on a bed of turmeric-spiced quinoa.
+              </p>
+              <a href="service-detail.html" class="btn btn-order w-100" aria-label="Order Roasted Rainbow Bowl">Order Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="dish-card h-100">
+            <img src="https://images.pexels.com/photos/6327121/pexels-photo-6327121.jpeg?auto=compress&cs=tinysrgb&w=600"
+                 alt="Avocado Garden Toast — sourdough with smashed avocado, heirloom tomatoes and micro-herbs"
+                 loading="lazy" />
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="dish-badge terra-badge">Bestseller</span>
+                <span class="dish-price">$12</span>
+              </div>
+              <h3 class="h5 mb-2" style="font-family:'Playfair Display',serif;">Avocado Garden Toast</h3>
+              <p class="text-muted small mb-3" style="line-height:1.7;">
+                Stone-milled sourdough heaped with smashed avocado, heirloom cherry tomatoes, micro-herbs, chilli flakes and a cold-pressed lemon drizzle.
+              </p>
+              <a href="service-detail.html" class="btn btn-order w-100" aria-label="Order Avocado Garden Toast">Order Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="dish-card h-100">
+            <img src="https://images.pexels.com/photos/5152271/pexels-photo-5152271.jpeg?auto=compress&cs=tinysrgb&w=600"
+                 alt="Forest Mushroom Risotto — arborio rice with truffle oil, thyme and cashew parmesan"
+                 loading="lazy" />
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="dish-badge beige-badge">Seasonal</span>
+                <span class="dish-price">$18</span>
+              </div>
+              <h3 class="h5 mb-2" style="font-family:'Playfair Display',serif;">Forest Mushroom Risotto</h3>
+              <p class="text-muted small mb-3" style="line-height:1.7;">
+                Arborio rice slow-cooked in wild mushroom stock, folded with truffle oil, fresh thyme, toasted pine nuts and cashew parmesan.
+              </p>
+              <a href="service-detail.html" class="btn btn-order w-100" aria-label="Order Forest Mushroom Risotto">Order Now</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 3: CHEF'S SPECIALS ── -->
+  <section id="chefs-specials" aria-labelledby="chefs-heading">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-badge terra">Chef's Table</span>
+        <h2 id="chefs-heading" class="display-5 mt-2" style="color:var(--forest-green);">Chef Marco's Specials</h2>
+      </div>
+
+      <!-- Row 1: Image Left, Text Right -->
+      <div class="row align-items-center g-5 mb-5 pb-3">
+        <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+          <img src="https://images.pexels.com/photos/28753804/pexels-photo-28753804.jpeg?auto=compress&cs=tinysrgb&w=800"
+               alt="Fresh wild mushrooms artfully arranged — the star ingredient in Chef Marco's Truffle Tart"
+               class="specials-img" loading="lazy" />
+        </div>
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+          <div class="specials-heading-wrap mb-2">
+            <span class="terra-bar" aria-hidden="true"></span>
+            <h3 style="font-family:'Playfair Display',serif; color:var(--forest-green);">Truffle Wild Mushroom Tart</h3>
+          </div>
+          <blockquote class="chef-quote">
+            "This dish is my love letter to the forest floor — earthy, complex, deeply satisfying."
+            <footer class="blockquote-footer mt-1" style="color:var(--text-light);">Chef Marco Rossi</footer>
+          </blockquote>
+          <ul class="ingredient-list">
+            <li>Wild porcini mushrooms</li>
+            <li>Truffle oil</li>
+            <li>Cashew cream</li>
+            <li>Herb pastry</li>
+            <li>Fresh thyme</li>
+          </ul>
+          <a href="blog-detail.html" class="btn-recipe" aria-label="View full recipe for Truffle Wild Mushroom Tart">View Full Recipe →</a>
+        </div>
+      </div>
+
+      <!-- Row 2: Text Left, Image Right -->
+      <div class="row align-items-center g-5 flex-lg-row-reverse">
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+          <img src="https://images.pexels.com/photos/21856002/pexels-photo-21856002.jpeg?auto=compress&cs=tinysrgb&w=800"
+               alt="Seasonal Rainbow Mezze flat lay — colourful spread of roasted peppers, hummus and za'atar flatbread"
+               class="specials-img" loading="lazy" />
+        </div>
+        <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+          <div class="specials-heading-wrap mb-2">
+            <span class="terra-bar" aria-hidden="true"></span>
+            <h3 style="font-family:'Playfair Display',serif; color:var(--forest-green);">Seasonal Rainbow Mezze</h3>
+          </div>
+          <blockquote class="chef-quote">
+            "Every colour on this plate comes directly from our partner farms — zero food miles, maximum flavour."
+            <footer class="blockquote-footer mt-1" style="color:var(--text-light);">Chef Marco Rossi</footer>
+          </blockquote>
+          <ul class="ingredient-list">
+            <li>Roasted peppers</li>
+            <li>Hummus</li>
+            <li>Fattoush</li>
+            <li>Za'atar flatbread</li>
+            <li>Pickled vegetables</li>
+          </ul>
+          <a href="blog-detail.html" class="btn-recipe" aria-label="View full recipe for Seasonal Rainbow Mezze">View Full Recipe →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 4: SEASONAL INGREDIENTS ── -->
+  <section id="seasonal" aria-labelledby="seasonal-heading">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-badge cream-badge">Currently in Season</span>
+        <h2 id="seasonal-heading" class="display-5 mt-2 mb-3" style="color:var(--cream);">Harvested This Season</h2>
+        <p class="lead seasonal-lead mx-auto">
+          We work with 24 local organic farms to bring the freshest ingredients to your plate
+        </p>
+        <div class="seasonal-meta">
+          <span><i class="bi bi-geo-alt" aria-hidden="true"></i>24 partner farms across the South East</span>
+          <span><i class="bi bi-calendar-week" aria-hidden="true"></i>Menu refreshed every Thursday</span>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+
+        <div class="col" data-aos="zoom-in" data-aos-delay="100">
+          <div class="ingredient-card">
+            <img src="https://images.pexels.com/photos/15279908/pexels-photo-15279908.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+                 alt="Fresh tomatoes and vegetables at a local market" class="ingredient-img" width="92" height="92" loading="lazy" />
+            <h5>Heirloom Tomatoes</h5>
+            <p>Locally sourced from Kent — vine-ripened, bursting with natural sweetness</p>
+          </div>
+        </div>
+
+        <div class="col" data-aos="zoom-in" data-aos-delay="200">
+          <div class="ingredient-card">
+            <img src="https://images.pexels.com/photos/41041531/pexels-photo-41041531.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+                 alt="Foraged wild mushrooms in an autumn forest" class="ingredient-img" width="92" height="92" loading="lazy" />
+            <h5>Wild Mushrooms</h5>
+            <p>Hand-foraged from Sussex woodlands every Thursday morning</p>
+          </div>
+        </div>
+
+        <div class="col" data-aos="zoom-in" data-aos-delay="300">
+          <div class="ingredient-card">
+            <img src="https://images.pexels.com/photos/7111393/pexels-photo-7111393.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+                 alt="Fresh kale in a colorful seasonal dish" class="ingredient-img" width="92" height="92" loading="lazy" />
+            <h5>Purple Kale</h5>
+            <p>Grown year-round on our rooftop garden above the restaurant</p>
+          </div>
+        </div>
+
+        <div class="col" data-aos="zoom-in" data-aos-delay="400">
+          <div class="ingredient-card">
+            <img src="https://images.pexels.com/photos/6544376/pexels-photo-6544376.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+                 alt="Hearty lentil curry bowl garnished with herbs" class="ingredient-img" width="92" height="92" loading="lazy" />
+            <h5>Organic Lentils</h5>
+            <p>Stone-milled from Provence — protein-rich, earthy, deeply nourishing</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 5: CUSTOMER REVIEWS ── -->
+  <section id="reviews" aria-labelledby="reviews-heading">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-badge">What Our Guests Say</span>
+        <h2 id="reviews-heading" class="display-5 mt-2" style="color:var(--forest-green);">Loved by Plant-Based Food Lovers</h2>
+      </div>
+
+      <!-- Desktop: 3-col grid -->
+      <div class="row g-4 d-none d-lg-flex">
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="review-card">
+            <div class="stars" aria-label="5 out of 5 stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p class="review-text">
+              The Rainbow Bowl completely changed how I think about plant-based dining. Every element was perfectly balanced — the acidity from the pickled onions, the creaminess of the tahini, the crunch of the seeds. I brought my meat-loving partner who was converted after the first bite. We've been back four times in two months. The staff remember your name and the ambience is exactly what London needed. This is not just a vegan restaurant — it's a destination. Cannot recommend LeafTable highly enough.
+            </p>
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://images.pexels.com/photos/3791554/pexels-photo-3791554.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=faces"
+                   alt="Sarah M. — verified diner at LeafTable" class="reviewer-avatar" loading="lazy" />
+              <div>
+                <div class="reviewer-name">Sarah M.</div>
+                <span class="verified-badge">Verified Diner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="review-card">
+            <div class="stars" aria-label="5 out of 5 stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p class="review-text">
+              Chef Marco's Truffle Tart is unlike anything I've tasted. The depth of flavour in a completely plant-based dish is extraordinary. The cashew cream has this silky richness that you'd swear was dairy. We visited for our anniversary and the team went above and beyond — surprise petit fours, a handwritten card, the whole experience felt deeply personal. The wine pairing suggestions were spot-on too. LeafTable has set a new standard for what fine dining can be.
+            </p>
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://images.pexels.com/photos/36511054/pexels-photo-36511054.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=faces"
+                   alt="James K. — verified diner at LeafTable" class="reviewer-avatar" loading="lazy" />
+              <div>
+                <div class="reviewer-name">James K.</div>
+                <span class="verified-badge">Verified Diner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="review-card">
+            <div class="stars" aria-label="5 out of 5 stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p class="review-text">
+              I've been vegan for seven years and LeafTable is the first restaurant that genuinely excites me. The seasonal menu means every visit feels fresh and new. The Mezze Platter is a work of art — I actually took photos before eating because it's so beautiful. The staff are knowledgeable about every ingredient and sourcing story. Even my non-vegan friends who came for my birthday were blown away. The commitment to sustainability and zero waste makes every meal feel meaningful.
+            </p>
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://images.pexels.com/photos/1586335/pexels-photo-1586335.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=faces"
+                   alt="Priya S. — verified diner at LeafTable" class="reviewer-avatar" loading="lazy" />
+              <div>
+                <div class="reviewer-name">Priya S.</div>
+                <span class="verified-badge">Verified Diner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mobile: Bootstrap Carousel -->
+      <div class="d-lg-none" data-aos="fade-up">
+        <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Review by Sarah M."></button>
+            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1" aria-label="Review by James K."></button>
+            <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="2" aria-label="Review by Priya S."></button>
+          </div>
+          <div class="carousel-inner pb-5">
+
+            <div class="carousel-item active">
+              <div class="review-card mx-2">
+                <div class="stars" aria-label="5 out of 5 stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                <p class="review-text">
+                  The Rainbow Bowl completely changed how I think about plant-based dining. Every element was perfectly balanced — the acidity from the pickled onions, the creaminess of the tahini, the crunch of the seeds. I brought my meat-loving partner who was converted after the first bite. We've been back four times in two months. The staff remember your name and the ambience is exactly what London needed. This is not just a vegan restaurant — it's a destination.
+                </p>
+                <div class="d-flex align-items-center gap-3">
+                  <img src="https://images.pexels.com/photos/3791554/pexels-photo-3791554.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=faces"
+                       alt="Sarah M. — verified diner" class="reviewer-avatar" loading="lazy" />
+                  <div>
+                    <div class="reviewer-name">Sarah M.</div>
+                    <span class="verified-badge">Verified Diner</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="review-card mx-2">
+                <div class="stars" aria-label="5 out of 5 stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                <p class="review-text">
+                  Chef Marco's Truffle Tart is unlike anything I've tasted. The depth of flavour in a completely plant-based dish is extraordinary. The cashew cream has this silky richness that you'd swear was dairy. We visited for our anniversary and the team went above and beyond — surprise petit fours, a handwritten card, the whole experience felt deeply personal. The wine pairing suggestions were spot-on too. LeafTable has set a new standard for what fine dining can be.
+                </p>
+                <div class="d-flex align-items-center gap-3">
+                  <img src="https://images.pexels.com/photos/36511054/pexels-photo-36511054.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=faces"
+                       alt="James K. — verified diner" class="reviewer-avatar" loading="lazy" />
+                  <div>
+                    <div class="reviewer-name">James K.</div>
+                    <span class="verified-badge">Verified Diner</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="review-card mx-2">
+                <div class="stars" aria-label="5 out of 5 stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                <p class="review-text">
+                  I've been vegan for seven years and LeafTable is the first restaurant that genuinely excites me. The seasonal menu means every visit feels fresh and new. The Mezze Platter is a work of art — I actually took photos before eating because it's so beautiful. The staff are knowledgeable about every ingredient and sourcing story. Even my non-vegan friends who came for my birthday were blown away. The commitment to sustainability and zero waste makes every meal feel meaningful.
+                </p>
+                <div class="d-flex align-items-center gap-3">
+                  <img src="https://images.pexels.com/photos/1586335/pexels-photo-1586335.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop&crop=faces"
+                       alt="Priya S. — verified diner" class="reviewer-avatar" loading="lazy" />
+                  <div>
+                    <div class="reviewer-name">Priya S.</div>
+                    <span class="verified-badge">Verified Diner</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SECTION 6: RESERVATION CTA ── -->
+  <section id="reservation" aria-labelledby="reservation-heading">
+    <div class="container text-center">
+      <h2 id="reservation-heading" class="mb-3" data-aos="fade-up">Book Your Table Tonight</h2>
+      <p class="res-sub" data-aos="fade-up" data-aos-delay="100">Join us for an unforgettable plant-based dining experience</p>
+
+      <!-- Reservation Form -->
+      <form class="row g-2 justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200"
+            aria-label="Table reservation form" novalidate>
+        <div class="col-12 col-md-auto flex-md-grow-1" style="max-width:200px;">
+          <input type="text" class="res-form-input" placeholder="Your Name" aria-label="Your name" required />
+        </div>
+        <div class="col-12 col-md-auto flex-md-grow-1" style="max-width:220px;">
+          <input type="email" class="res-form-input" placeholder="Email Address" aria-label="Email address" required />
+        </div>
+        <div class="col-12 col-md-auto flex-md-grow-1" style="max-width:180px;">
+          <input type="date" class="res-form-input" aria-label="Reservation date" required />
+        </div>
+        <div class="col-12 col-md-auto flex-md-grow-1" style="max-width:160px;">
+          <select class="res-form-input" aria-label="Number of guests" required>
+            <option value="" disabled selected>Guests</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+            <option value="5">5 Guests</option>
+            <option value="6">6 Guests</option>
+            <option value="7">7 Guests</option>
+            <option value="8">8 Guests</option>
+            <option value="9">9 Guests</option>
+            <option value="10">10 Guests</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-auto">
+          <button type="submit" class="btn-reserve" aria-label="Submit reservation request">Reserve Now</button>
+        </div>
+      </form>
+
+      <!-- Contact Info -->
+      <p class="res-contact mt-4" data-aos="fade-up" data-aos-delay="300">
+        <i class="bi bi-telephone-fill me-1"></i> +44 20 7123 4567
+        &nbsp;|&nbsp;
+        <i class="bi bi-envelope-fill me-1"></i> hello@leaftable.co.uk
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="site-footer" id="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="row g-5">
+
+      <!-- Col 1: Brand -->
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-logo"><i class="bi bi-tree-fill me-2" style="color:var(--sage);"></i>LeafTable</div>
+        <p class="footer-tagline mt-1">Farm to Fork, Plant to Plate</p>
+        <p class="mt-3" style="font-size:0.88rem; color:rgba(255,255,255,0.5); max-width:280px;">London's premier plant-based fine dining restaurant, where seasonal ingredients and culinary artistry create unforgettable experiences.</p>
+        <div class="mt-4" aria-label="Social media links">
+          <a href="#" class="social-icon" aria-label="Follow LeafTable on Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-icon" aria-label="Follow LeafTable on Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-icon" aria-label="Follow LeafTable on Twitter / X"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="social-icon" aria-label="Follow LeafTable on TikTok"><i class="bi bi-tiktok"></i></a>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div class="col-lg-2 col-md-6">
+        <p class="footer-heading">Quick Links</p>
+        <a class="footer-link" href="index.html">Home</a>
+        <a class="footer-link" href="index2.html">Home 2</a>
+        <a class="footer-link" href="about.html">About Us</a>
+        <a class="footer-link" href="services.html">Services</a>
+        <a class="footer-link" href="blog.html">Blog</a>
+        <a class="footer-link" href="contact.html">Contact</a>
+      </div>
+
+      <!-- Col 3: Services -->
+      <div class="col-lg-2 col-md-6">
+        <p class="footer-heading">Services</p>
+        <a class="footer-link" href="services.html">Dine-In</a>
+        <a class="footer-link" href="services.html">Takeaway</a>
+        <a class="footer-link" href="services.html">Catering</a>
+        <a class="footer-link" href="service-detail.html">Chef's Table</a>
+      </div>
+
+      <!-- Col 4: Hours + Newsletter -->
+      <div class="col-lg-4 col-md-6">
+        <p class="footer-heading">Opening Hours</p>
+        <div class="hours-row"><span>Mon – Thu</span><span>12:00 – 22:00</span></div>
+        <div class="hours-row"><span>Fri – Sat</span><span>12:00 – 23:00</span></div>
+        <div class="hours-row"><span>Sunday</span><span>12:00 – 21:00</span></div>
+
+        <p class="footer-heading mt-4">Stay in Touch</p>
+        <form class="d-flex" aria-label="Newsletter subscription form" novalidate>
+          <input type="email" class="newsletter-input" placeholder="Your email address" aria-label="Enter email for newsletter" required />
+          <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">Subscribe</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p class="mb-0">© 2026 LeafTable. All rights reserved.</p>
+      <div class="d-flex justify-content-center gap-3 mt-2">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════ -->
+<!-- Bootstrap 5.3.3 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS 2.3.4 JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+<!-- Custom JS -->
+<script src="assets/js/main.js"></script>
+
+<script>
+  // ── AOS Init ──
+  AOS.init({
+    duration: 700,
+    once: true,
+    offset: 60,
+    easing: 'ease-out-cubic'
+  });
+
+  // ── Navbar Scroll Class ──
+  (function () {
+    var nav = document.getElementById('mainNav');
+    function onScroll() {
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // ── Dark / Light Mode Toggle ──
+  (function () {
+    var html = document.documentElement;
+    var btn  = document.getElementById('themeToggle');
+    var icon = document.getElementById('themeIcon');
+
+    function applyTheme(theme) {
+      html.setAttribute('data-bs-theme', theme);
+        if (theme === 'dark') {
+          icon.className = 'bi bi-moon-stars-fill';
+        } else {
+        icon.className = 'bi bi-sun-fill';
+      }
+      localStorage.setItem('leaftable-theme', theme);
+    }
+
+    // Load saved preference
+    var saved = localStorage.getItem('leaftable-theme') || 'light';
+    applyTheme(saved);
+
+    btn.addEventListener('click', function () {
+      var current = html.getAttribute('data-bs-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  })();
+
+  // ── RTL Toggle ──
+  (function () {
+    var html = document.documentElement;
+    var btn  = document.getElementById('rtlToggle');
+
+    btn.addEventListener('click', function () {
+      var current = html.getAttribute('dir');
+      html.setAttribute('dir', current === 'rtl' ? 'ltr' : 'rtl');
+    });
+  })();
+
+  // ── Reservation Form ──
+  (function () {
+    var form = document.querySelector('#reservation form');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var btn = form.querySelector('.btn-reserve');
+        btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Request Sent!';
+        btn.style.background = 'var(--forest-green)';
+        setTimeout(function () {
+          btn.textContent = 'Reserve Now';
+          btn.style.background = '';
+          form.reset();
+        }, 3000);
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
