@@ -414,7 +414,17 @@
     }
     #scrollTopBtn:hover { transform: translateY(-3px); }
     #scrollTopBtn.visible { display: flex; }
+
+    [data-bs-theme="dark"] .navbar-toggler i { color: var(--sage) !important; }
+    [data-bs-theme="dark"] .text-forest-green { color: #a8c77a !important; }
+    [data-bs-theme="dark"] .hero-badge,
+    [data-bs-theme="dark"] .newsletter-btn { color: #1a1a1a; }
+    [data-bs-theme="dark"] .newsletter-btn:hover { background: var(--forest-green); color: #f0ede8; }
+    [data-bs-theme="dark"] .btn-outline-terracotta { color: #e58a5a; }
+    [data-bs-theme="dark"] .accordion-button:not(.collapsed) { color: #e58a5a !important; }
+    [data-bs-theme="dark"] i[style*="#C4612A"] { color: #e58a5a !important; }
   </style>
+
   <link rel="stylesheet" href="assets/css/navbar.css" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="assets/css/responsive.css" />
